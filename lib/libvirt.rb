@@ -20,6 +20,7 @@ module Libvirt
   typedef :pointer, :virNodeDevicePtr
   typedef :pointer, :virNodeInfoPtr
   typedef :pointer, :virNWFilterPtr
+  typedef :pointer, :virSchedParameterPtr
   typedef :pointer, :virSecretPtr
   typedef :pointer, :virSecurityModelPtr
   typedef :pointer, :virSecurityLabelPtr
@@ -56,6 +57,12 @@ module Libvirt
   callback :virConnectDomainEventGenericCallback, [:virConnectPtr, :virDomainPtr, :void_pointer], :void
 
   # Below attached functions in order of appearance in libvirt.h
+  attach_function :virDomainGetSchedulerParameters, [:virDomainPtr, :virSchedParameterPtr, :int_pointer], :int
+  attach_function :virDomainSetSchedulerParameters, [:virDomainPtr, :virSchedParameterPtr, :int], :int
+  attach_function :virDomainMigrate, [:virDomainPtr, :virConnectPtr, :ulong, :string, :string, :ulong], :virDomainPtr
+  attach_function :virDomainMigrateToURI, [:virDomainPtr, :string, :ulong, :string, :ulong], :int
+  attach_function :virDomainMigrateSetMaxDowntime, [:virDomainPtr, :ulong_long, :uint], :int
+
   attach_function :virGetVersion, [:unsigned_long_pointer, :string, :unsigned_long_pointer], :int
 
   # Connection/disconnection to the Hypervisor
