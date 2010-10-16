@@ -9,6 +9,7 @@ GEM
   specs:
     ffi (0.6.3)
       rake (>= 0.8.7)
+    protest (0.4.1)
     rake (0.8.7)
 
 PLATFORMS
@@ -17,3 +18,4 @@ PLATFORMS
 DEPENDENCIES
   ffi (~> 0.6.3)
   libvirt!
+  protest (~> 0.4.0)
