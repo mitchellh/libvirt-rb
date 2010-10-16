@@ -11,3 +11,10 @@ task :test do
   files = ENV["TEST"] ? [ENV["TEST"]] : Dir["test/**/*_test.rb"]
   files.each { |f| load f }
 end
+
+begin
+  # Documentation task
+  require 'yard'
+  YARD::Rake::YardocTask.new
+rescue LoadError
+end
