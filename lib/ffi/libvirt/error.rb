@@ -2,7 +2,7 @@ module FFI
   module Libvirt
     class Error < ::FFI::Struct
       layout :code, :virErrorNumber,
-             :domain, :int,
+             :domain, :virErrorDomain,
              :message, :string,
              :level, :virErrorLevel,
              :conn, :virConnectPtr, # DEPRECATED
