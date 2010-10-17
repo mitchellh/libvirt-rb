@@ -8,7 +8,7 @@ Protest.describe("connection") do
   context "connecting" do
     should "connect and return a connection" do
       result = nil
-      assert_nothing_raised { result = @klass.connect }
+      assert_nothing_raised { result = @klass.connect("test:///default") }
       assert result.is_a?(@klass)
     end
 
@@ -21,7 +21,7 @@ Protest.describe("connection") do
 
   context "with a valid connection" do
     setup do
-      @cxn = @klass.connect
+      @cxn = @klass.connect("test:///default")
     end
 
     should "provide the library version" do
@@ -39,19 +39,29 @@ Protest.describe("connection") do
     end
 
     should "provide the uri of the connection" do
-      assert_nothing_raised { @cxn.uri }
+      result = nil
+      assert_nothing_raised { result = @cxn.uri }
+      assert_equal "test:///default", result
     end
 
     should "provide the type of the connection" do
-      assert_nothing_raised { @cxn.type }
+      result = nil
+      assert_nothing_raised { result = @cxn.type }
+      assert_equal "Test", result
     end
 
     should "provide the hypervisor version of the connection" do
-      assert_nothing_raised { @cxn.hypervisor_version }
+      result = nil
+      assert_nothing_raised { result = @cxn.hypervisor_version }
+      assert_equal [0,0,2], result
     end
 
     should "provide a list of domains" do
-      raise "Pending"
+      result = nil
+      assert_nothing_raised { result = @cxn.domains }
+      assert result.is_a?(Array)
+      assert_equal 1, result.length
+      assert result.first.is_a?(Libvirt::Domain)
     end
   end
 end
