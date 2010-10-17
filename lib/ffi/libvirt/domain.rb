@@ -1,7 +1,7 @@
 module FFI
   module Libvirt
     class DomainInfo < ::FFI::Struct
-      layout :state, :uchar,
+      layout :state, :virDomainState,
              :maxMem, :ulong,
              :memory, :ulong,
              :nrVirtCpu, :ushort,

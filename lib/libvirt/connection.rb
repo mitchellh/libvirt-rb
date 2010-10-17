@@ -14,6 +14,35 @@ module Libvirt
       @pointer = pointer
     end
 
+    # Returns the domains (both active and inactive) related to this
+    # connection. The various states of the domains returned can be
+    # queried using {Domain#state}.
+    #
+    # @return [Array<Domain>]
+    def domains
+      # First get the names of all the inactive domains
+      max_names = FFI::Libvirt.virConnectNumOfDefinedDomains(pointer)
+      output_ptr = FFI::MemoryPointer.new(:pointer, max_names)
+      num_names = FFI::Libvirt.virConnectListDefinedDomains(pointer, output_ptr, max_names)
+      inactive_names = output_ptr.get_array_of_string(0, num_names)
+
+      # Then get the IDs of all the active domains
+      max_names = FFI::Libvirt.virConnectNumOfDomains(pointer)
+      output_ptr = FFI::MemoryPointer.new(:pointer, max_names)
+      num_names = FFI::Libvirt.virConnectListDomains(pointer, output_ptr, max_names)
+      active_ids = output_ptr.get_array_of_int(0, num_names)
+
+      # Take the names and IDs (why does libvirt do this to me) and return
+      # useful {Domain} objects.
+      domains = inactive_names + active_ids
+      domains.collect do |id|
+        method = id.is_a?(String) ? :virDomainLookupByName : :virDomainLookupByID
+        domain_ptr = FFI::Libvirt.send(method, pointer, id)
+        raise Exception::DomainNotFound if domain_ptr.null?
+        Domain.new(domain_ptr)
+      end
+    end
+
     # Returns the capabilities of the connected hypervisor/driver. Returns them
     # as an XML string. This method calls `virConnectGetCapabilities`. This will
     # probably be parsed into a more useful format in the future.

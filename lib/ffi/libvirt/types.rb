@@ -49,5 +49,8 @@ module FFI
     callback :virStreamSinkFunc, [:virStreamPtr, :string, :size_t, :void_pointer], :int
     callback :virStreamEventCallback, [:virStreamPtr, :int, :void_pointer], :void
     callback :virConnectDomainEventGenericCallback, [:virConnectPtr, :virDomainPtr, :void_pointer], :void
+
+    # Enums
+    enum :virDomainState, [:nostate, :running, :blocked, :paused, :shutdown, :shutoff, :crashed]
   end
 end

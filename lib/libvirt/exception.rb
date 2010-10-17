@@ -22,6 +22,7 @@ module Libvirt
     end
 
     class ConnectionFailed < Error; end
+    class DomainNotFound < Error; end
     class InitializationError < Error; end
   end
 end

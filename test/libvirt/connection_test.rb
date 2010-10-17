@@ -49,5 +49,9 @@ Protest.describe("connection") do
     should "provide the hypervisor version of the connection" do
       assert_nothing_raised { @cxn.hypervisor_version }
     end
+
+    should "provide a list of domains" do
+      raise "Pending"
+    end
   end
 end
