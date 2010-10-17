@@ -9,6 +9,20 @@ Protest.describe("domain") do
     @instance = Libvirt::Connection.connect("test:///default").domains.first
   end
 
+  should "provide the name of the domain" do
+    assert_equal "test", @instance.name
+  end
+
+  should "provide the UUID of the domain" do
+    result = nil
+    assert_nothing_raised { result = @instance.uuid }
+    assert_equal 36, result.length
+  end
+
+  should "provide the ID of the domain" do
+    assert_equal 1, @instance.id
+  end
+
   should "provide the state of the domain" do
     assert_equal :running, @instance.state
   end
@@ -31,5 +45,22 @@ Protest.describe("domain") do
     result = nil
     assert_nothing_raised { result = @instance.cpu_time_used }
     assert result.is_a?(Integer)
+  end
+
+  should "provide an XML dump of the description of the domain" do
+    result = nil
+    assert_nothing_raised { result = @instance.xml }
+    assert result.is_a?(String)
+    assert !result.empty?
+  end
+
+  should "return result of active status" do
+    # TODO: Shut down and verify it returns false
+    assert @instance.active?
+  end
+
+  should "return result of persistent status" do
+    # TODO: Test non-persistent domain
+    assert @instance.persistent?
   end
 end
