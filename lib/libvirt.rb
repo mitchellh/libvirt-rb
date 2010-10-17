@@ -3,6 +3,7 @@ require 'ffi/libvirt'
 module Libvirt
   autoload :Connection, 'libvirt/connection'
   autoload :Error, 'libvirt/error'
+  autoload :Exception, 'libvirt/exception'
 
   # Initializes the library by calling `virInitialize`. Most methods
   # in libvirt actually call this themselves, so its not strictly

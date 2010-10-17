@@ -6,7 +6,7 @@ module Libvirt
 
     def self.connect(uri=nil)
       pointer = FFI::Libvirt.virConnectOpen(uri)
-      raise Error::ConnectionFailed if pointer.null?
+      raise Exception::ConnectionFailed if pointer.null?
       new(pointer)
     end
 
