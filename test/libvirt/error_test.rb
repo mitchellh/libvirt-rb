@@ -24,7 +24,30 @@ Protest.describe("error") do
       # And now we verify the error is accessible
       error = @klass.last_error
       assert error
-      assert_equal :system_error, error.code
+    end
+  end
+
+  context "with an error instance" do
+    setup do
+      # Get an error instance...
+      FFI::Libvirt.virConnectOpen("FailHard")
+      @error = @klass.last_error
+    end
+
+    should "allow access to the raw struct" do
+      assert @error.interface.is_a?(FFI::Libvirt::Error)
+    end
+
+    should "allow access to the error code" do
+      assert_equal :system_error, @error.code
+    end
+
+    should "allow access to the error domain" do
+      assert_equal :remote, @error.domain
+    end
+
+    should "allow access to the error message" do
+      assert @error.message
     end
   end
 end
