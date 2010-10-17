@@ -14,7 +14,10 @@ module Libvirt
         # This works because error.message will be nil if there
         # wasn't an error.
         @error = error || Libvirt::Error.last_error
-        super(@error.message)
+
+        message = error
+        message = error.message if error.is_a?(Libvirt::Error)
+        super(message)
       end
     end
 

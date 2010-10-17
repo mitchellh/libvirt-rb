@@ -10,7 +10,9 @@ module Libvirt
     #
     # @return [Error]
     def self.last_error
-      new(FFI::Libvirt.virGetLastError)
+      pointer = FFI::Libvirt.virGetLastError
+      return nil if pointer.null?
+      new(pointer)
     end
 
     # Initializes a new error object. This shouldn't be called publicly.

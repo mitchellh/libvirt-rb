@@ -6,4 +6,4 @@ class Protest::TestCase
   include Test::Unit::Assertions
 end
 
-Protest.report_with(:documentation)
+Protest.report_with(:turn)
