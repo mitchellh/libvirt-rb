@@ -32,6 +32,33 @@ module Libvirt
       FFI::Libvirt.virConnectGetHostname(pointer)
     end
 
+    # Returns the URI of the connection.
+    #
+    # @return [String]
+    def uri
+      FFI::Libvirt.virConnectGetURI(pointer)
+    end
+
+    # Returns the name of the hypervisor. This is named "type" since that is the
+    # terminology which libvirt itself uses. This is also aliased as `hypervisor`
+    # since that is more friendly.
+    #
+    # @return [String]
+    def type
+      FFI::Libvirt.virConnectGetType(pointer)
+    end
+    alias :hypervisor :type
+
+    # Returns the version of the hypervisor. This version is returned as an array
+    # representation as `[major, minor, patch]`.
+    #
+    # @return [Array]
+    def hypervisor_version
+      output_ptr = FFI::MemoryPointer.new(:ulong)
+      FFI::Libvirt.virConnectGetVersion(pointer, output_ptr)
+      parse_version(output_ptr.get_ulong(0))
+    end
+
     # Returns the version of `libvirt` which the daemon on the other side is
     # running. If not connected to a remote daemon, it will return the version
     # of libvirt on this machine. The result is an array representatin of the
@@ -41,8 +68,16 @@ module Libvirt
     def lib_version
       output_ptr = FFI::MemoryPointer.new(:ulong)
       FFI::Libvirt.virConnectGetLibVersion(pointer, output_ptr)
-      result = output_ptr.get_ulong(0)
+      parse_version(output_ptr.get_ulong(0))
+    end
 
+    protected
+
+    # Parses the raw version integer returned by various libvirt methods
+    # into proper `[major, minor, patch]` format.
+    #
+    # @return [Array]
+    def parse_version(result)
       # Format is MAJOR * 1,000,000 + MINOR * 1,000 + PATCH, so we
       # need to decode it.
       major = result / 1_000_000

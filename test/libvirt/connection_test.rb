@@ -30,12 +30,24 @@ Protest.describe("connection") do
       assert_equal [0,8,4], @cxn.lib_version
     end
 
+    should "provide the capabilities of the connection" do
+      assert_nothing_raised { @cxn.capabilities }
+    end
+
     should "provide the hostname of the connection" do
       assert_nothing_raised { @cxn.hostname }
     end
 
-    should "provide the capabilities of the connection" do
-      assert_nothing_raised { @cxn.capabilities }
+    should "provide the uri of the connection" do
+      assert_nothing_raised { @cxn.uri }
+    end
+
+    should "provide the type of the connection" do
+      assert_nothing_raised { @cxn.type }
+    end
+
+    should "provide the hypervisor version of the connection" do
+      assert_nothing_raised { @cxn.hypervisor_version }
     end
   end
 end
