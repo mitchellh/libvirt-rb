@@ -21,6 +21,14 @@ initial development. If you are familiar and interested in any of the
 following: Ruby, FFI, libvirt, virtualization and you want to get involved,
 now is the best time!
 
+What is done so far?
+
+* The FFI function coverage is 100% complete. Some structs and enums
+are missing, however.
+* Basic [unit] test harness in place. Test early and often.
+* Nice ruby layer starting, not much done in this area. A lot will
+be done the coming days.
+
 ## Installation
 
 This library will be a gem.
