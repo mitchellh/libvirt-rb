@@ -31,7 +31,13 @@ be done the coming days.
 
 ## Installation
 
-This library will be a gem.
+This library will be a gem. First, you need to install libvirt, using
+your OS's respective package manager. On OS X:
+
+**Note: Libvirt installation on OS X is coming along, but is not
+quite ready yet. Expect an update here soon.**
+
+After installing libvirt, install the gem:
 
     gem install libvirt
 
