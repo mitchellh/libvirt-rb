@@ -9,7 +9,7 @@ module Libvirt
   # Initializes the library by calling `virInitialize`. Most methods
   # in libvirt actually call this themselves, so its not strictly
   # necessary. However, it is good practice and is **highly** recommended
-  # in a multithreaded environment. This will raise an {Error::InitializeError}
+  # in a multithreaded environment. This will raise an {Exception::InitializeError}
   # upon failure.
   def self.initialize!
     raise Error::InitializeError if FFI::Libvirt.virInitialize < 0
