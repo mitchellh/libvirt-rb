@@ -11,7 +11,8 @@ FFI. This gem provides two things which can be used separately:
 Ruby objects above the API which take away a lot of the pain are provided,
 which is the recommended way of using libvirt with Ruby.
 * `Raw API Access` - For the power-players out there, you can access
-the `libvirt` API directly, with no fluff: Direct access to the C API.
+the `libvirt` API directly, with no fluff: Direct access to the C API
+from Ruby.
 
 ## Project Status
 
