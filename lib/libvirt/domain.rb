@@ -2,19 +2,19 @@ module Libvirt
   # Represents a domain within libvirt, which is a single virtual
   # machine or environment, typically.
   class Domain
-    attr_reader :domain_pointer
+    attr_reader :pointer
 
-    # TODO: This will support creation one day, so this single
-    # mandatory initialization parameter won't fly.
-    def initialize(pointer)
-      @domain_pointer = pointer
+    # Initializes a new {Domain} object. If you're calling this directly,
+    # omit the `pointer` argument, since that is meant for internal use.
+    def initialize(pointer=nil)
+      @pointer = pointer if pointer.is_a?(FFI::Pointer)
     end
 
     # Returns the name of the domain as a string.
     #
     # @return [String]
     def name
-      FFI::Libvirt.virDomainGetName(domain_pointer)
+      FFI::Libvirt.virDomainGetName(pointer)
     end
 
     # Returns the UUID of the domain as a string.
@@ -22,7 +22,7 @@ module Libvirt
     # @return [String]
     def uuid
       output_ptr = FFI::MemoryPointer.new(:char, 48)
-      FFI::Libvirt.virDomainGetUUIDString(domain_pointer, output_ptr)
+      FFI::Libvirt.virDomainGetUUIDString(pointer, output_ptr)
       output_ptr.read_string
     end
 
@@ -30,7 +30,7 @@ module Libvirt
     #
     # @return [Integer]
     def id
-      FFI::Libvirt.virDomainGetID(domain_pointer)
+      FFI::Libvirt.virDomainGetID(pointer)
     end
 
     # Returns the current state this domain is in.
@@ -73,14 +73,14 @@ module Libvirt
     # @return [String]
     def xml
       # TODO: The flags in the 2nd parameter
-      FFI::Libvirt.virDomainGetXMLDesc(domain_pointer, 0)
+      FFI::Libvirt.virDomainGetXMLDesc(pointer, 0)
     end
 
     # Returns boolean of whether the domain is active (running) or not.
     #
     # @return [Boolean]
     def active?
-      result = FFI::Libvirt.virDomainIsActive(domain_pointer)
+      result = FFI::Libvirt.virDomainIsActive(pointer)
       # TODO: Process error, result == -1
       result == 1
     end
@@ -90,7 +90,7 @@ module Libvirt
     #
     # @return [Boolean]
     def persistent?
-      result = FFI::Libvirt.virDomainIsPersistent(domain_pointer)
+      result = FFI::Libvirt.virDomainIsPersistent(pointer)
       # TODO: Process error, result == -1
       result == 1
     end
@@ -101,7 +101,7 @@ module Libvirt
     # about this domain.
     def domain_info
       result = FFI::Libvirt::DomainInfo.new
-      FFI::Libvirt.virDomainGetInfo(domain_pointer, result.to_ptr)
+      FFI::Libvirt.virDomainGetInfo(pointer, result.to_ptr)
       result
     end
   end
