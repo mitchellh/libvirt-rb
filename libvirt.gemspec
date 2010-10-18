@@ -16,6 +16,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "ffi", "~> 0.6.3"
   s.add_dependency "builder", "~> 2.1.2"
+  s.add_dependency "nokogiri", "~> 1.4.3"
 
   s.add_development_dependency "protest", "~> 0.4.0"
 
