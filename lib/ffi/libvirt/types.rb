@@ -26,8 +26,10 @@ module FFI
     typedef :pointer, :virStorageVolPtr
     typedef :pointer, :virStorageVolInfoPtr
     typedef :pointer, :virStreamPtr
+    typedef :pointer, :virVcpuInfoPtr
 
     # Pointers for C primitives
+    typedef :pointer, :uchar_pointer
     typedef :pointer, :int_pointer
     typedef :pointer, :uint_pointer
     typedef :pointer, :unsigned_long_pointer
