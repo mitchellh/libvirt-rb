@@ -3,6 +3,14 @@ module FFI
     attach_function :virGetVersion, [:unsigned_long_pointer, :string, :unsigned_long_pointer], :int
 
     class << self
+      # Returns the version of libvirt client on this machine. The
+      # version is returned as an array of `[major, minor, patch]`.
+      #
+      # @return [Array]
+      def version
+        Util.parse_version_number(raw_version)
+      end
+
       protected
 
       # Returns the version of libvirt as the raw integer version, such as

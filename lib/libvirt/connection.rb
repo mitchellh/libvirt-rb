@@ -85,7 +85,7 @@ module Libvirt
     def hypervisor_version
       output_ptr = FFI::MemoryPointer.new(:ulong)
       FFI::Libvirt.virConnectGetVersion(pointer, output_ptr)
-      parse_version(output_ptr.get_ulong(0))
+      FFI::Libvirt::Util.parse_version_number(output_ptr.get_ulong(0))
     end
 
     # Returns the version of `libvirt` which the daemon on the other side is
@@ -97,23 +97,7 @@ module Libvirt
     def lib_version
       output_ptr = FFI::MemoryPointer.new(:ulong)
       FFI::Libvirt.virConnectGetLibVersion(pointer, output_ptr)
-      parse_version(output_ptr.get_ulong(0))
-    end
-
-    protected
-
-    # Parses the raw version integer returned by various libvirt methods
-    # into proper `[major, minor, patch]` format.
-    #
-    # @return [Array]
-    def parse_version(result)
-      # Format is MAJOR * 1,000,000 + MINOR * 1,000 + PATCH, so we
-      # need to decode it.
-      major = result / 1_000_000
-      result %= 1_000_000
-      minor = result / 1_000
-      result %= 1000
-      [major, minor, result]
+      FFI::Libvirt::Util.parse_version_number(output_ptr.get_ulong(0))
     end
   end
 end

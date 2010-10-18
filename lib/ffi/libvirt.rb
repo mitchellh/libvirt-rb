@@ -4,6 +4,8 @@ module FFI
   module Libvirt
     extend FFI::Library
     ffi_lib "libvirt"
+
+    autoload :Util, 'ffi/libvirt/util'
   end
 end
 

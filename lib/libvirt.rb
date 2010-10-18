@@ -15,4 +15,13 @@ module Libvirt
     raise Error::InitializeError if FFI::Libvirt.virInitialize < 0
     true
   end
+
+  # Returns the version of `libvirt` on the client machine. **This is
+  # not the version of the `libvirt` ruby library.** The result is
+  # return as an array of `[major, minor, patch]`.
+  #
+  # @return [Array]
+  def self.version
+    FFI::Libvirt.version
+  end
 end
