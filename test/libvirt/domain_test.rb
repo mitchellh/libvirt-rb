@@ -79,4 +79,9 @@ Protest.describe("domain") do
     # TODO: Test unable destroy
     assert @instance.destroy
   end
+
+  should "do nothing if the instance is already stopped" do
+    @instance.destroy
+    assert_nothing_raised { @instance.destroy }
+  end
 end
