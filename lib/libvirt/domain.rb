@@ -95,6 +95,25 @@ module Libvirt
       result == 1
     end
 
+    # Returns boolean of whether the domain is running or not.
+    #
+    # @return [Boolean]
+    def create
+      return true if active?
+      result = FFI::Libvirt.virDomainCreate(pointer)
+      # TODO: Process error, result == -1
+      result == 0
+    end
+
+    # Returns boolean of whether the domain is shutdown or not.
+    #
+    # @return [Boolean]
+    def destroy
+      result = FFI::Libvirt.virDomainDestroy(pointer)
+      # TODO: Process error, result == -1
+      result == 0
+    end
+
     protected
 
     # Queries the domain info from libvirt to get standard information

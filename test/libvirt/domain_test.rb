@@ -55,12 +55,28 @@ Protest.describe("domain") do
   end
 
   should "return result of active status" do
-    # TODO: Shut down and verify it returns false
     assert @instance.active?
+    @instance.destroy
+    assert !@instance.active?
   end
 
   should "return result of persistent status" do
     # TODO: Test non-persistent domain
     assert @instance.persistent?
+  end
+
+  should "return result of create function" do
+    # TODO: Test unable create
+    @instance.destroy
+    assert @instance.create
+  end
+
+  should "do nothing if the instance is already running" do
+    assert @instance.create
+  end
+
+  should "return result of destroy function" do
+    # TODO: Test unable destroy
+    assert @instance.destroy
   end
 end
