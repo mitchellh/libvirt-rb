@@ -3,6 +3,8 @@ module Libvirt
   # events set. This contains important information such as the message,
   # domain, etc.
   class Error
+    CALLBACK_IGNORE = Proc.new {}
+
     attr_reader :interface
 
     # Gets the last error (if there is one) and returns the {Error}
