@@ -33,7 +33,7 @@ module Libvirt
 
     # This proc needs to be assigned to a constant so that it is never GC'd
     # and can be assigned as a callback to the API.
-    ERROR_HANDLER_PROC = Error.method(:error_handler)
+    ERROR_HANDLER_PROC = method(:error_handler)
     FFI::Libvirt.virSetErrorFunc(nil, ERROR_HANDLER_PROC)
 
     # Initializes a new error object. This shouldn't be called publicly.
