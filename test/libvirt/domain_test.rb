@@ -65,22 +65,50 @@ Protest.describe("domain") do
     assert @instance.persistent?
   end
 
-  should "return true if create succeeds" do
-    @instance.destroy
-    assert @instance.create
+  context "when creating" do
+    should "return true if succeeds" do
+      @instance.destroy
+      assert @instance.create
+    end
+
+    should "not raise an error if the domain is already running" do
+      assert @instance.active? # pre-requisite
+      assert_nothing_raised { @instance.create }
+    end
   end
 
-  should "do nothing if the instance is already running" do
-    assert @instance.active? # pre-requisite
-    assert_nothing_raised { @instance.create }
+  context "when destroying" do
+    should "return true if succeeds" do
+      assert @instance.destroy
+    end
+
+    should "not raise an error if the domain is already stopped" do
+      @instance.destroy
+      assert_nothing_raised { @instance.destroy }
+    end
   end
 
-  should "return true if destruction of domain succeeds" do
-    assert @instance.destroy
-  end
+  context "when suspending" do
+    setup do
+      @instance.create
+    end
 
-  should "do nothing if the instance is already stopped" do
-    @instance.destroy
-    assert_nothing_raised { @instance.destroy }
+    should "return true if succeeds" do
+      assert @instance.suspend
+    end
+
+    should "raise an error if the domain is already suspended" do
+      @instance.suspend
+      assert_raise(Libvirt::Exception::LibvirtError) {
+        @instance.suspend 
+      }
+    end
+
+    should "raise an error if the domain is destroyed" do
+      @instance.destroy
+      assert_raise(Libvirt::Exception::LibvirtError) {
+        @instance.suspend
+      }
+    end
   end
 end

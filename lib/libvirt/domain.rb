@@ -104,12 +104,22 @@ module Libvirt
       FFI::Libvirt.virDomainCreate(pointer) == 0
     end
 
-    # Stops a running domain and returns a boolean of whether the call succeedd
+    # Stops a running domain and returns a boolean of whether the call succeeded
     # or not.
     #
     # @return [Boolean]
     def destroy
       FFI::Libvirt.virDomainDestroy(pointer) == 0
+    end
+
+    # Suspends an active domain, the process is frozen but the memory is still allocated.
+    # Returns a boolean of whether the call succeeded or not.
+    #
+    # @return [Boolean]
+    def suspend
+      # TODO: The flag in the 2nd parameter was removed in the latest
+      # versions.
+      FFI::Libvirt.virDomainSuspend(pointer, 0) == 0
     end
 
     protected
