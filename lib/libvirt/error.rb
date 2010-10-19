@@ -27,7 +27,11 @@ module Libvirt
       protected
 
       def error_handler(userdata, error_ptr)
-        @@error_block.call(new(error_ptr)) if @@error_block
+        error_object = new(error_ptr)
+        @@error_block.call(error_object) if @@error_block
+
+        # Raise the exception
+        raise Exception::LibvirtError, error_object
       end
     end
 

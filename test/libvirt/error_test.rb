@@ -18,8 +18,9 @@ Protest.describe("error") do
     end
 
     should "report the last error" do
-      result = FFI::Libvirt.virConnectOpen("NSEpicFailure")
-      assert result.null? # Sanity check on the failure
+      begin
+        FFI::Libvirt.virConnectOpen("NSEpicFailure")
+      rescue Libvirt::Exception::LibvirtError; end
 
       # And now we verify the error is accessible
       error = @klass.last_error
@@ -47,8 +48,12 @@ Protest.describe("error") do
   context "with an error instance" do
     setup do
       # Get an error instance...
-      FFI::Libvirt.virConnectOpen("FailHard")
-      @error = @klass.last_error
+      @error = nil
+      begin
+        FFI::Libvirt.virConnectOpen("FailHard")
+      rescue Libvirt::Exception::LibvirtError => e
+        @error = e.error
+      end
     end
 
     should "allow access to the raw struct" do

@@ -6,7 +6,7 @@ module Libvirt
 
     def self.connect(uri=nil)
       pointer = FFI::Libvirt.virConnectOpen(uri)
-      raise Exception::ConnectionFailed if pointer.null?
+      return nil if pointer.null?
       new(pointer)
     end
 
@@ -38,8 +38,7 @@ module Libvirt
       domains.collect do |id|
         method = id.is_a?(String) ? :virDomainLookupByName : :virDomainLookupByID
         domain_ptr = FFI::Libvirt.send(method, pointer, id)
-        raise Exception::DomainNotFound if domain_ptr.null?
-        Domain.new(domain_ptr)
+        domain_ptr.null? ? nil : Domain.new(domain_ptr)
       end
     end
 

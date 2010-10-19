@@ -12,8 +12,7 @@ module Libvirt
   # in a multithreaded environment. This will raise an {Exception::InitializeError}
   # upon failure.
   def self.initialize!
-    raise Error::InitializeError if FFI::Libvirt.virInitialize < 0
-    true
+    FFI::Libvirt.virInitialize == 0
   end
 
   # Returns the version of `libvirt` on the client machine. **This is

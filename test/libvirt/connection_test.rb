@@ -13,7 +13,7 @@ Protest.describe("connection") do
     end
 
     should "raise an exception if the connection fails" do
-      assert_raise(Libvirt::Exception::ConnectionFailed) {
+      assert_raise(Libvirt::Exception::LibvirtError) {
         @klass.connect("thisshouldneverpass:)")
       }
     end

@@ -81,7 +81,7 @@ module Libvirt
     # @return [Boolean]
     def active?
       result = FFI::Libvirt.virDomainIsActive(pointer)
-      # TODO: Process error, result == -1
+      return nil if result == -1
       result == 1
     end
 
@@ -91,7 +91,7 @@ module Libvirt
     # @return [Boolean]
     def persistent?
       result = FFI::Libvirt.virDomainIsPersistent(pointer)
-      # TODO: Process error, result == -1
+      return nil if result == -1
       result == 1
     end
 
@@ -101,9 +101,7 @@ module Libvirt
     # @return [Boolean]
     def create
       return true if active?
-      result = FFI::Libvirt.virDomainCreate(pointer)
-      raise Exception::DomainCreateError if result == -1
-      result == 0
+      FFI::Libvirt.virDomainCreate(pointer) == 0
     end
 
     # Stops a running domain and returns a boolean of whether the call succeedd
@@ -111,9 +109,7 @@ module Libvirt
     #
     # @return [Boolean]
     def destroy
-      result = FFI::Libvirt.virDomainDestroy(pointer)
-      raise Exception::DomainDestroyError if result == -1
-      result == 0
+      FFI::Libvirt.virDomainDestroy(pointer) == 0
     end
 
     protected
