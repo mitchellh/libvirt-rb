@@ -1,6 +1,10 @@
-require 'rubygems'
-require 'libvirt'
+require "rubygems"
+require "bundler/setup"
+require "libvirt"
 
+#----------------------------------------------------------------------
+# Helper methods for pretty printing
+#----------------------------------------------------------------------
 def two_columns(str1, str2)
   puts "#{str1}".ljust(40) + "#{str2}"
 end
@@ -13,13 +17,16 @@ def humanize_bytes(bytes)
   end
 end
 
+# Example connecting to a node and hypervisor:
 #
-# Connect to a KVM in 10.0.0.1, using TCP
-# other valid URIs:
-# qemu+tcp://10.0.0.1/system
-# qemu+ssh://10.0.0.1/system
-# qemu+unix:///system (local only)
-h = Libvirt::Connection.connect("qemu+tcp://10.0.0.1/system")
+# Example of valid URIs:
+# vbox:///system (local virtualbox)
+# qemu+tcp://10.0.0.1/system (remote qemu over TCP)
+# qemu+ssh://10.0.0.1/system (remote qemu over SSH)
+# qemu+unix:///system (local qemu over unix socket)
+#
+# If no URI is given, libvirt does its best to guess.
+h = Libvirt::Connection.connect
 
 puts "Hypervisor INFO"
 puts "---------------"
