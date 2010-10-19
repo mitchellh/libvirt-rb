@@ -27,6 +27,18 @@ Protest.describe("error") do
     end
   end
 
+  context "setting an error handling callback" do
+    should "call the callback when an error occurs" do
+      called = false
+      @klass.on_error do |error|
+        called = true
+      end
+
+      FFI::Libvirt.virConnectOpen("foo") rescue nil
+      assert called
+    end
+  end
+
   context "with an error instance" do
     setup do
       # Get an error instance...

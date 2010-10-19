@@ -15,6 +15,14 @@ module Libvirt
       new(pointer)
     end
 
+    # Sets an error handling function. This will call the given block
+    # whenever an error occurs within libvirt.
+    def self.on_error(&block)
+      FFI::Libvirt.virSetErrorFunc(nil) do |userdata, error_ptr|
+        block.call(new(error_ptr)) if block
+      end
+    end
+
     # Initializes a new error object. This shouldn't be called publicly.
     # Instead use {last_error} or obtain the error from any of the exceptions
     # which the library raises.

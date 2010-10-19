@@ -1,5 +1,8 @@
 require 'ffi/libvirt'
 
+# Disable the stderr output which libvirt defaults to.
+FFI::Libvirt.virSetErrorFunc(nil) {}
+
 module Libvirt
   autoload :Connection, 'libvirt/connection'
   autoload :Domain, 'libvirt/domain'
