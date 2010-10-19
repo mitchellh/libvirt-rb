@@ -111,4 +111,23 @@ Protest.describe("domain") do
       }
     end
   end
+
+  context "when resuming" do
+    should "return true if succeeds" do
+      assert @instance.suspend
+      assert @instance.resume
+    end
+
+    should "not raise an error if the domain is running" do
+      assert @instance.active?
+      assert @instance.resume
+    end
+
+    should "raise an error if the domain is destroyed" do
+      @instance.destroy
+      assert_raise(Libvirt::Exception::LibvirtError) {
+        @instance.resume
+      }
+    end
+  end
 end

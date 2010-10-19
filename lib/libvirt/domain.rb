@@ -122,6 +122,17 @@ module Libvirt
       FFI::Libvirt.virDomainSuspend(pointer, 0) == 0
     end
 
+    # Resumes a suspended domain, returns a boolean of whether the call
+    # succeeded or not.
+    #
+    # @return [Boolean]
+    def resume
+      return true if active?
+      # TODO: The flag in the 2nd parameter was removed in the latest
+      # versions.
+      FFI::Libvirt.virDomainResume(pointer, 0) == 0
+    end
+
     protected
 
     # Queries the domain info from libvirt to get standard information
