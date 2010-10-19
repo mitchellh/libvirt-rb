@@ -47,8 +47,8 @@ module FFI
       attach_function :virDomainFree, [:virDomainPtr], :int
 
       # Domain suspend/resume
-      attach_function :virDomainSuspend, [:virDomainPtr, :uint], :int
-      attach_function :virDomainResume, [:virDomainPtr, :uint], :int
+      attach_function :virDomainSuspend, [:virDomainPtr], :int
+      attach_function :virDomainResume, [:virDomainPtr], :int
 
       # Domain save/restore
       attach_function :virDomainSave, [:virDomainPtr, :string], :int
