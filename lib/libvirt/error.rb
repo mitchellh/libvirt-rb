@@ -4,6 +4,7 @@ module Libvirt
   # domain, etc.
   class Error
     @@error_block = nil
+    @@raise_errors = true
 
     attr_reader :interface
 
@@ -24,6 +25,21 @@ module Libvirt
         @@error_block = block
       end
 
+      # Returns whether or not Libvirt is currently configured to raise
+      # errors automatically when it is reported.
+      #
+      # @return [Boolean]
+      def raise_errors; @@raise_errors; end
+
+      # Set this to a boolean true/false to control whether the library
+      # automatically raises {Exception::LibvirtError} whenever an error
+      # occurs.
+      #
+      # @param [Boolean] value
+      def raise_errors=(value)
+        @@raise_errors = !!value
+      end
+
       protected
 
       def error_handler(userdata, error_ptr)
@@ -31,7 +47,7 @@ module Libvirt
         @@error_block.call(error_object) if @@error_block
 
         # Raise the exception
-        raise Exception::LibvirtError, error_object
+        raise Exception::LibvirtError, error_object if @@raise_errors
       end
     end
 

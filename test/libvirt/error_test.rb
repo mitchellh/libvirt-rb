@@ -45,6 +45,24 @@ Protest.describe("error") do
     end
   end
 
+  context "disable error raising" do
+    teardown do
+      # Make sure this gets reset
+      @klass.raise_errors = true
+    end
+
+    should "raise errors by default" do
+      assert @klass.raise_errors
+      assert_raise(Libvirt::Exception::LibvirtError) { FFI::Libvirt.virConnectOpen("fail") }
+    end
+
+    should "not raise errors if it is disabled" do
+      @klass.raise_errors = false
+      assert !@klass.raise_errors
+      assert_nothing_raised { FFI::Libvirt.virConnectOpen("fail") }
+    end
+  end
+
   context "with an error instance" do
     setup do
       # Get an error instance...
