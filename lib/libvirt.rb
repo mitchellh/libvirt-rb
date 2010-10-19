@@ -27,4 +27,4 @@ module Libvirt
 end
 
 # Disable the stderr output which libvirt defaults to.
-Libvirt::Error.on_error(&Libvirt::Error::CALLBACK_IGNORE)
+Libvirt::Error.on_error

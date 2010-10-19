@@ -28,6 +28,11 @@ Protest.describe("error") do
   end
 
   context "setting an error handling callback" do
+    teardown do
+      # Reset the error handler to nil
+      @klass.on_error
+    end
+
     should "call the callback when an error occurs" do
       called = false
       @klass.on_error do |error|
