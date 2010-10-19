@@ -17,4 +17,4 @@ class Protest::TestCase
   end
 end
 
-Protest.report_with(:turn)
+Protest.report_with(:progress)
