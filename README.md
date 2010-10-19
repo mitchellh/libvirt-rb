@@ -55,3 +55,6 @@ very useful!
     puts "Libvirt version: #{cxn.lib_version}"
 
 Expect more exciting things soon! :)
+
+There are also some examples in the `examples/` directory which are
+worth checking out.
