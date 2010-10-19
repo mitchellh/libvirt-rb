@@ -65,19 +65,29 @@ Protest.describe("domain") do
     assert @instance.persistent?
   end
 
-  should "return result of create function" do
-    # TODO: Test unable create
+  should "return true if create succeeds" do
     @instance.destroy
     assert @instance.create
   end
 
-  should "do nothing if the instance is already running" do
-    assert @instance.create
+  should "raise error if create fails" do
+    @instance.destroy
+    FFI::Libvirt.expects(:virDomainCreate).returns(-1)
+    assert_raise(Libvirt::Exception::DomainCreateError) { @instance.create }
   end
 
-  should "return result of destroy function" do
-    # TODO: Test unable destroy
+  should "do nothing if the instance is already running" do
+    assert @instance.active? # pre-requisite
+    assert_nothing_raised { @instance.create }
+  end
+
+  should "return true if destruction of domain succeeds" do
     assert @instance.destroy
+  end
+
+  should "raise error if destruction of domain fails" do
+    FFI::Libvirt.expects(:virDomainDestroy).returns(-1)
+    assert_raise(Libvirt::Exception::DomainDestroyError) { @instance.destroy }
   end
 
   should "do nothing if the instance is already stopped" do

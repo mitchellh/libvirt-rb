@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
   s.add_dependency "nokogiri", "~> 1.4.3"
 
   s.add_development_dependency "protest", "~> 0.4.0"
+  s.add_development_dependency "mocha", "~> 0.9.8"
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")

@@ -102,7 +102,7 @@ module Libvirt
     def create
       return true if active?
       result = FFI::Libvirt.virDomainCreate(pointer)
-      # TODO: Process error, result == -1
+      raise Exception::DomainCreateError if result == -1
       result == 0
     end
 
@@ -112,7 +112,7 @@ module Libvirt
     # @return [Boolean]
     def destroy
       result = FFI::Libvirt.virDomainDestroy(pointer)
-      # TODO: Process error, result == -1
+      raise Exception::DomainDestroyError if result == -1
       result == 0
     end
 
