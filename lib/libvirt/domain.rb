@@ -95,7 +95,8 @@ module Libvirt
       result == 1
     end
 
-    # Returns boolean of whether the domain is running or not.
+    # Starts the domain (moves it from the inactive to running state), and
+    # returns a boolean of whether the call succeeded or not.
     #
     # @return [Boolean]
     def create
@@ -105,7 +106,8 @@ module Libvirt
       result == 0
     end
 
-    # Returns boolean of whether the domain is shutdown or not.
+    # Stops a running domain and returns a boolean of whether the call succeedd
+    # or not.
     #
     # @return [Boolean]
     def destroy
