@@ -1,8 +1,10 @@
+require 'nokogiri'
 require 'ffi/libvirt'
 
 module Libvirt
   autoload :Connection, 'libvirt/connection'
   autoload :Domain, 'libvirt/domain'
+  autoload :DomainSpecification, 'libvirt/domain_specification'
   autoload :Error, 'libvirt/error'
   autoload :Exception, 'libvirt/exception'
 
