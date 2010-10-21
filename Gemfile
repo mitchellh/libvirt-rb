@@ -5,7 +5,7 @@ gemspec
 
 group :development do
   # Not JRuby, which doesn't like bluecloth
-  platform :ruby, :mri do
+  platforms :ruby, :mri do
     gem "yard", "~> 0.6.1"
     gem "bluecloth", "~> 2.0.9"
   end
