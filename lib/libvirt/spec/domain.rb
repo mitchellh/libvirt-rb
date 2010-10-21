@@ -16,6 +16,11 @@ module Libvirt
       attr_accessor :os
       attr_accessor :memory
       attr_accessor :current_memory
+      attr_accessor :vcpu
+
+      attr_accessor :on_poweroff
+      attr_accessor :on_reboot
+      attr_accessor :on_crash
 
       def initialize
         @os = OSBooting.new
@@ -42,6 +47,12 @@ module Libvirt
             # Basic resources
             xml.memory memory if memory
             xml.currentMemory current_memory if current_memory
+            xml.vcpu vcpu if vcpu
+
+            # Lifecycle control
+            xml.on_poweroff on_poweroff if on_poweroff
+            xml.on_reboot on_reboot if on_reboot
+            xml.on_crash on_crash if on_crash
           end
         end.to_xml
       end
