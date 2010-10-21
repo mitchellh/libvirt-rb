@@ -47,7 +47,8 @@ module Libvirt
           os.loader loader if loader
           os.bootmenu(:enable => bootmenu_enabled ? 'yes' : 'no') if !bootmenu_enabled.nil?
 
-          #
+          # Boot order for BIOS booting
+          boot.each { |dev| os.boot :dev => dev } if boot.is_a?(Array)
 
           # Host bootloader configuration options
           os.bootloader bootloader if bootloader
