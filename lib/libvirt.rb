@@ -4,9 +4,9 @@ require 'ffi/libvirt'
 module Libvirt
   autoload :Connection, 'libvirt/connection'
   autoload :Domain, 'libvirt/domain'
-  autoload :DomainSpecification, 'libvirt/domain_specification'
   autoload :Error, 'libvirt/error'
   autoload :Exception, 'libvirt/exception'
+  autoload :Spec, 'libvirt/spec'
 
   # Initializes the library by calling `virInitialize`. Most methods
   # in libvirt actually call this themselves, so its not strictly
