@@ -16,8 +16,9 @@ spec.memory = 123456 # KB
 # domain somewhere.
 conn = Libvirt::Connection.connect("test:///default")
 
-# One day there will be a nicer way to do this, for now while its
-# being worked out, this has to be done manually
+# This creates the domain on the hypervisor without starting it.
+# The return value is the {Libvirt::Domain} object associated
+# with it.
 conn.define_domain(spec)
 
 puts "Success! A test domain was created with the following XML:"
