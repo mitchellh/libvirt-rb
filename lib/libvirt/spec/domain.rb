@@ -15,6 +15,7 @@ module Libvirt
       attr_accessor :description
       attr_accessor :os
       attr_accessor :memory
+      attr_accessor :current_memory
 
       def initialize
         @os = OSBooting.new
@@ -40,6 +41,7 @@ module Libvirt
 
             # Basic resources
             xml.memory memory if memory
+            xml.currentMemory current_memory if current_memory
           end
         end.to_xml
       end

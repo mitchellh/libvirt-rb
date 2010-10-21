@@ -78,6 +78,7 @@ Protest.describe("connection") do
         assert_nothing_raised { result = @cxn.define_domain(@spec) }
         assert result.is_a?(Libvirt::Domain)
         assert !result.active?
+        assert_equal @spec.name, result.name
       end
 
       should "raise an error when the specification is not valid" do
