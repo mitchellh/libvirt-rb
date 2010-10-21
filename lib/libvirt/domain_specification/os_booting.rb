@@ -13,7 +13,21 @@ module Libvirt
       attr_accessor :type
       attr_accessor :arch
       attr_accessor :loader # Part of the BIOS bootloader
+      attr_accessor :boot
       attr_accessor :bootmenu_enabled
+
+      # Host bootloader configuration options
+      attr_accessor :bootloader
+      attr_accessor :bootloader_args
+
+      # Direct kernel boot
+      attr_accessor :kernel
+      attr_accessor :initrd
+      attr_accessor :cmdline
+
+      def initialize
+        @boot = []
+      end
 
       # Enables or disables the interactive boot menu prompt on guest startup.
       def bootmenu_enabled=(value)
@@ -29,9 +43,20 @@ module Libvirt
           type_args << { :arch => arch } if arch
 
           # Setup the specification
-          os.type *type_args
+          os.type_ *type_args
           os.loader loader if loader
           os.bootmenu(:enable => bootmenu_enabled ? 'yes' : 'no') if !bootmenu_enabled.nil?
+
+          #
+
+          # Host bootloader configuration options
+          os.bootloader bootloader if bootloader
+          os.bootloader_args bootloader_args if bootloader_args
+
+          # Direct kernel boot options
+          os.kernel kernel if kernel
+          os.initrd initrd if initrd
+          os.cmdline cmdline if cmdline
         end
 
         parent.to_xml

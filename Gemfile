@@ -4,6 +4,9 @@ source "http://rubygems.org"
 gemspec
 
 group :development do
-  gem "yard", "~> 0.6.1"
-  gem "bluecloth", "~> 2.0.9"
+  # Not JRuby, which doesn't like bluecloth
+  platform :ruby, :mri do
+    gem "yard", "~> 0.6.1"
+    gem "bluecloth", "~> 2.0.9"
+  end
 end
