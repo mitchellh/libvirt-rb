@@ -18,7 +18,7 @@ conn = Libvirt::Connection.connect("test:///default")
 
 # One day there will be a nicer way to do this, for now while its
 # being worked out, this has to be done manually
-FFI::Libvirt.virDomainDefineXML(conn.pointer, spec.to_xml)
+conn.define_domain(spec)
 
 puts "Success! A test domain was created with the following XML:"
 puts

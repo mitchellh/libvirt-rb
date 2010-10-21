@@ -42,6 +42,16 @@ module Libvirt
       end
     end
 
+    # Defines a new domain given a valid specification. This method doesn't
+    # start the domain.
+    #
+    # @param [Spec::Domain]
+    # @return [Domain]
+    def define_domain(spec)
+      domain_ptr = FFI::Libvirt.virDomainDefineXML(pointer, spec.to_xml)
+      domain_ptr.null? ? nil : Domain.new(domain_ptr)
+    end
+
     # Returns the capabilities of the connected hypervisor/driver. Returns them
     # as an XML string. This method calls `virConnectGetCapabilities`. This will
     # probably be parsed into a more useful format in the future.
