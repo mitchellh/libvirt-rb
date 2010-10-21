@@ -1,4 +1,39 @@
 module Libvirt
+  # Describes a connection to an instance of libvirt. This instance may be local
+  # or remote.
+  #
+  # # Initiating a Connection
+  #
+  # ## Basic
+  #
+  # A basic example of initiating a connection is to just allow the libvirt client
+  # library to choose the best (first available) hypervisor for you. If you're only
+  # running one hypervisor or you're not sure what is available on your machine,
+  # then this is the easiest option to get started:
+  #
+  #     conn = Libvirt::Connection.connect
+  #
+  # ## Specifying a URI
+  #
+  # Libvirt connections are made by giving a URI to libvirt, which can describe
+  # a local or remote libvirt instance (remote being that `libvirtd` is running).
+  # The following is an example of a local VirtualBox connection:
+  #
+  #     conn = Libvirt::Connection.connect("vbox:///session")
+  #
+  # And perhaps a remote qemu connection:
+  #
+  #     conn = Libvirt::Connection.connect("qemu+tcp://10.0.0.1/system")
+  #
+  # # Basic Information of a Connection
+  #
+  # Once you have a connection object, you can gather basic information about it
+  # by using methods such as {#name}, {#capabilities}, etc.:
+  #
+  #     puts "Hypervisor type: #{conn.hypervisor}"
+  #     puts "Hypervisor version: #{conn.hypervisor_verison}"
+  #     puts "Library version: #{conn.lib_version}"
+  #
   class Connection
     # Access to the raw virConnectPtr returned by initializing the connection.
     # Use this if you need direct access to the FFI layer.

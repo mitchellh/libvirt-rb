@@ -41,6 +41,13 @@ After installing libvirt, install the gem:
 
     gem install libvirt
 
+If you'd like to try the bleeding edge version of libvirt-rb, we try
+to keep master pretty stable and you're welcome to give it a shot. To
+do this just clone out the repository and run this from the working
+directory:
+
+    rake install
+
 ## Usage
 
 The usage is still up in the air since the gem is under development.
@@ -58,3 +65,9 @@ Expect more exciting things soon! :)
 
 There are also some examples in the `examples/` directory which are
 worth checking out.
+
+## Contributing
+
+To contribute to the project, fork it and send me pull requests of any
+changes made. For more information, see the [Hacker's Guide](http://github.com/mitchellh/libvirt-rb/wiki/Hacker's-Guide)
+and the [Contributor's Guide](http://github.com/mitchellh/libvirt-rb/wiki/Contributor's-Guide).

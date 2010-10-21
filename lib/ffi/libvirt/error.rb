@@ -1,5 +1,7 @@
 module FFI
   module Libvirt
+    # virError structure, which is used to represent any errors raised by
+    # libvirt.
     class Error < ::FFI::Struct
       # Note: The "DEPRECATED" notes below are important and if you use
       # these you should take extreme caution since the error struct doesn't

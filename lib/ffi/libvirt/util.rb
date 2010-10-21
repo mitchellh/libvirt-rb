@@ -1,5 +1,6 @@
 module FFI
   module Libvirt
+    # Utility methods which may be helpful when dealing with the FFI layer.
     module Util
       # Parses the raw version integer returned by various libvirt methods
       # into proper `[major, minor, patch]` format.

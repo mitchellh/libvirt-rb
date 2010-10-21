@@ -1,6 +1,15 @@
 require 'nokogiri'
 require 'ffi/libvirt'
 
+# This module is the namespace for the higher level library on top of
+# libvirt, in typicaly Ruby library style. In contrast with {FFI::Libvirt}
+# which is a direct layer on top of FFI, this namespace abstracts much of
+# the manual work away (especially pointer handling) and exposes aspects
+# of the API through nice Ruby objects.
+#
+# Due to the nature of this side of the project, there may be certain features
+# not readily available which are supported by the API. If this is the case,
+# you can use the {FFI::Libvirt} library alongside this side.
 module Libvirt
   autoload :Connection, 'libvirt/connection'
   autoload :Domain, 'libvirt/domain'
