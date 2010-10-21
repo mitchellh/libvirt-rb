@@ -6,7 +6,7 @@ require "libvirt"
 # construction and will likely change. This example file showcases
 # how it works currently.
 
-spec = Libvirt::DomainSpecification.new
+spec = Libvirt::Spec::Domain.new
 spec.hypervisor = :test
 spec.name = "My Test VM"
 spec.os.type = :hvm
