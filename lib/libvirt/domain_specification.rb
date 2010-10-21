@@ -1,3 +1,5 @@
+require 'libvirt/domain_specification/os_booting'
+
 module Libvirt
   # A specification of a domain. This translates directly down to XML
   # which can be used to define and launch domains on a node by libvirt.
@@ -6,8 +8,6 @@ module Libvirt
   # may be merged back into {Domain}. Also, the interface will likely
   # change.
   class DomainSpecification
-    autoload :OSBooting, 'libvirt/domain_specification/os_booting'
-
     attr_accessor :hypervisor
     attr_accessor :name
     attr_accessor :uuid
