@@ -20,6 +20,8 @@ module Libvirt
       attr_accessor :disk
       attr_accessor :serial
       attr_accessor :console
+      attr_accessor :parallel
+      attr_accessor :channel
       attr_accessor :watchdog
       attr_accessor :memballoon
 
