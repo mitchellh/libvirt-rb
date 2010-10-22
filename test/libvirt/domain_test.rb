@@ -100,7 +100,7 @@ Protest.describe("domain") do
     should "raise an error if the domain is already suspended" do
       @instance.suspend
       assert_raise(Libvirt::Exception::LibvirtError) {
-        @instance.suspend 
+        @instance.suspend
       }
     end
 
