@@ -1,4 +1,5 @@
 require 'libvirt/spec/domain/os_booting'
+require 'libvirt/spec/domain/devices'
 
 module Libvirt
   module Spec
@@ -21,6 +22,8 @@ module Libvirt
       attr_accessor :on_poweroff
       attr_accessor :on_reboot
       attr_accessor :on_crash
+
+      attr_accessor :devices
 
       def initialize
         @os = OSBooting.new
@@ -53,6 +56,9 @@ module Libvirt
             xml.on_poweroff on_poweroff if on_poweroff
             xml.on_reboot on_reboot if on_reboot
             xml.on_crash on_crash if on_crash
+
+            # Devices
+            devices.to_xml(xml) if devices
           end
         end.to_xml
       end
