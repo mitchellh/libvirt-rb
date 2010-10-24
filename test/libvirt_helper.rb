@@ -19,6 +19,11 @@ module Libvirt
       end
     end
 
+    # Assert an element doesn't exist
+    def assert_not_element(xml, xpath)
+      assert_nil Nokogiri::XML.parse(xml).at_xpath(xpath)
+    end
+
     # Assert a valid number of elements
     def assert_elements(expected_size, xml, xpath, msg = nil)
       assert_equal expected_size, Nokogiri::XML.parse(xml).xpath(xpath).size
