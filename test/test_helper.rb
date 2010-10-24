@@ -2,8 +2,10 @@ require "test/unit/assertions"
 require "protest"
 require "mocha"
 require "libvirt"
+require 'libvirt_helper'
 
 class Protest::TestCase
+  include Libvirt::Assertions
   include Test::Unit::Assertions
   include Mocha::API
 
