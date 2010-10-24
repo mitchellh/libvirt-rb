@@ -16,7 +16,7 @@ module Libvirt
       # @return [String]
       def to_xml(parent = Nokogiri::XML::Builder.new)
         parent.encryptation(:format => format) do |encryptation|
-          encryptation.secret(secret)
+          encryptation.secret(secret) unless secret.empty?
         end
 
         parent.to_xml
