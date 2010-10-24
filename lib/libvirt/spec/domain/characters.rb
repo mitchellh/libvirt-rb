@@ -10,10 +10,8 @@ module Libvirt
       attr_accessor :source
       attr_accessor :target
 
-      def initialize(type, source = {}, target = {})
+      def initialize(type)
         @type = type
-        @source = source
-        @target = target
       end
 
       protected
@@ -22,11 +20,18 @@ module Libvirt
       # @return [String]
       def to_xml(element_name, parent = Nokogiri::XML::Builder.new)
         parent.send(element_name, :type => type) do |character|
-          character.source(@source)
-          character.target(@target)
+          elements(character)
         end
 
         parent.to_xml
+      end
+
+      def elements(character)
+        Array(source).each do |source_section|
+          character.source(source_section)
+        end if source
+
+        character.target(target) if target
       end
     end
 
@@ -40,11 +45,18 @@ module Libvirt
     end
 
     class Serial < Character
+      attr_accessor :protocol
+
       # Convert the Serial section to its XML representation
       #
       # @return [String]
       def to_xml(parent = Nokogiri::XML::Builder.new)
         super('serial', parent)
+      end
+
+      def elements(character)
+        super(character)
+        character.protocol(protocol) if protocol
       end
     end
 
