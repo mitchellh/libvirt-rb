@@ -2,10 +2,11 @@ require "test/unit/assertions"
 require "protest"
 require "mocha"
 require "libvirt"
-require 'libvirt_helper'
+
+# Test helpers which monkey-patch Protest::TestCase directly
+require File.expand_path("../support/xml_assertions", __FILE__)
 
 class Protest::TestCase
-  include Libvirt::Assertions
   include Test::Unit::Assertions
   include Mocha::API
 
