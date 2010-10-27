@@ -1,6 +1,6 @@
 module Libvirt
   module Spec
-    module Devices
+    module Device
       class Emulator
         attr_accessor :path
 
@@ -15,6 +15,7 @@ module Libvirt
         # @return [String]
         def to_xml(xml=Nokogiri::XML::Builder.new)
           xml.emulator path
+          xml.to_xml
         end
       end
     end

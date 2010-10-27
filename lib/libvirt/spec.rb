@@ -6,7 +6,7 @@ module Libvirt
   # libvirt. Please view the example files for examples on how to use
   # the specs.
   module Spec
-    autoload :Devices, 'libvirt/spec/devices'
+    autoload :Device, 'libvirt/spec/device'
     autoload :Domain, 'libvirt/spec/domain'
   end
 end

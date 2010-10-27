@@ -2,7 +2,7 @@ require "test_helper"
 
 Protest.describe("Emulator device spec") do
   setup do
-    @klass = Libvirt::Spec::Devices::Emulator
+    @klass = Libvirt::Spec::Device::Emulator
   end
 
   should "have the given path when initialized" do
@@ -15,6 +15,6 @@ Protest.describe("Emulator device spec") do
     path = "foo"
     instance = @klass.new(path)
 
-    assert_xpath path, instance.to_xml, "/element"
+    assert_xpath path, instance.to_xml, "//emulator"
   end
 end

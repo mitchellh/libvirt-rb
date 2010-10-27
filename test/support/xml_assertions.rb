@@ -4,8 +4,7 @@ class Protest::TestCase
     full_message = build_message(msg, '? at ? should be ?', xpath, xml, expected)
     assert_block full_message do
       value = Nokogiri::XML.parse(xml).at_xpath(xpath)
-      return value == expected if expected.nil?
-      return value.to_s == expected
+      value && value.text == expected
     end
   end
 
@@ -13,8 +12,8 @@ class Protest::TestCase
   def assert_element(xml, xpath, msg = nil)
     full_message = build_message(msg, 'element ? at ? not found', xpath, xml)
     assert_block full_message do
-      !Nokogiri::XML.parse(xml).at_xpath(xpath).nil? &&
-        Nokogiri::XML.parse(xml).at_xpath(xpath).element?
+      element = Nokogiri::XML.parse(xml).at_xpath(xpath)
+      !element.nil? && element.element?
     end
   end
 
