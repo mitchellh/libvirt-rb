@@ -1,5 +1,4 @@
 require 'libvirt/spec/domain/os_booting'
-require 'libvirt/spec/domain/devices'
 
 module Libvirt
   module Spec
@@ -27,6 +26,7 @@ module Libvirt
 
       def initialize
         @os = OSBooting.new
+        @devices = []
       end
 
       # Returns the XML for this specification. This XML may be passed
@@ -58,7 +58,11 @@ module Libvirt
             xml.on_crash on_crash if on_crash
 
             # Devices
-            devices.to_xml(xml) if devices
+            if !devices.empty?
+              xml.devices do
+                devices.map { |d| d.to_xml(xml) }
+              end
+            end
           end
         end.to_xml
       end
