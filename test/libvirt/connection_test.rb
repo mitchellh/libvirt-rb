@@ -25,9 +25,10 @@ Protest.describe("connection") do
     end
 
     should "provide the library version" do
-      # Yes, this will fail when the library version changes, but
-      # this will help catch when packages are updated and so on.
-      assert_equal [0,8,4], @cxn.lib_version
+      # We rely on virsh to get the version of libvirt
+      version = @cxn.lib_version
+      actual = `virsh --version`.chomp.split(".").map { |s| s.to_i }
+      assert_equal actual, version
     end
 
     should "provide the capabilities of the connection" do
