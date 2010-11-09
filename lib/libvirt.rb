@@ -11,6 +11,7 @@ require 'ffi/libvirt'
 # not readily available which are supported by the API. If this is the case,
 # you can use the {FFI::Libvirt} library alongside this side.
 module Libvirt
+  autoload :Collection, 'libvirt/collection'
   autoload :Connection, 'libvirt/connection'
   autoload :Domain, 'libvirt/domain'
   autoload :Error, 'libvirt/error'

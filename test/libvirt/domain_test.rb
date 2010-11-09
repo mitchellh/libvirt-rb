@@ -6,7 +6,7 @@ Protest.describe("domain") do
 
     # TODO: Define our own domain so we have more control over what we're
     # testing.
-    @instance = Libvirt::Connection.connect("test:///default").domains.first
+    @instance = Libvirt::Connection.connect("test:///default").domains.all.first
   end
 
   should "provide the name of the domain" do

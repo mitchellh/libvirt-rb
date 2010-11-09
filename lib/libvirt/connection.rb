@@ -49,28 +49,9 @@ module Libvirt
     # connection. The various states of the domains returned can be
     # queried using {Domain#state}.
     #
-    # @return [Array<Domain>]
+    # @return [DomainCollection]
     def domains
-      # First get the names of all the inactive domains
-      max_names = FFI::Libvirt.virConnectNumOfDefinedDomains(self)
-      output_ptr = FFI::MemoryPointer.new(:pointer, max_names)
-      num_names = FFI::Libvirt.virConnectListDefinedDomains(self, output_ptr, max_names)
-      inactive_names = output_ptr.get_array_of_string(0, num_names)
-
-      # Then get the IDs of all the active domains
-      max_names = FFI::Libvirt.virConnectNumOfDomains(self)
-      output_ptr = FFI::MemoryPointer.new(:pointer, max_names)
-      num_names = FFI::Libvirt.virConnectListDomains(self, output_ptr, max_names)
-      active_ids = output_ptr.get_array_of_int(0, num_names)
-
-      # Take the names and IDs (why does libvirt do this to me) and return
-      # useful {Domain} objects.
-      domains = inactive_names + active_ids
-      domains.collect do |id|
-        method = id.is_a?(String) ? :virDomainLookupByName : :virDomainLookupByID
-        domain_ptr = FFI::Libvirt.send(method, self, id)
-        domain_ptr.null? ? nil : Domain.new(domain_ptr)
-      end
+      Collection::DomainCollection.new(self)
     end
 
     # Defines a new domain given a valid specification. This method doesn't

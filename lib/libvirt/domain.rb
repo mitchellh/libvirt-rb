@@ -135,6 +135,14 @@ module Libvirt
       @pointer
     end
 
+    # Provide a meaningful equality check so that two domains can easily
+    # be checked for equality. This works by comparing UUIDs.
+    #
+    # @return [Boolean]
+    def ==(other)
+      other.is_a?(Domain) && other.uuid == uuid
+    end
+
     protected
 
     # Queries the domain info from libvirt to get standard information

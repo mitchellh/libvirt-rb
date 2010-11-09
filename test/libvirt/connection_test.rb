@@ -60,9 +60,8 @@ Protest.describe("connection") do
     should "provide a list of domains" do
       result = nil
       assert_nothing_raised { result = @cxn.domains }
-      assert result.is_a?(Array)
-      assert_equal 1, result.length
-      assert result.first.is_a?(Libvirt::Domain)
+      assert result.is_a?(Libvirt::Collection::DomainCollection)
+      assert @cxn.equal?(result.connection)
     end
 
     context "defining a new domain" do
