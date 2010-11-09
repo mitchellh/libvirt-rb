@@ -6,6 +6,10 @@ module Libvirt
     # object, but it is not directly an `Array`. This collection is a special enumerable
     # which allows you to do things such as get only the active domains, create a new
     # domain from a specification, etc.
+    #
+    # If you enumerate the entire collection, then this is equivalent to enumerating
+    # over {#all} domains. e.g. `collection.length` is equivalent to calling
+    # `collection.all.length` (where `collection` is a `DomainCollection` object).
     class DomainCollection
       include Enumerable
       extend Forwardable
