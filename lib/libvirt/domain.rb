@@ -101,6 +101,7 @@ module Libvirt
       return true if active?
       FFI::Libvirt.virDomainCreate(self) == 0
     end
+    alias :start :create
 
     # Stops a running domain and returns a boolean of whether the call succeeded
     # or not.
@@ -109,9 +110,10 @@ module Libvirt
     def destroy
       FFI::Libvirt.virDomainDestroy(self) == 0
     end
+    alias :stop :destroy
 
-    # Suspends an active domain, the process is frozen but the memory is still allocated.
-    # Returns a boolean of whether the call succeeded or not.
+    # Suspends an active domain, the process is frozen but the memory is still
+    # allocated. Returns a boolean of whether the call succeeded or not.
     #
     # @return [Boolean]
     def suspend

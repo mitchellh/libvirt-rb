@@ -68,23 +68,38 @@ Protest.describe("domain") do
   context "when creating" do
     should "return true if succeeds" do
       @instance.destroy
+      assert !@instance.active?
       assert @instance.create
+      assert @instance.active?
     end
 
     should "not raise an error if the domain is already running" do
       assert @instance.active? # pre-requisite
       assert_nothing_raised { @instance.create }
     end
+
+    should "also respond to `start`" do
+      @instance.destroy
+      assert !@instance.active?
+      assert @instance.start
+      assert @instance.active?
+    end
   end
 
   context "when destroying" do
     should "return true if succeeds" do
       assert @instance.destroy
+      assert !@instance.active?
     end
 
     should "not raise an error if the domain is already stopped" do
       @instance.destroy
       assert_nothing_raised { @instance.destroy }
+    end
+
+    should "also respond to `stop`" do
+      assert @instance.stop
+      assert !@instance.active?
     end
   end
 
