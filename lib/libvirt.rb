@@ -21,7 +21,7 @@ module Libvirt
   # Initializes the library by calling `virInitialize`. Most methods
   # in libvirt actually call this themselves, so its not strictly
   # necessary. However, it is good practice and is **highly** recommended
-  # in a multithreaded environment.
+  # that this is called at a same place in a multi-threaded environment.
   def self.initialize!
     FFI::Libvirt.virInitialize == 0
   end
@@ -33,6 +33,13 @@ module Libvirt
   # @return [Array]
   def self.version
     FFI::Libvirt.version
+  end
+
+  # Connect to a hypervisor using libvirt. This is a shortcut to
+  # calling {Connection.new}, therefore please see that method for
+  # the documentation.
+  def self.connect(*args)
+    Connection.new(*args)
   end
 end
 
