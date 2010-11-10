@@ -35,14 +35,14 @@ module Libvirt
   #     puts "Library version: #{conn.lib_version}"
   #
   class Connection
-    def self.connect(uri=nil)
-      pointer = FFI::Libvirt.virConnectOpen(uri)
-      return nil if pointer.null?
-      new(pointer)
-    end
-
-    def initialize(pointer)
-      @pointer = pointer
+    # Opens a new connection to libvirt. This connection may be local or remote.
+    # If a `uri` is given, an attempt to connect to the given URI is made. The URI
+    # can be used to specify the location of libvirt along with the hypervisor
+    # to connect to.
+    #
+    # @param [String] uri
+    def initialize(uri=nil)
+      @pointer = FFI::Libvirt.virConnectOpen(uri)
     end
 
     # Returns the domains (both active and inactive) related to this

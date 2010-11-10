@@ -8,20 +8,20 @@ Protest.describe("connection") do
   context "connecting" do
     should "connect and return a connection" do
       result = nil
-      assert_nothing_raised { result = @klass.connect("test:///default") }
+      assert_nothing_raised { result = @klass.new("test:///default") }
       assert result.is_a?(@klass)
     end
 
     should "raise an exception if the connection fails" do
       assert_raise(Libvirt::Exception::LibvirtError) {
-        @klass.connect("thisshouldneverpass:)")
+        @klass.new("thisshouldneverpass:)")
       }
     end
   end
 
   context "with a valid connection" do
     setup do
-      @cxn = @klass.connect("test:///default")
+      @cxn = @klass.new("test:///default")
     end
 
     should "provide the library version" do

@@ -3,7 +3,7 @@ require "test_helper"
 Protest.describe("domain collection") do
   setup do
     @klass = Libvirt::Collection::DomainCollection
-    @instance = @klass.new(Libvirt::Connection.connect("test:///default"))
+    @instance = @klass.new(Libvirt::Connection.new("test:///default"))
   end
 
   should "provide a list of active domains" do
