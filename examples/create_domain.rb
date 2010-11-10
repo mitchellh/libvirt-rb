@@ -39,7 +39,7 @@ conn = Libvirt.connect("test:///default")
 # This creates the domain on the hypervisor without starting it.
 # The return value is the {Libvirt::Domain} object associated
 # with it.
-conn.define_domain(spec)
+conn.domains.define(spec)
 
 puts "Success! A test domain was created with the following XML:"
 puts

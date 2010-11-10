@@ -26,6 +26,16 @@ module Libvirt
         @connection = connection
       end
 
+      # Defines a new domain with the given valid specification. This method
+      # doesn't start the domain.
+      #
+      # @param [Object] spec
+      # @return [Domain]
+      def define(spec)
+        ptr = FFI::Libvirt.virDomainDefineXML(connection, spec.to_xml)
+        ptr.null? ? nil : Domain.new(ptr)
+      end
+
       # Returns all the active (running) domains for the connection which this
       # collection belongs to.
       #

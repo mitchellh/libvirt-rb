@@ -63,30 +63,5 @@ Protest.describe("connection") do
       assert result.is_a?(Libvirt::Collection::DomainCollection)
       assert @cxn.equal?(result.connection)
     end
-
-    context "defining a new domain" do
-      setup do
-        @spec = Libvirt::Spec::Domain.new
-        @spec.hypervisor = :test
-        @spec.name = "My Test VM"
-        @spec.os.type = :hvm
-        @spec.memory = 123456 # KB
-      end
-
-      should "create the new domain when the specification is valid" do
-        result = nil
-        assert_nothing_raised { result = @cxn.define_domain(@spec) }
-        assert result.is_a?(Libvirt::Domain)
-        assert !result.active?
-        assert_equal @spec.name, result.name
-      end
-
-      should "raise an error when the specification is not valid" do
-        @spec.hypervisor = nil
-        assert_raise(Libvirt::Exception::LibvirtError) {
-          @cxn.define_domain(@spec)
-        }
-      end
-    end
   end
 end
