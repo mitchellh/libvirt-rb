@@ -34,7 +34,7 @@ spec.memory = 123456 # KB
 # xen+tcp://10.0.0.1/ (remote Xen over TCP)
 #
 # If no URI is given, libvirt does its best to guess.
-conn = Libvirt::Connection.connect("test:///default")
+conn = Libvirt.connect("test:///default")
 
 # This creates the domain on the hypervisor without starting it.
 # The return value is the {Libvirt::Domain} object associated

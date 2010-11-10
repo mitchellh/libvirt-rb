@@ -26,7 +26,7 @@ end
 # qemu+unix:///system (local qemu over unix socket)
 #
 # If no URI is given, libvirt does its best to guess.
-h = Libvirt::Connection.connect
+h = Libvirt.connect
 
 puts "Hypervisor INFO"
 puts "---------------"
