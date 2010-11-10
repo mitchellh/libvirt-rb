@@ -22,6 +22,6 @@ require 'ffi/libvirt/version'
 require 'ffi/libvirt/functions'
 require 'ffi/libvirt/error_types'
 require 'ffi/libvirt/error_functions'
-require 'ffi/libvirt/domain'
+require 'ffi/libvirt/domain_info'
 require 'ffi/libvirt/error'
-
+require 'ffi/libvirt/node_info'
