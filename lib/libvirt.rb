@@ -36,8 +36,9 @@ module Libvirt
   end
 
   # Connect to a hypervisor using libvirt. This is a shortcut to
-  # calling {Connection.new}, therefore please see that method for
-  # the documentation.
+  # instantiating a {Connection} object, therefore for documentation on
+  # the arguments and return value for this method, please consult
+  # {Connection#initialize}.
   def self.connect(*args)
     Connection.new(*args)
   end
