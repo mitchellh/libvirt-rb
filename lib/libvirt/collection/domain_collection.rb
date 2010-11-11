@@ -1,5 +1,3 @@
-require 'forwardable'
-
 module Libvirt
   module Collection
     # Represents a collection of domains. This is an enumerable (in the Ruby sense)
@@ -10,22 +8,7 @@ module Libvirt
     # If you enumerate the entire collection, then this is equivalent to enumerating
     # over {#all} domains. e.g. `collection.length` is equivalent to calling
     # `collection.all.length` (where `collection` is a `DomainCollection` object).
-    class DomainCollection
-      include Enumerable
-      extend Forwardable
-      def_delegators :all, :first, :each, :length
-
-      attr_reader :connection
-
-      # Initializes a new collection of domains. For now, this method should
-      # never be called directly, and is only used internally by {Connection}.
-      #
-      # @param [Connection] A connection object which this domain collection
-      #   belongs to.
-      def initialize(connection)
-        @connection = connection
-      end
-
+    class DomainCollection < AbstractCollection
       # Defines a new domain with the given valid specification. This method
       # doesn't start the domain.
       #
@@ -43,10 +26,7 @@ module Libvirt
       def active
         # Do some pointer and array fiddling to extract the ids of the active
         # domains from the libvirt API
-        count_max = FFI::Libvirt.virConnectNumOfDomains(connection)
-        output_ptr = FFI::MemoryPointer.new(:pointer, count_max)
-        count_returned = FFI::Libvirt.virConnectListDomains(connection, output_ptr, count_max)
-        ids = output_ptr.get_array_of_int(0, count_returned)
+        ids = read_array(:virConnectListDomains, :virConnectNumOfDomains, :int)
 
         # Lookup all the IDs and make them proper Domain objects
         ids.collect do |id|
@@ -62,10 +42,7 @@ module Libvirt
       def inactive
         # Do some pointer and array fiddling to extract the names of the active
         # domains from the libvirt API
-        count_max = FFI::Libvirt.virConnectNumOfDefinedDomains(connection)
-        output_ptr = FFI::MemoryPointer.new(:pointer, count_max)
-        count_returned = FFI::Libvirt.virConnectListDefinedDomains(connection, output_ptr, count_max)
-        ids = output_ptr.get_array_of_string(0, count_returned)
+        ids = read_array(:virConnectListDefinedDomains, :virConnectNumOfDefinedDomains, :string)
 
         # Lookup all the names and make them proper Domain objects
         ids.collect do |id|
