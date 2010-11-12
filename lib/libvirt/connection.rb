@@ -43,6 +43,7 @@ module Libvirt
     # @param [String] uri
     def initialize(uri=nil)
       @pointer = FFI::Libvirt.virConnectOpen(uri)
+      ObjectSpace.define_finalizer(self, method(:finalize))
     end
 
     # Returns the domains (both active and inactive) related to this
@@ -133,6 +134,16 @@ module Libvirt
     # @return [FFI::Pointer]
     def to_ptr
       @pointer
+    end
+
+    protected
+
+    # Cleans up the connection by releasing the connection object. This
+    # never needs to be called directly since there is a finalizer on
+    # this object to clean the connection. Therefore, to close the connection,
+    # simply release the reference to the connection.
+    def finalize(*args)
+      FFI::Libvirt.virConnectClose(self) rescue nil
     end
   end
 end

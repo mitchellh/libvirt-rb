@@ -77,5 +77,10 @@ Protest.describe("connection") do
       assert result.is_a?(Libvirt::Collection::NetworkCollection)
       assert @cxn.equal?(result.connection)
     end
+
+    should "garbage collect the connection" do
+      # TODO: Memprof this thing to figure out what is holding
+      # references to a connection so the GC actually works.
+    end
   end
 end
