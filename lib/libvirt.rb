@@ -16,6 +16,7 @@ module Libvirt
   autoload :Domain, 'libvirt/domain'
   autoload :Error, 'libvirt/error'
   autoload :Exception, 'libvirt/exception'
+  autoload :Network, 'libvirt/network'
   autoload :Spec, 'libvirt/spec'
 
   # Initializes the library by calling `virInitialize`. Most methods

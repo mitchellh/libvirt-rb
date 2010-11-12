@@ -8,7 +8,10 @@ module Libvirt
       #
       # @return [Array<Network>]
       def active
-        read_array(:virConnectListNetworks, :virConnectNumOfNetworks, :string)
+        read_array(:virConnectListNetworks, :virConnectNumOfNetworks, :string).collect do |name|
+          pointer = FFI::Libvirt.virNetworkLookupByName(connection, name)
+          pointer.null? ? nil : Network.new(pointer)
+        end
       end
 
       # Returns all the inactive networks for the connection which this

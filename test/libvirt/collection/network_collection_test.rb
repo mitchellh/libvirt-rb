@@ -9,7 +9,7 @@ Protest.describe("network collection") do
   should "provide a list of active networks" do
     active = @instance.active
     assert active.is_a?(Array)
-    #assert active.all? { |a| a.is_a?(Libvirt::Network) }
+    assert active.all? { |a| a.is_a?(Libvirt::Network) }
   end
 
   should "provide a list of inactive networks" do
