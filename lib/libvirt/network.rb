@@ -7,6 +7,7 @@ module Libvirt
     # object.
     def initialize(pointer)
       @pointer = pointer
+      ObjectSpace.define_finalizer(self, method(:finalize))
     end
 
     # Returns the name of the network as a string.
@@ -61,6 +62,15 @@ module Libvirt
     # @return [Boolean]
     def ==(other)
       other.is_a?(Network) && other.uuid == uuid
+    end
+
+    protected
+
+    # Cleans up the `virNetworkPtr` and releases the resources associated
+    # with it. This is automatically called when this object is garbage
+    # collected.
+    def finalize(*args)
+      FFI::Libvirt.virNetworkFree(self)
     end
   end
 end
