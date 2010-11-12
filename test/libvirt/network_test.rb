@@ -9,7 +9,6 @@ Protest.describe("network") do
   should "provide the UUID of the network" do
     result = @instance.uuid
     assert result
-    assert_equal 16, result.length
   end
 
   should "provide an equality comparison based on UUID" do
