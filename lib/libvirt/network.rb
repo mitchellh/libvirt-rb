@@ -47,6 +47,18 @@ module Libvirt
       FFI::Libvirt.virNetworkIsPersistent(self) == 1
     end
 
+    # Starts a network.
+    def create
+      FFI::Libvirt.virNetworkCreate(self)
+    end
+    alias :start :create
+
+    # Stops a network.
+    def destroy
+      FFI::Libvirt.virNetworkDestroy(self)
+    end
+    alias :stop :destroy
+
     # Converts to the actual `virNetworkPtr` of this structure. This allows
     # this object to be used directly with the FFI layer which expects a
     # `virNetworkPtr`.

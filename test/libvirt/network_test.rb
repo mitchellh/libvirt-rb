@@ -3,18 +3,48 @@ require "test_helper"
 Protest.describe("network") do
   setup do
     @klass = Libvirt::Network
-    @instance = Libvirt.connect("test:///default").networks.all.first
+
+    @data = {
+      :name => "vboxnet0",
+      :uuid => "786f6276-656e-4074-8000-0a0027000000"
+    }
+
+    @conn = Libvirt.connect("test:///default")
+    @instance = @klass.new(FFI::Libvirt.virNetworkDefineXML(@conn, <<-XML))
+<network>
+  <name>#{@data[:name]}</name>
+  <uuid>#{@data[:uuid]}</uuid>
+</network>
+XML
   end
 
   should "provide the name of the network" do
     result = @instance.name
-    assert result
+    assert_equal @data[:name], result
   end
 
   should "provide the UUID of the network" do
     result = @instance.uuid
     assert result
-    assert_equal 36, result.length
+    assert_equal @data[:uuid], result
+  end
+
+  should "provide an active check" do
+    assert !@instance.active?
+    @instance.start
+    assert @instance.active?
+  end
+
+  should "provide a persistence check" do
+    assert @instance.persistent?
+    # TODO: Check state change. Not sure how to trigger this at the moment.
+  end
+
+  should "provide ability to stop network" do
+    @instance.start
+    assert @instance.active?
+    @instance.stop
+    assert !@instance.active?
   end
 
   should "provide an equality comparison based on UUID" do
