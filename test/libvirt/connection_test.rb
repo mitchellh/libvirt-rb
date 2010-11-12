@@ -63,5 +63,12 @@ Protest.describe("connection") do
       assert result.is_a?(Libvirt::Collection::DomainCollection)
       assert @cxn.equal?(result.connection)
     end
+
+    should "provide a list of interfaces" do
+      result = nil
+      assert_nothing_raised { result = @cxn.interfaces }
+      assert result.is_a?(Libvirt::Collection::InterfaceCollection)
+      assert @cxn.equal?(result.connection)
+    end
   end
 end

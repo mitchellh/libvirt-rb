@@ -54,6 +54,12 @@ module Libvirt
       Collection::DomainCollection.new(self)
     end
 
+    # Returns the interfaces (both active and inactive) related to this
+    # connection.
+    def interfaces
+      Collection::InterfaceCollection.new(self)
+    end
+
     # Returns the capabilities of the connected hypervisor/driver. Returns them
     # as an XML string. This method calls `virConnectGetCapabilities`. This will
     # probably be parsed into a more useful format in the future.
