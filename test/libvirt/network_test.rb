@@ -6,6 +6,11 @@ Protest.describe("network") do
     @instance = Libvirt.connect("test:///default").networks.all.first
   end
 
+  should "provide the name of the network" do
+    result = @instance.name
+    assert result
+  end
+
   should "provide the UUID of the network" do
     result = @instance.uuid
     assert result
