@@ -70,6 +70,13 @@ module Libvirt
       Collection::NetworkCollection.new(self)
     end
 
+    # Returns the network filters related to this connection.
+    #
+    # @return [Collection::NWFilterCollection]
+    def nwfilters
+      Collection::NWFilterCollection.new(self)
+    end
+
     # Returns the capabilities of the connected hypervisor/driver. Returns them
     # as an XML string. This method calls `virConnectGetCapabilities`. This will
     # probably be parsed into a more useful format in the future.
