@@ -130,6 +130,13 @@ module Libvirt
       FFI::Libvirt.virDomainResume(self) == 0
     end
 
+    # Undefine a domain. This will not stop it if it is running.
+    #
+    # @return [Boolean]
+    def undefine
+      FFI::Libvirt.virDomainUndefine(self) == 0
+    end
+
     # Provides the pointer to the domain. This allows this object to be used
     # directly with the FFI layer which expects a `virDomainPtr`.
     #

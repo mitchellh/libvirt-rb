@@ -6,7 +6,8 @@ Protest.describe("domain") do
 
     # TODO: Define our own domain so we have more control over what we're
     # testing.
-    @instance = Libvirt::Connection.new("test:///default").domains.all.first
+    @conn = Libvirt.connect("test:///default")
+    @instance = @conn.domains.all.first
   end
 
   should "provide the name of the domain" do
@@ -144,5 +145,12 @@ Protest.describe("domain") do
         @instance.resume
       }
     end
+  end
+
+  should "be able to undefine a domain" do
+    @instance.destroy
+    assert @conn.domains.include?(@instance)
+    @instance.undefine
+    assert !@conn.domains.include?(@instance)
   end
 end
