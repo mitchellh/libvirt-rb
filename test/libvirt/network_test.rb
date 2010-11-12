@@ -47,6 +47,12 @@ XML
     assert !@instance.active?
   end
 
+  should "be able to undefine the network" do
+    assert @conn.networks.include?(@instance)
+    @instance.undefine
+    assert !@conn.networks.include?(@instance)
+  end
+
   should "provide an equality comparison based on UUID" do
     # TODO: Create multiple networks with uuids to compare
   end

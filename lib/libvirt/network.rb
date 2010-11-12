@@ -59,6 +59,12 @@ module Libvirt
     end
     alias :stop :destroy
 
+    # Undefines the network, but will not stop it if it is
+    # running.
+    def undefine
+      FFI::Libvirt.virNetworkUndefine(self)
+    end
+
     # Converts to the actual `virNetworkPtr` of this structure. This allows
     # this object to be used directly with the FFI layer which expects a
     # `virNetworkPtr`.
