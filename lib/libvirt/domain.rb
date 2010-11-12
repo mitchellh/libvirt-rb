@@ -6,6 +6,7 @@ module Libvirt
     # omit the `pointer` argument, since that is meant for internal use.
     def initialize(pointer=nil)
       @pointer = pointer if pointer.is_a?(FFI::Pointer)
+      ObjectSpace.define_finalizer(self, method(:finalize))
     end
 
     # Returns the name of the domain as a string.
@@ -153,6 +154,12 @@ module Libvirt
       result = FFI::Libvirt::DomainInfo.new
       FFI::Libvirt.virDomainGetInfo(self, result.to_ptr)
       result
+    end
+
+    # Cleans the `virDomainPtr` underlying the class when the class is
+    # released.
+    def finalize(*args)
+      FFI::Libvirt.virDomainFree(self)
     end
   end
 end
