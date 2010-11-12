@@ -20,7 +20,7 @@ module Libvirt
     #
     # @return [String]
     def uuid
-      output_ptr = FFI::MemoryPointer.new(:char, 48)
+      output_ptr = FFI::MemoryPointer.new(:char, 36)
       FFI::Libvirt.virDomainGetUUIDString(self, output_ptr)
       output_ptr.read_string
     end
