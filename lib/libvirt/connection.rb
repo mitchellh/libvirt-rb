@@ -77,6 +77,13 @@ module Libvirt
       Collection::NWFilterCollection.new(self)
     end
 
+    # Returns the storage pools related to this connection
+    #
+    # @return [Collection::StoragePoolCollection]
+    def storage_pools
+      Collection::StoragePoolCollection.new(self)
+    end
+
     # Returns the capabilities of the connected hypervisor/driver. Returns them
     # as an XML string. This method calls `virConnectGetCapabilities`. This will
     # probably be parsed into a more useful format in the future.

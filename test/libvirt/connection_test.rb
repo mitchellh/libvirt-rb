@@ -85,6 +85,13 @@ Protest.describe("connection") do
       assert @cxn.equal?(result.connection)
     end
 
+    should "provide a list of storage pools" do
+      result = nil
+      assert_nothing_raised { result = @cxn.storage_pools }
+      assert result.is_a?(Libvirt::Collection::StoragePoolCollection)
+      assert @cxn.equal?(result.connection)
+    end
+
     should "garbage collect the connection" do
       # TODO: Memprof this thing to figure out what is holding
       # references to a connection so the GC actually works.

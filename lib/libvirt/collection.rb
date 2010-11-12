@@ -5,5 +5,6 @@ module Libvirt
     autoload :InterfaceCollection, 'libvirt/collection/interface_collection'
     autoload :NetworkCollection, 'libvirt/collection/network_collection'
     autoload :NWFilterCollection, 'libvirt/collection/nwfilter_collection'
+    autoload :StoragePoolCollection, 'libvirt/collection/storage_pool_collection'
   end
 end
