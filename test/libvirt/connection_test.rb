@@ -70,5 +70,12 @@ Protest.describe("connection") do
       assert result.is_a?(Libvirt::Collection::InterfaceCollection)
       assert @cxn.equal?(result.connection)
     end
+
+    should "providea list of networks" do
+      result = nil
+      assert_nothing_raised { result = @cxn.networks }
+      assert result.is_a?(Libvirt::Collection::NetworkCollection)
+      assert @cxn.equal?(result.connection)
+    end
   end
 end

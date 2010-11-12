@@ -49,15 +49,24 @@ module Libvirt
     # connection. The various states of the domains returned can be
     # queried using {Domain#state}.
     #
-    # @return [DomainCollection]
+    # @return [Collection::DomainCollection]
     def domains
       Collection::DomainCollection.new(self)
     end
 
     # Returns the interfaces (both active and inactive) related to this
     # connection.
+    #
+    # @return [Collection::InterfaceCollection]
     def interfaces
       Collection::InterfaceCollection.new(self)
+    end
+
+    # Returns the networks related to this connection.
+    #
+    # @return [Collection::NetworkCollection]
+    def networks
+      Collection::NetworkCollection.new(self)
     end
 
     # Returns the capabilities of the connected hypervisor/driver. Returns them

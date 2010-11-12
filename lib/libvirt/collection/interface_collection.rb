@@ -6,7 +6,7 @@ module Libvirt
       # Returns all the active interfaces for the connection which this
       # collection belongs to.
       #
-      # [Array<Interface>]
+      # @return [Array<Interface>]
       def active
         # TODO: Doesn't work on mac :) must dev on linux
         # read_array(:virConnectListInterfaces, :virConnectNumOfInterfaces, :string)
