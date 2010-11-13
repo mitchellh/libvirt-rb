@@ -28,20 +28,46 @@ Protest.describe("domain") do
     assert_equal 4294967295, @instance.id
   end
 
+  should "provide the OS type of the domain" do
+    assert_equal "linux", @instance.os_type
+  end
+
   should "provide the state of the domain" do
     assert_equal :shutoff, @instance.state
   end
 
-  should "provide the maximum memory available on the domain" do
-    assert_equal 123456, @instance.max_memory
+  context "maximum memory" do
+    should "be retrievable" do
+      assert_equal 123456, @instance.max_memory
+    end
+
+    should "be settable" do
+      @instance.max_memory = 234567
+      assert_equal 234567, @instance.max_memory
+    end
   end
 
-  should "provide the memory allocated to the domain" do
-    assert_equal 123456, @instance.memory
+  context "memory" do
+    should "be retrievable" do
+      assert_equal 123456, @instance.memory
+    end
+
+    should "be settable" do
+      @instance.memory = 7000
+      assert_equal 7000, @instance.memory
+    end
   end
 
-  should "provide the number of virtual CPUs attached to the domain" do
-    assert_equal 1, @instance.virtual_cpus
+  context "virtual CPUs" do
+    should "be retrievable" do
+      assert_equal 1, @instance.virtual_cpus
+    end
+
+    should "be settable" do
+      @instance.start
+      @instance.virtual_cpus = 1
+      assert_equal 1, @instance.virtual_cpus
+    end
   end
 
   should "provide the CPU time used in nanoseconds" do
@@ -74,6 +100,17 @@ Protest.describe("domain") do
     @spec.name = "another"
     other = @conn.domains.create(@spec)
     assert !other.persistent?
+  end
+
+  context "autostart" do
+    should "check status" do
+      assert !@instance.autostart?
+    end
+
+    should "set status" do
+      @instance.autostart = true
+      assert @instance.autostart?
+    end
   end
 
   context "when creating" do
@@ -163,6 +200,11 @@ Protest.describe("domain") do
 
   should "be able to reboot" do
     assert_nothing_raised { @instance.reboot }
+  end
+
+  should "be able to shutdown" do
+    @instance.start
+    assert_nothing_raised { @instance.shutdown }
   end
 
   should "be able to undefine a domain" do

@@ -32,6 +32,13 @@ module Libvirt
       FFI::Libvirt.virDomainGetID(self)
     end
 
+    # Returns the OS type of the domain.
+    #
+    # @return [String]
+    def os_type
+      FFI::Libvirt.virDomainGetOSType(self)
+    end
+
     # Returns the current state this domain is in.
     #
     # @return [Symbol]
@@ -46,6 +53,13 @@ module Libvirt
       domain_info[:maxMem]
     end
 
+    # Sets the maximum memory (in KB) allowed on this domain.
+    #
+    # @return [Boolean] Success of the command.
+    def max_memory=(value)
+      FFI::Libvirt.virDomainSetMaxMemory(self, value) == 0
+    end
+
     # Returns the memory (in KB) currently allocated to this domain.
     #
     # @return [Integer]
@@ -53,11 +67,25 @@ module Libvirt
       domain_info[:memory]
     end
 
+    # Sets the memory (in KB) on an active domain.
+    #
+    # @return [Boolean] Success of the command.
+    def memory=(value)
+      FFI::Libvirt.virDomainSetMemory(self, value) == 0
+    end
+
     # Returns the number of virtual CPUs for this domain.
     #
     # @return [Integer]
     def virtual_cpus
       domain_info[:nrVirtCpu]
+    end
+
+    # Sets the number of virtual CPUs for this domain.
+    #
+    # @return [Boolean] Success of the command.
+    def virtual_cpus=(value)
+      FFI::Libvirt.virDomainSetVcpus(self, value) == 0
     end
 
     # Returns the CPU time used in nanoseconds.
@@ -92,6 +120,25 @@ module Libvirt
       result = FFI::Libvirt.virDomainIsPersistent(self)
       return nil if result == -1
       result == 1
+    end
+
+    # Returns boolean of whether the domain autostarts on boot.
+    #
+    # @return [Boolean]
+    def autostart?
+      output_ptr = FFI::MemoryPointer.new(:int)
+      return nil if FFI::Libvirt.virDomainGetAutostart(self, output_ptr) < 0
+      output_ptr.read_int == 1
+    end
+
+    # Sets the autostart status. This assignment sets the value immediately
+    # on the domain.
+    #
+    # @param [Boolean] value
+    # @return [Boolean] The set value
+    def autostart=(value)
+      FFI::Libvirt.virDomainSetAutostart(self, value ? 1 : 0)
+      value
     end
 
     # Starts the domain (moves it from the inactive to running state), and
@@ -135,6 +182,13 @@ module Libvirt
     # @return [Boolean]
     def reboot
       FFI::Libvirt.virDomainReboot(self, 0) == 0
+    end
+
+    # Shutdown a domain, stopping the domain OS.
+    #
+    # @return [Boolean]
+    def shutdown
+      FFI::Libvirt.virDomainShutdown(self) == 0
     end
 
     # Undefine a domain. This will not stop it if it is running.
