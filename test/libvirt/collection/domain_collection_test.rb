@@ -35,6 +35,32 @@ Protest.describe("domain collection") do
     assert @instance.respond_to?(:each)
   end
 
+  context "finding" do
+    should "find by name and UUID for `find`" do
+      assert @instance.find("test")
+      assert @instance.find(@instance.first.uuid)
+
+      result = @instance.find("lksadjfkj") rescue nil
+      assert !result
+    end
+
+    should "find by name" do
+      result = @instance.find_by_name("test")
+      assert result
+
+      result = @instance.find_by_name("bar") rescue nil
+      assert !result
+    end
+
+    should "find by UUID" do
+      result = @instance.find_by_uuid(@instance.first.uuid)
+      assert result
+
+      result = @instance.find_by_uuid("dklf") rescue nil
+      assert !result
+    end
+  end
+
   context "a new domain" do
     setup do
       @spec = Libvirt::Spec::Domain.new

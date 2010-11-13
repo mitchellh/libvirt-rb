@@ -9,6 +9,30 @@ module Libvirt
     # over {#all} domains. e.g. `collection.length` is equivalent to calling
     # `collection.all.length` (where `collection` is a `DomainCollection` object).
     class DomainCollection < AbstractCollection
+      # Searches for a domain by name or UUID. This will search
+      # both, searching name first then UUID. You may use the {#find_by_name}
+      # and {#find_by_uuid} directly if this behavior is not what you want.
+      def find(value)
+        result = find_by_name(value) rescue nil
+        result ||= find_by_uuid(value)
+      end
+
+      # Searches for a domain by name.
+      #
+      # @return [Domain]
+      def find_by_name(name)
+        ptr = FFI::Libvirt.virDomainLookupByName(connection, name)
+        ptr.null? ? nil : Domain.new(ptr)
+      end
+
+      # Searches for a domain by UUID.
+      #
+      # @return [Domain]
+      def find_by_uuid(uuid)
+        ptr = FFI::Libvirt.virDomainLookupByUUIDString(connection, uuid)
+        ptr.null? ? nil : Domain.new(ptr)
+      end
+
       # Defines a new domain with the given valid specification. This method
       # doesn't start the domain.
       #
