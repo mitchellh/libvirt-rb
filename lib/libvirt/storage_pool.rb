@@ -6,6 +6,7 @@ module Libvirt
     # object to retrieve a specific {StoragePool}.
     def initialize(pointer)
       @pointer = pointer
+      ObjectSpace.define_finalizer(self, method(:finalize))
     end
 
     # Returns the name of the network as a string.
@@ -83,6 +84,13 @@ module Libvirt
     # @return [FFI::Pointer]
     def to_ptr
       @pointer
+    end
+
+    protected
+
+    # Frees the underlying memory associated with this object.
+    def finalize(*args)
+      FFI::Libvirt.virStoragePoolFree(self)
     end
   end
 end
