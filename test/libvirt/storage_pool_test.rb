@@ -6,7 +6,8 @@ Protest.describe("storage pool") do
 
     @data = {
       :name => "default-pool",
-      :uuid => "786f6276-656e-4074-8000-0a0027000000"
+      :uuid => "786f6276-656e-4074-8000-0a0027000000",
+      :capacity => "107374182400"
     }
 
     @conn = Libvirt.connect("test:///default")
@@ -14,7 +15,7 @@ Protest.describe("storage pool") do
 <pool type='dir'>
   <name>#{@data[:name]}</name>
   <uuid>#{@data[:uuid]}</uuid>
-  <capacity>107374182400</capacity>
+  <capacity>#{@data[:capacity]}</capacity>
   <allocation>0</allocation>
   <available>107374182400</available>
   <source>
@@ -40,6 +41,24 @@ XML
     result = @instance.uuid
     assert result
     assert_equal 36, result.length
+  end
+
+  should "provide the state" do
+    assert_equal :running, @instance.state
+    @instance.stop
+    assert_equal :inactive, @instance.state
+  end
+
+  should "provide the capacity" do
+    assert_equal @data[:capacity].to_i, @instance.capacity
+  end
+
+  should "provide the current allocation" do
+    assert_equal 0, @instance.allocation
+  end
+
+  should "provide the available bytes remaining" do
+    assert_equal 107374182400, @instance.available
   end
 
   should "dump the XML" do

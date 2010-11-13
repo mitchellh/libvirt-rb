@@ -71,6 +71,34 @@ module Libvirt
       FFI::Libvirt.virStoragePoolUndefine(self) == 0
     end
 
+    # Returns the state of the storage pool as a symbol.
+    #
+    # @return [Symbol]
+    def state
+      info[:state]
+    end
+
+    # Returns the capacity in bytes.
+    #
+    # @return [Fixnum]
+    def capacity
+      info[:capacity]
+    end
+
+    # Returns the current allocation in bytes.
+    #
+    # @return [Fixnum]
+    def allocation
+      info[:allocation]
+    end
+
+    # Returns the available free space in bytes.
+    #
+    # @return [Fixnum]
+    def available
+      info[:available]
+    end
+
     # Provide a meaningful equality check for two storage pools by comparing
     # UUID.
     #
@@ -87,6 +115,15 @@ module Libvirt
     end
 
     protected
+
+    # Gets the virStoragePoolInfo structure for this storage pool.
+    #
+    # @return [Hash]
+    def info
+      result = FFI::Libvirt::StoragePoolInfo.new
+      FFI::Libvirt.virStoragePoolGetInfo(self, result.to_ptr)
+      result
+    end
 
     # Frees the underlying memory associated with this object.
     def finalize(*args)
