@@ -18,6 +18,7 @@ module Libvirt
   autoload :Exception, 'libvirt/exception'
   autoload :Network, 'libvirt/network'
   autoload :Spec, 'libvirt/spec'
+  autoload :StoragePool, 'libvirt/storage_pool'
 
   # Initializes the library by calling `virInitialize`. Most methods
   # in libvirt actually call this themselves, so its not strictly
