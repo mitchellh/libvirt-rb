@@ -41,8 +41,16 @@ module Libvirt
     # to connect to.
     #
     # @param [String] uri
-    def initialize(uri=nil)
-      @pointer = FFI::Libvirt.virConnectOpen(uri)
+    def initialize(*args)
+      opts = args.last.is_a?(Hash) ? args.pop : {}
+      uri = args.first
+
+      if opts[:readonly]
+        @pointer = FFI::Libvirt.virConnectOpenReadOnly(uri)
+      else
+        @pointer = FFI::Libvirt.virConnectOpen(uri)
+      end
+
       ObjectSpace.define_finalizer(self, method(:finalize))
     end
 

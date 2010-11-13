@@ -12,6 +12,14 @@ Protest.describe("connection") do
       assert result.is_a?(@klass)
     end
 
+    should "connect to a readonly connection" do
+      result = nil
+      assert_nothing_raised { result = @klass.new("test:///default", :readonly => true) }
+      assert result.is_a?(@klass)
+
+      # Test readonly-ness
+    end
+
     should "raise an exception if the connection fails" do
       assert_raise(Libvirt::Exception::LibvirtError) {
         @klass.new("thisshouldneverpass:)")
