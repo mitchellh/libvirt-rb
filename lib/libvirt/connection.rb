@@ -11,7 +11,11 @@ module Libvirt
   # running one hypervisor or you're not sure what is available on your machine,
   # then this is the easiest option to get started:
   #
-  #     conn = Libvirt::Connection.connect
+  #     conn = Libvirt::Connection.new
+  #
+  # A shortcut is also provided for your convenience:
+  #
+  #     conn = Libvirt.connect
   #
   # ## Specifying a URI
   #
@@ -19,11 +23,19 @@ module Libvirt
   # a local or remote libvirt instance (remote being that `libvirtd` is running).
   # The following is an example of a local VirtualBox connection:
   #
-  #     conn = Libvirt::Connection.connect("vbox:///session")
+  #     conn = Libvirt::Connection.new("vbox:///session")
   #
   # And perhaps a remote qemu connection:
   #
-  #     conn = Libvirt::Connection.connect("qemu+tcp://10.0.0.1/system")
+  #     conn = Libvirt::Connection.new("qemu+tcp://10.0.0.1/system")
+  #
+  # # Readonly Connections
+  #
+  # A readonly connection can be made by specifying the `readonly` option to be
+  # truthy. A couple examples follow:
+  #
+  #     conn = Libvirt::Connection.new("vbox:///session", :readonly => true)
+  #     conn = Libvirt::Connection.new(:readonly => true)
   #
   # # Basic Information of a Connection
   #
