@@ -88,6 +88,14 @@ module Libvirt
       FFI::Libvirt.virDomainSetVcpus(self, value) == 0
     end
 
+    # Returns the maximum number of virtual CPUs supported for this guest
+    # VM.
+    #
+    # @return [Integer]
+    def max_virtual_cpus
+      FFI::Libvirt.virDomainGetMaxVcpus(self)
+    end
+
     # Returns the CPU time used in nanoseconds.
     #
     # @return [Integer]

@@ -63,6 +63,11 @@ Protest.describe("domain") do
       assert_equal 1, @instance.virtual_cpus
     end
 
+    should "be able to retrieve maximum" do
+      @instance.start
+      assert_equal 1, @instance.max_virtual_cpus
+    end
+
     should "be settable" do
       @instance.start
       @instance.virtual_cpus = 1
