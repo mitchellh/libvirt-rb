@@ -100,6 +100,14 @@ Protest.describe("connection") do
       assert @cxn.equal?(result.connection)
     end
 
+    should "check if encrypted" do
+      assert !@cxn.encrypted?
+    end
+
+    should "check if secure" do
+      assert @cxn.secure?
+    end
+
     should "garbage collect the connection" do
       # TODO: Memprof this thing to figure out what is holding
       # references to a connection so the GC actually works.

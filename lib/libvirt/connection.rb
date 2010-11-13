@@ -127,6 +127,24 @@ module Libvirt
     end
     alias :hypervisor :type
 
+    # Returns a boolean of whether the connection is encrypted or not.
+    #
+    # @return [Boolean]
+    def encrypted?
+      result = FFI::Libvirt.virConnectIsEncrypted(self)
+      return nil if result == -1
+      result == 1
+    end
+
+    # Returns a boolean of whether the connection is secure or not.
+    #
+    # @return [Boolean]
+    def secure?
+      result = FFI::Libvirt.virConnectIsSecure(self)
+      return nil if result == -1
+      result == 1
+    end
+
     # Returns the version of the hypervisor. This version is returned as an array
     # representation as `[major, minor, patch]`.
     #
