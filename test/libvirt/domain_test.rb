@@ -161,6 +161,10 @@ Protest.describe("domain") do
     end
   end
 
+  should "be able to reboot" do
+    assert_nothing_raised { @instance.reboot }
+  end
+
   should "be able to undefine a domain" do
     @instance.destroy
     assert @conn.domains.include?(@instance)

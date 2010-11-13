@@ -130,6 +130,13 @@ module Libvirt
       FFI::Libvirt.virDomainResume(self) == 0
     end
 
+    # Reboots the domain.
+    #
+    # @return [Boolean]
+    def reboot
+      FFI::Libvirt.virDomainReboot(self, 0) == 0
+    end
+
     # Undefine a domain. This will not stop it if it is running.
     #
     # @return [Boolean]
