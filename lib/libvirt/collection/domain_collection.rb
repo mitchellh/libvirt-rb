@@ -15,7 +15,19 @@ module Libvirt
       # @param [Object] spec
       # @return [Domain]
       def define(spec)
-        ptr = FFI::Libvirt.virDomainDefineXML(connection, spec.to_xml)
+        spec = spec.is_a?(String) ? spec : spec.to_xml
+        ptr = FFI::Libvirt.virDomainDefineXML(connection, spec)
+        ptr.null? ? nil : Domain.new(ptr)
+      end
+
+      # Creates a new domain and starts it. This domain configuration is not
+      # persisted, so it may disappear after the next reboot or shutdown.
+      #
+      # @param [Object] spec
+      # @return [Domain]
+      def create(spec)
+        spec = spec.is_a?(String) ? spec : spec.to_xml
+        ptr = FFI::Libvirt.virDomainCreateXML(connection, spec, 0)
         ptr.null? ? nil : Domain.new(ptr)
       end
 

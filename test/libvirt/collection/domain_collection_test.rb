@@ -35,7 +35,7 @@ Protest.describe("domain collection") do
     assert @instance.respond_to?(:each)
   end
 
-  context "defining a new domain" do
+  context "a new domain" do
     setup do
       @spec = Libvirt::Spec::Domain.new
       @spec.hypervisor = :test
@@ -44,19 +44,47 @@ Protest.describe("domain collection") do
       @spec.memory = 123456 # KB
     end
 
-    should "define the new domain when the specification is valid" do
-      result = nil
-      assert_nothing_raised { result = @instance.define(@spec) }
-      assert result.is_a?(Libvirt::Domain)
-      assert !result.active?
-      assert_equal @spec.name, result.name
+    context "defining a new domain" do
+      should "define the new domain when the specification is valid" do
+        result = nil
+        assert_nothing_raised { result = @instance.define(@spec) }
+        assert result.is_a?(Libvirt::Domain)
+        assert !result.active?
+        assert_equal @spec.name, result.name
+      end
+
+      should "define the new domain when the specification is a string" do
+        result = nil
+        assert_nothing_raised { result = @instance.define(@spec.to_xml) }
+        assert result.is_a?(Libvirt::Domain)
+        assert !result.active?
+        assert_equal @spec.name, result.name
+      end
+
+      should "raise an error when the specification is not valid" do
+        @spec.hypervisor = nil
+        assert_raise(Libvirt::Exception::LibvirtError) {
+          @instance.define(@spec)
+        }
+      end
     end
 
-    should "raise an error when the specification is not valid" do
-      @spec.hypervisor = nil
-      assert_raise(Libvirt::Exception::LibvirtError) {
-        @instance.define(@spec)
-      }
+    context "creating a new domain" do
+      should "create the new domain with the specification" do
+        result = nil
+        assert_nothing_raised { result = @instance.create(@spec) }
+        assert result.is_a?(Libvirt::Domain)
+        assert result.active?
+        assert_equal @spec.name, result.name
+      end
+
+      should "create a new domain with a string specification" do
+        result = nil
+        assert_nothing_raised { result = @instance.create(@spec.to_xml) }
+        assert result.is_a?(Libvirt::Domain)
+        assert result.active?
+        assert_equal @spec.name, result.name
+      end
     end
   end
 end

@@ -4,14 +4,18 @@ Protest.describe("domain") do
   setup do
     @klass = Libvirt::Domain
 
-    # TODO: Define our own domain so we have more control over what we're
-    # testing.
+    @spec = Libvirt::Spec::Domain.new
+    @spec.hypervisor = :test
+    @spec.name = "libvirt-rb-test"
+    @spec.os.type = :hvm
+    @spec.memory = 123456 # KB
+
     @conn = Libvirt.connect("test:///default")
-    @instance = @conn.domains.all.first
+    @instance = @conn.domains.define(@spec)
   end
 
   should "provide the name of the domain" do
-    assert_equal "test", @instance.name
+    assert_equal "libvirt-rb-test", @instance.name
   end
 
   should "provide the UUID of the domain" do
@@ -21,23 +25,23 @@ Protest.describe("domain") do
   end
 
   should "provide the ID of the domain" do
-    assert_equal 1, @instance.id
+    assert_equal 4294967295, @instance.id
   end
 
   should "provide the state of the domain" do
-    assert_equal :running, @instance.state
+    assert_equal :shutoff, @instance.state
   end
 
   should "provide the maximum memory available on the domain" do
-    assert_equal 8388608, @instance.max_memory
+    assert_equal 123456, @instance.max_memory
   end
 
   should "provide the memory allocated to the domain" do
-    assert_equal 2097152, @instance.memory
+    assert_equal 123456, @instance.memory
   end
 
   should "provide the number of virtual CPUs attached to the domain" do
-    assert_equal 2, @instance.virtual_cpus
+    assert_equal 1, @instance.virtual_cpus
   end
 
   should "provide the CPU time used in nanoseconds" do
@@ -56,14 +60,20 @@ Protest.describe("domain") do
   end
 
   should "return result of active status" do
+    @instance.start
     assert @instance.active?
     @instance.destroy
     assert !@instance.active?
   end
 
   should "return result of persistent status" do
-    # TODO: Test non-persistent domain
+    # Instance domain is defined so should be persistent:
     assert @instance.persistent?
+
+    # Create a new domain, shouldn't be persistent
+    @spec.name = "another"
+    other = @conn.domains.create(@spec)
+    assert !other.persistent?
   end
 
   context "when creating" do
@@ -75,12 +85,12 @@ Protest.describe("domain") do
     end
 
     should "not raise an error if the domain is already running" do
+      @instance.start
       assert @instance.active? # pre-requisite
       assert_nothing_raised { @instance.create }
     end
 
     should "also respond to `start`" do
-      @instance.destroy
       assert !@instance.active?
       assert @instance.start
       assert @instance.active?
@@ -129,6 +139,10 @@ Protest.describe("domain") do
   end
 
   context "when resuming" do
+    setup do
+      @instance.create
+    end
+
     should "return true if succeeds" do
       assert @instance.suspend
       assert @instance.resume
