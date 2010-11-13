@@ -25,9 +25,12 @@ What is done so far?
 
 * The FFI function coverage is 100% complete. Some structs and enums
 are missing, however.
-* Basic [unit] test harness in place. Test early and often.
-* Nice ruby layer starting, not much done in this area. A lot will
-be done the coming days.
+* The FFI is backwards compatible to libvirt 0.6.0.
+* Nicer ruby layer above FFI is comprehensive but not complete. I would
+  say its around 50% complete. For most tasks, it is "good enough."
+* Ruby objects of libvirt XML is barely started. This probably won't get
+  touched until after an initial release. For now, continue to use raw
+  XML strings.
 
 ## Installation
 
