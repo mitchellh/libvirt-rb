@@ -38,6 +38,7 @@ Protest.describe("domain collection") do
   context "finding" do
     should "find by name and UUID for `find`" do
       assert @instance.find("test")
+      assert @instance.find(1)
       assert @instance.find(@instance.first.uuid)
 
       result = @instance.find("lksadjfkj") rescue nil
@@ -50,6 +51,11 @@ Protest.describe("domain collection") do
 
       result = @instance.find_by_name("bar") rescue nil
       assert !result
+    end
+
+    should "find by id" do
+      assert @instance.find_by_id(1)
+      assert_raises(Libvirt::Exception::LibvirtError) {  @instance.find_by_id(42) }
     end
 
     should "find by UUID" do

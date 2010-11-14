@@ -9,13 +9,13 @@ module Libvirt
     # over {#all} domains. e.g. `collection.length` is equivalent to calling
     # `collection.all.length` (where `collection` is a `DomainCollection` object).
     class DomainCollection < AbstractCollection
-      # Searches for a domain by name or UUID. This will search
-      # both, searching name first then UUID. You may use the {#find_by_name}
-      # and {#find_by_uuid} directly if this behavior is not what you want.
+      # Searches for a domain. This will search first by name, then by ID,
+      # then by UUID, returning a result as soon as one is found.
       #
       # @return [Domain]
       def find(value)
         result = find_by_name(value) rescue nil
+        result ||= find_by_id(value) rescue nil
         result ||= find_by_uuid(value) rescue nil
       end
 
@@ -24,6 +24,14 @@ module Libvirt
       # @return [Domain]
       def find_by_name(name)
         ptr = FFI::Libvirt.virDomainLookupByName(interface, name)
+        ptr.null? ? nil : Domain.new(ptr)
+      end
+
+      # Searches for a domain by ID.
+      #
+      # @return [Domain]
+      def find_by_id(id)
+        ptr = FFI::Libvirt.virDomainLookupByID(interface, id)
         ptr.null? ? nil : Domain.new(ptr)
       end
 
@@ -67,10 +75,7 @@ module Libvirt
         ids = read_array(:virConnectListDomains, :virConnectNumOfDomains, :int)
 
         # Lookup all the IDs and make them proper Domain objects
-        ids.collect do |id|
-          pointer = FFI::Libvirt.virDomainLookupByID(interface, id)
-          pointer.null? ? nil : Domain.new(pointer)
-        end
+        ids.collect { |id| find_by_id(id) }
       end
 
       # Returns all the inactive (not running) domains for the connection
@@ -83,10 +88,7 @@ module Libvirt
         ids = read_array(:virConnectListDefinedDomains, :virConnectNumOfDefinedDomains, :string)
 
         # Lookup all the names and make them proper Domain objects
-        ids.collect do |id|
-          pointer = FFI::Libvirt.virDomainLookupByName(interface, id)
-          pointer.null? ? nil : Domain.new(pointer)
-        end
+        ids.collect { |id| find_by_name(id) }
       end
 
       # Returns all domains (active and inactive) for the connection this collection
