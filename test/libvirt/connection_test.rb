@@ -59,6 +59,10 @@ Protest.describe("connection") do
       assert_equal "Test", result
     end
 
+    should "provide the max virtual CPUs" do
+      assert_equal 32, @cxn.max_virtual_cpus("test")
+    end
+
     should "provide the hypervisor version of the connection" do
       result = nil
       assert_nothing_raised { result = @cxn.hypervisor_version }

@@ -139,6 +139,13 @@ module Libvirt
     end
     alias :hypervisor :type
 
+    # Returns the maximum number of virtual CPUs for a given domain type.
+    #
+    # @return [Integer]
+    def max_virtual_cpus(type)
+      FFI::Libvirt.virConnectGetMaxVcpus(self, type)
+    end
+
     # Returns a boolean of whether the connection is encrypted or not.
     #
     # @return [Boolean]
