@@ -18,32 +18,28 @@ module Libvirt
       #
       # @return [StorageVolume]
       def find_by_name(name)
-        ptr = FFI::Libvirt.virStorageVolLookupByName(interface, name)
-        ptr.null? ? nil : StorageVolume.new(ptr)
+        nil_or_object(FFI::Libvirt.virStorageVolLookupByName(interface, name), StorageVolume)
       end
 
       # Searches for a storage volume by key.
       #
       # @return [StorageVolume]
       def find_by_key(key)
-        ptr = FFI::Libvirt.virStorageVolLookupByKey(interface.connection, key)
-        ptr.null? ? nil : StorageVolume.new(ptr)
+        nil_or_object(FFI::Libvirt.virStorageVolLookupByKey(interface.connection, key), StorageVolume)
       end
 
       # Searches for a storage volume by path.
       #
       # @return [StorageVolume]
       def find_by_path(path)
-        ptr = FFI::Libvirt.virStorageVolLookupByPath(interface.connection, path)
-        ptr.null? ? nil : StorageVolume.new(ptr)
+        nil_or_object(FFI::Libvirt.virStorageVolLookupByPath(interface.connection, path), StorageVolume)
       end
 
       # Creates a new storage volume from an XML specification.
       #
       # @return [StorageVolume]
       def create(spec)
-        result = FFI::Libvirt.virStorageVolCreateXML(interface, spec, 0)
-        result ? StorageVolume.new(result) : nil
+        nil_or_object(FFI::Libvirt.virStorageVolCreateXML(interface, spec, 0), StorageVolume)
       end
 
       # Returns all storage volumes. Its unnecessary to call this directly
@@ -53,8 +49,7 @@ module Libvirt
       # @return [Array]
       def all
         read_array(:virStoragePoolListVolumes, :virStoragePoolNumOfVolumes, :string).collect do |name|
-          ptr = FFI::Libvirt.virStorageVolLookupByName(interface, name)
-          ptr.null? ? nil : StorageVolume.new(ptr)
+          find_by_name(name)
         end
       end
     end

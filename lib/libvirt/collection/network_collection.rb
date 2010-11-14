@@ -9,8 +9,7 @@ module Libvirt
       # @return [Array<Network>]
       def active
         read_array(:virConnectListNetworks, :virConnectNumOfNetworks, :string).collect do |name|
-          pointer = FFI::Libvirt.virNetworkLookupByName(interface, name)
-          pointer.null? ? nil : Network.new(pointer)
+          nil_or_object(FFI::Libvirt.virNetworkLookupByName(interface, name), Network)
         end
       end
 
@@ -20,8 +19,7 @@ module Libvirt
       # @return [Array<Network>]
       def inactive
         read_array(:virConnectListDefinedNetworks, :virConnectNumOfDefinedNetworks, :string).collect do |name|
-          pointer = FFI::Libvirt.virNetworkLookupByName(interface, name)
-          pointer.null? ? nil : Network.new(pointer)
+          nil_or_object(FFI::Libvirt.virNetworkLookupByName(interface, name), Network)
         end
       end
 

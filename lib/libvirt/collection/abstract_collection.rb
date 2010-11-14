@@ -38,6 +38,12 @@ module Libvirt
         count_returned = FFI::Libvirt.send(getter, interface, output_ptr, count_max)
         output_ptr.send("get_array_of_#{type}", 0, count_returned)
       end
+
+      # A helper method to wrap the resulting method call in an object
+      # if the pointer result is not null, or return nil otherwise.
+      def nil_or_object(result, klass)
+        result.null? ? nil : klass.new(result)
+      end
     end
   end
 end

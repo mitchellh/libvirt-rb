@@ -23,24 +23,21 @@ module Libvirt
       #
       # @return [Domain]
       def find_by_name(name)
-        ptr = FFI::Libvirt.virDomainLookupByName(interface, name)
-        ptr.null? ? nil : Domain.new(ptr)
+        nil_or_object(FFI::Libvirt.virDomainLookupByName(interface, name), Domain)
       end
 
       # Searches for a domain by ID.
       #
       # @return [Domain]
       def find_by_id(id)
-        ptr = FFI::Libvirt.virDomainLookupByID(interface, id)
-        ptr.null? ? nil : Domain.new(ptr)
+        nil_or_object(FFI::Libvirt.virDomainLookupByID(interface, id), Domain)
       end
 
       # Searches for a domain by UUID.
       #
       # @return [Domain]
       def find_by_uuid(uuid)
-        ptr = FFI::Libvirt.virDomainLookupByUUIDString(interface, uuid)
-        ptr.null? ? nil : Domain.new(ptr)
+        nil_or_object(FFI::Libvirt.virDomainLookupByUUIDString(interface, uuid), Domain)
       end
 
       # Defines a new domain with the given valid specification. This method
@@ -50,8 +47,7 @@ module Libvirt
       # @return [Domain]
       def define(spec)
         spec = spec.is_a?(String) ? spec : spec.to_xml
-        ptr = FFI::Libvirt.virDomainDefineXML(interface, spec)
-        ptr.null? ? nil : Domain.new(ptr)
+        nil_or_object(FFI::Libvirt.virDomainDefineXML(interface, spec), Domain)
       end
 
       # Creates a new domain and starts it. This domain configuration is not
@@ -61,8 +57,7 @@ module Libvirt
       # @return [Domain]
       def create(spec)
         spec = spec.is_a?(String) ? spec : spec.to_xml
-        ptr = FFI::Libvirt.virDomainCreateXML(interface, spec, 0)
-        ptr.null? ? nil : Domain.new(ptr)
+        nil_or_object(FFI::Libvirt.virDomainCreateXML(interface, spec, 0), Domain)
       end
 
       # Returns all the active (running) domains for the connection which this

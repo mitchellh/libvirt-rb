@@ -7,8 +7,7 @@ module Libvirt
       # @return [Array<StoragePool>]
       def inactive
         read_array(:virConnectListDefinedStoragePools, :virConnectNumOfDefinedStoragePools, :string).collect do |name|
-          pointer = FFI::Libvirt.virStoragePoolLookupByName(interface, name)
-          pointer.null? ? nil : StoragePool.new(pointer)
+          nil_or_object(FFI::Libvirt.virStoragePoolLookupByName(interface, name), StoragePool)
         end
       end
 
@@ -17,8 +16,7 @@ module Libvirt
       # @return [Array<StoragePool>]
       def active
         read_array(:virConnectListStoragePools, :virConnectNumOfStoragePools, :string).collect do |name|
-          pointer = FFI::Libvirt.virStoragePoolLookupByName(interface, name)
-          pointer.null? ? nil : StoragePool.new(pointer)
+          nil_or_object(FFI::Libvirt.virStoragePoolLookupByName(interface, name), StoragePool)
         end
       end
 

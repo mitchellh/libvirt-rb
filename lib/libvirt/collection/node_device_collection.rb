@@ -9,9 +9,9 @@ module Libvirt
         count_max = FFI::Libvirt.virNodeNumOfDevices(interface, nil, 0)
         output_ptr = FFI::MemoryPointer.new(:pointer, count_max)
         count_returned = FFI::Libvirt.virNodeListDevices(interface, nil, output_ptr, count_max, 0)
+
         output_ptr.get_array_of_string(0, count_returned).collect do |name|
-          ptr = FFI::Libvirt.virNodeDeviceLookupByName(interface, name)
-          ptr.null? ? nil : NodeDevice.new(ptr)
+          nil_or_object(FFI::Libvirt.virNodeDeviceLookupByName(interface, name), NodeDevice)
         end
       end
     end
