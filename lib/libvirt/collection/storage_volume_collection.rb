@@ -10,7 +10,8 @@ module Libvirt
       # @return [Array]
       def all
         read_array(:virStoragePoolListVolumes, :virStoragePoolNumOfVolumes, :string).collect do |name|
-          name
+          ptr = FFI::Libvirt.virStorageVolLookupByName(interface, name)
+          ptr.null? ? nil : StorageVolume.new(ptr)
         end
       end
     end
