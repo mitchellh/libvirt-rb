@@ -31,6 +31,27 @@ module Libvirt
       FFI::Libvirt.virStorageVolGetPath(self)
     end
 
+    # Returns the type of this storage volume.
+    #
+    # @return [Symbol]
+    def type
+      info[:type]
+    end
+
+    # Returns the capacity of this volume in bytes.
+    #
+    # @return [Integer]
+    def capacity
+      info[:capacity]
+    end
+
+    # Returns the currently allocated number of bytes.
+    #
+    # @return [Integer]
+    def allocation
+      info[:allocation]
+    end
+
     # Wipe the contents of a volume so it is not readable in the future.
     #
     # @return [Boolean]
@@ -61,6 +82,16 @@ module Libvirt
     end
 
     protected
+
+    # Returns the {FFI::Libvirt::StorageVolumeInfo} object for this volume.
+    # The various fields of the info struct are accessible via other getters.
+    #
+    # @return [FFI::Libvirt::StorageVolumeInfo]
+    def info
+      result = FFI::Libvirt::StorageVolumeInfo.new
+      FFI::Libvirt.virStorageVolGetInfo(self, result.to_ptr)
+      result
+    end
 
     # Release the resources underlying this storage volume. This is called
     # automatically when this volume is garbage collected.

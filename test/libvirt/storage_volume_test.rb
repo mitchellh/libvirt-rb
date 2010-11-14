@@ -41,4 +41,16 @@ XML
   should "be able to retrieve the path" do
     assert_equal "/default-pool/test_vm_A.vdi", @instance.path
   end
+
+  should "be able to retrieve the type of this volume" do
+    assert_equal :file, @instance.type
+  end
+
+  should "be able to retrieve the capacity" do
+    assert_equal 8589934592, @instance.capacity
+  end
+
+  should "be able to retrieve the allocation" do
+    assert_equal 33280, @instance.allocation
+  end
 end
