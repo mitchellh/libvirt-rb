@@ -31,6 +31,13 @@ module Libvirt
       FFI::Libvirt.virStorageVolGetPath(self)
     end
 
+    # Wipe the contents of a volume so it is not readable in the future.
+    #
+    # @return [Boolean]
+    def wipe
+      FFI::Libvirt.virStorageVolWipe(self, 0) == 0
+    end
+
     # Returns the XML description of this storage volume.
     #
     # @return [String]
