@@ -23,7 +23,7 @@ module Libvirt
       #
       # @return [Network]
       def find_by_uuid(uuid)
-        nil_or_object(FFI::Libvirt.virNetworkLookupByUUID(interface, uuid), Network)
+        nil_or_object(FFI::Libvirt.virNetworkLookupByUUIDString(interface, uuid), Network)
       end
 
       # Returns all the active networks for the connection which this
