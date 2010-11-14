@@ -142,7 +142,7 @@ module FFI
       attach_function :virStoragePoolUndefine, [:virStoragePoolPtr], :int
       attach_function :virStoragePoolCreate, [:virStoragePoolPtr, :uint], :int
       attach_function :virStoragePoolDestroy, [:virStoragePoolPtr], :int
-      attach_function :virStoragePoolDelete, [:virStoragePoolPtr, :uint], :int
+      attach_function :virStoragePoolDelete, [:virStoragePoolPtr, :virStoragePoolDeleteFlags], :int
       attach_function :virStoragePoolRef, [:virStoragePoolPtr], :int
       attach_function :virStoragePoolFree, [:virStoragePoolPtr], :int
       attach_function :virStoragePoolRefresh, [:virStoragePoolPtr, :uint], :int

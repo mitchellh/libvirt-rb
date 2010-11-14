@@ -62,6 +62,15 @@ module Libvirt
     end
     alias :start :create
 
+    # Delete the underlying pool resources. This is a non-recoverable
+    # operation. This won't undefine the pool.
+    #
+    # @return [Boolean]
+    def delete(type=nil)
+      type ||= :normal
+      FFI::Libvirt.virStoragePoolDelete(self, type) == 0
+    end
+
     # Stops an active storage pool.
     #
     # @return [Boolean]
@@ -71,7 +80,8 @@ module Libvirt
     alias :stop :destroy
 
     # Undefines the storage pool. This requires that the storage pool be
-    # inactive.
+    # inactive. This won't delete the underlying resources of the storage pool,
+    # however. Run {#delete} for that.
     #
     # @return [Boolean]
     def undefine

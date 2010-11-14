@@ -86,6 +86,24 @@ XML
     assert_nothing_raised { @instance.start }
   end
 
+  context "deleting underlying resources" do
+    setup do
+      @instance.stop
+    end
+
+    should "be able to delete underlying resources" do
+      assert @instance.delete
+    end
+
+    should "be able to specify type of delete" do
+      assert @instance.delete(:zeroed)
+    end
+
+    should "error if invalid type is given" do
+      assert_raises(TypeError) { @instance.delete(:hmm) }
+    end
+  end
+
   should "be able to be stopped" do
     assert @instance.active?
     @instance.stop

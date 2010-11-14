@@ -54,6 +54,7 @@ module FFI
 
     # Enums
     enum :virDomainState, [:nostate, :running, :blocked, :paused, :shutdown, :shutoff, :crashed]
+    enum :virStoragePoolDeleteFlags, [:normal, :zeroed]
     enum :virStoragePoolState, [:inactive, :building, :running, :degraded, :inaccessible]
     enum :virStorageVolType, [:file, :block]
   end
