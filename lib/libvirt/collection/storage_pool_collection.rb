@@ -26,7 +26,11 @@ module Libvirt
       #
       # @return [Array<StoragePool>]
       def all
-        active + inactive
+        inactive + active
+      rescue Exception::LibvirtError
+        # If inactive isn't supported, then we just return the active
+        # storage pools.
+        active
       end
     end
   end
