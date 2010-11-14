@@ -86,6 +86,11 @@ XML
     assert_nothing_raised { @instance.start }
   end
 
+  should "be able to build storage pool" do
+    @instance.stop
+    assert @instance.build
+  end
+
   context "deleting underlying resources" do
     setup do
       @instance.stop

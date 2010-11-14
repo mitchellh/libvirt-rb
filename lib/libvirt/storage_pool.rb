@@ -53,6 +53,13 @@ module Libvirt
       FFI::Libvirt.virStoragePoolIsPersistent(self) == 1
     end
 
+    # Build the underlying storage pool.
+    #
+    # @return [Boolean]
+    def build
+      FFI::Libvirt.virStoragePoolBuild(self, 0) == 0
+    end
+
     # Starts an inactive storage pool.
     #
     # @return [Boolean]

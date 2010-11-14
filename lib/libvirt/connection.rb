@@ -113,6 +113,14 @@ module Libvirt
       Collection::StoragePoolCollection.new(self)
     end
 
+    # Returns a node object to retrieve information about the node which
+    # this connection is established to.
+    #
+    # @return [Node]
+    def node
+      Node.new(self)
+    end
+
     # Returns the capabilities of the connected hypervisor/driver. Returns them
     # as an XML string. This method calls `virConnectGetCapabilities`. This will
     # probably be parsed into a more useful format in the future.

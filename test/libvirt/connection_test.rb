@@ -45,6 +45,13 @@ Protest.describe("connection") do
       assert_equal actual, version
     end
 
+    should "provide the node" do
+      result = @cxn.node
+      assert result
+      assert result.is_a?(Libvirt::Node)
+      assert result.connection.eql?(@cxn)
+    end
+
     should "provide the capabilities of the connection" do
       assert_nothing_raised { @cxn.capabilities }
     end
