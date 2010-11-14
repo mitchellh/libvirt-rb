@@ -6,6 +6,23 @@ Protest.describe("network collection") do
     @instance = @klass.new(Libvirt.connect("test:///default"))
   end
 
+  context "finding" do
+    should "be able to find by name or UUID" do
+      assert @instance.find("default")
+      assert !@instance.find("foo")
+    end
+
+    should "be able to find by name" do
+      assert @instance.find_by_name("default")
+      assert_raises(Libvirt::Exception::LibvirtError) {  @instance.find_by_name("foo") }
+    end
+
+    should "be able to find by UUID" do
+      assert_raises(Libvirt::Exception::LibvirtError) { @instance.find_by_uuid("bad") }
+      # TODO: Test successful case
+    end
+  end
+
   should "provide a list of active networks" do
     active = @instance.active
     assert active.is_a?(Array)
