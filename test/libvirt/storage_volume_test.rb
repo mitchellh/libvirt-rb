@@ -10,7 +10,8 @@ Protest.describe("storage volume") do
     }
 
     @connection = Libvirt.connect("test:///default")
-    @instance = @connection.storage_pools.first.volumes.create(<<-XML)
+    @pool = @connection.storage_pools.first
+    @instance = @pool.volumes.create(<<-XML)
 <volume>
   <name>#{@data[:name]}</name>
   <key>#{@data[:key]}</key>
@@ -52,5 +53,11 @@ XML
 
   should "be able to retrieve the allocation" do
     assert_equal 33280, @instance.allocation
+  end
+
+  should "be able to delete the storage volume" do
+    assert @pool.volumes.include?(@instance)
+    @instance.delete
+    assert !@pool.volumes.include?(@instance)
   end
 end

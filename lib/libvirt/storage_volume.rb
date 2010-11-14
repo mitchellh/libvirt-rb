@@ -59,6 +59,13 @@ module Libvirt
       FFI::Libvirt.virStorageVolWipe(self, 0) == 0
     end
 
+    # Delete the storage volume rom the pool.
+    #
+    # @return [Boolean]
+    def delete
+      FFI::Libvirt.virStorageVolDelete(self, 0) == 0
+    end
+
     # Returns the XML description of this storage volume.
     #
     # @return [String]
