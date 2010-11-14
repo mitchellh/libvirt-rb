@@ -32,8 +32,8 @@ module Libvirt
       # @param [Symbol] count Method for getting the size of the array
       # @param [Symbol] type Type of value returned
       # @return [Array]
-      def read_array(getter, count, type)
-        count_max = FFI::Libvirt.send(count, interface)
+      def read_array(getter, counter, type)
+        count_max = FFI::Libvirt.send(counter, interface)
         output_ptr = FFI::MemoryPointer.new(:pointer, count_max)
         count_returned = FFI::Libvirt.send(getter, interface, output_ptr, count_max)
         output_ptr.send("get_array_of_#{type}", 0, count_returned)

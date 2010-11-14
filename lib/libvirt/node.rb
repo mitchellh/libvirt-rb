@@ -25,6 +25,13 @@ module Libvirt
       @connection ||= @pointer.is_a?(Connection) ? @pointer : Connection.new(@pointer)
     end
 
+    # Returns the devices connected to this node.
+    #
+    # @return [Collection::NodeDeviceCollection]
+    def devices
+      Collection::NodeDeviceCollection.new(connection)
+    end
+
     # Returns the free memory available on the node. This is returned
     # in bytes.
     #

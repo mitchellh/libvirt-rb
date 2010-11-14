@@ -18,6 +18,7 @@ module Libvirt
   autoload :Exception, 'libvirt/exception'
   autoload :Network, 'libvirt/network'
   autoload :Node, 'libvirt/node'
+  autoload :NodeDevice, 'libvirt/node_device'
   autoload :Spec, 'libvirt/spec'
   autoload :StoragePool, 'libvirt/storage_pool'
   autoload :StorageVolume, 'libvirt/storage_volume'
