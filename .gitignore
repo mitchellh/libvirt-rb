@@ -5,3 +5,6 @@ pkg/*
 doc/
 test.rb
 test.c
+
+# Rubinius
+*.rbc
