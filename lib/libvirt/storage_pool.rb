@@ -9,6 +9,13 @@ module Libvirt
       ObjectSpace.define_finalizer(self, method(:finalize))
     end
 
+    # Returns the connection of this storage pool.
+    #
+    # @return [Connection]
+    def connection
+      Connection.new(FFI::Libvirt.virStoragePoolGetConnect(self))
+    end
+
     # Returns the name of the network as a string.
     #
     # @return [String]

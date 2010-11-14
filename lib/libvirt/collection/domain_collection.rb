@@ -12,9 +12,11 @@ module Libvirt
       # Searches for a domain by name or UUID. This will search
       # both, searching name first then UUID. You may use the {#find_by_name}
       # and {#find_by_uuid} directly if this behavior is not what you want.
+      #
+      # @return [Domain]
       def find(value)
         result = find_by_name(value) rescue nil
-        result ||= find_by_uuid(value)
+        result ||= find_by_uuid(value) rescue nil
       end
 
       # Searches for a domain by name.

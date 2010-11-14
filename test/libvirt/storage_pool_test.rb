@@ -32,6 +32,11 @@ Protest.describe("storage pool") do
 XML
   end
 
+  should "be able to retrieve the connection" do
+    result = @instance.connection
+    assert result.is_a?(Libvirt::Connection)
+  end
+
   should "provide the name" do
     result = @instance.name
     assert_equal @data[:name], result

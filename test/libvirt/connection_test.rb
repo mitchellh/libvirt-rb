@@ -6,6 +6,12 @@ Protest.describe("connection") do
   end
 
   context "connecting" do
+    should "connect given a pointer to a connection" do
+      pointer = FFI::Libvirt.virConnectOpen("test:///default")
+      result = @klass.new(pointer)
+      assert_equal pointer, result.to_ptr
+    end
+
     should "connect and return a connection" do
       result = nil
       assert_nothing_raised { result = @klass.new("test:///default") }

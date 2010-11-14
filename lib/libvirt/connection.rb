@@ -57,10 +57,19 @@ module Libvirt
       opts = args.last.is_a?(Hash) ? args.pop : {}
       uri = args.first
 
-      if opts[:readonly]
-        @pointer = FFI::Libvirt.virConnectOpenReadOnly(uri)
+      if args.first.is_a?(FFI::Pointer)
+        # Store away the pointer and increase the reference count, since
+        # we're taking ownership of this pointer directly.
+        @pointer = args.first
+        FFI::Libvirt.virConnectRef(self)
+      end
+
+      # If the pointer is not yet set, attempt to open a connection with
+      # the specified URI.
+      @pointer ||= if opts[:readonly]
+        FFI::Libvirt.virConnectOpenReadOnly(uri)
       else
-        @pointer = FFI::Libvirt.virConnectOpen(uri)
+        FFI::Libvirt.virConnectOpen(uri)
       end
 
       ObjectSpace.define_finalizer(self, method(:finalize))
