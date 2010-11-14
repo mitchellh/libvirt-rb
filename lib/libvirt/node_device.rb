@@ -25,6 +25,37 @@ module Libvirt
       FFI::Libvirt.virNodeDeviceGetXMLDesc(self, 0)
     end
 
+    # Detaches the device from the node itself so that it may be bound to
+    # a guest domain.
+    #
+    # @return [Boolean]
+    def dettach
+      FFI::Libvirt.virNodeDeviceDettach(self) == 0
+    end
+
+    # Reattach the device onto the node.
+    #
+    # @return [Boolena]
+    def reattach
+      FFI::Libvirt.virNodeDeviceReAttach(self) == 0
+    end
+
+    # Reset the device. The exact semantics of this method are hypervisor
+    # specific.
+    #
+    # @return [Boolena]
+    def reset
+      FFI::Libvirt.virNodeDeviceReset(self) == 0
+    end
+
+    # Destroy the device, removing the virtual device from the host operating
+    # system.
+    #
+    # @return [Boolean]
+    def destroy
+      FFI::Libvirt.virNodeDeviceDestroy(self) == 0
+    end
+
     # Returns the underlying `virNodeDevicePtr`. This allows this object to
     # be used directly with FFI methods.
     #
