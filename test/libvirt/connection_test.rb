@@ -73,35 +73,35 @@ Protest.describe("connection") do
       result = nil
       assert_nothing_raised { result = @cxn.domains }
       assert result.is_a?(Libvirt::Collection::DomainCollection)
-      assert @cxn.equal?(result.connection)
+      assert @cxn.equal?(result.interface)
     end
 
     should "provide a list of interfaces" do
       result = nil
       assert_nothing_raised { result = @cxn.interfaces }
       assert result.is_a?(Libvirt::Collection::InterfaceCollection)
-      assert @cxn.equal?(result.connection)
+      assert @cxn.equal?(result.interface)
     end
 
     should "providea list of networks" do
       result = nil
       assert_nothing_raised { result = @cxn.networks }
       assert result.is_a?(Libvirt::Collection::NetworkCollection)
-      assert @cxn.equal?(result.connection)
+      assert @cxn.equal?(result.interface)
     end
 
     should "provide a list of NW filters" do
       result = nil
       assert_nothing_raised { result = @cxn.nwfilters }
       assert result.is_a?(Libvirt::Collection::NWFilterCollection)
-      assert @cxn.equal?(result.connection)
+      assert @cxn.equal?(result.interface)
     end
 
     should "provide a list of storage pools" do
       result = nil
       assert_nothing_raised { result = @cxn.storage_pools }
       assert result.is_a?(Libvirt::Collection::StoragePoolCollection)
-      assert @cxn.equal?(result.connection)
+      assert @cxn.equal?(result.interface)
     end
 
     should "check if encrypted" do

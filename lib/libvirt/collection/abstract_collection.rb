@@ -13,14 +13,14 @@ module Libvirt
       extend Forwardable
       def_delegators :all, :first, :last, :each, :length, :[], :inspect, :to_s
 
-      attr_reader :connection
+      attr_reader :interface
 
-      # Initializes a new collection. All collections belong to a {Connection}
-      # object so that is expected to be passed in as well.
+      # Initializes a new collection. All collections belong to a parent
+      # structure in some way, which is expected to be passed in here.
       #
-      # @param [Connection]
-      def initialize(connection)
-        @connection = connection
+      # @param [Object] Parent object
+      def initialize(interface)
+        @interface = interface
       end
 
       protected
@@ -33,9 +33,9 @@ module Libvirt
       # @param [Symbol] type Type of value returned
       # @return [Array]
       def read_array(getter, count, type)
-        count_max = FFI::Libvirt.send(count, connection)
+        count_max = FFI::Libvirt.send(count, interface)
         output_ptr = FFI::MemoryPointer.new(:pointer, count_max)
-        count_returned = FFI::Libvirt.send(getter, connection, output_ptr, count_max)
+        count_returned = FFI::Libvirt.send(getter, interface, output_ptr, count_max)
         output_ptr.send("get_array_of_#{type}", 0, count_returned)
       end
     end

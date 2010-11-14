@@ -6,5 +6,6 @@ module Libvirt
     autoload :NetworkCollection, 'libvirt/collection/network_collection'
     autoload :NWFilterCollection, 'libvirt/collection/nwfilter_collection'
     autoload :StoragePoolCollection, 'libvirt/collection/storage_pool_collection'
+    autoload :StorageVolumeCollection, 'libvirt/collection/storage_volume_collection'
   end
 end

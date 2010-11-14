@@ -8,7 +8,7 @@ Protest.describe("abstract collection") do
     @instance = @klass.new(@connection)
   end
 
-  should "have connection be available as an attribute" do
-    assert_equal @connection, @instance.connection
+  should "have interface be available as an attribute" do
+    assert_equal @connection, @instance.interface
   end
 end

@@ -21,7 +21,7 @@ module Libvirt
       #
       # @return [Domain]
       def find_by_name(name)
-        ptr = FFI::Libvirt.virDomainLookupByName(connection, name)
+        ptr = FFI::Libvirt.virDomainLookupByName(interface, name)
         ptr.null? ? nil : Domain.new(ptr)
       end
 
@@ -29,7 +29,7 @@ module Libvirt
       #
       # @return [Domain]
       def find_by_uuid(uuid)
-        ptr = FFI::Libvirt.virDomainLookupByUUIDString(connection, uuid)
+        ptr = FFI::Libvirt.virDomainLookupByUUIDString(interface, uuid)
         ptr.null? ? nil : Domain.new(ptr)
       end
 
@@ -40,7 +40,7 @@ module Libvirt
       # @return [Domain]
       def define(spec)
         spec = spec.is_a?(String) ? spec : spec.to_xml
-        ptr = FFI::Libvirt.virDomainDefineXML(connection, spec)
+        ptr = FFI::Libvirt.virDomainDefineXML(interface, spec)
         ptr.null? ? nil : Domain.new(ptr)
       end
 
@@ -51,7 +51,7 @@ module Libvirt
       # @return [Domain]
       def create(spec)
         spec = spec.is_a?(String) ? spec : spec.to_xml
-        ptr = FFI::Libvirt.virDomainCreateXML(connection, spec, 0)
+        ptr = FFI::Libvirt.virDomainCreateXML(interface, spec, 0)
         ptr.null? ? nil : Domain.new(ptr)
       end
 
@@ -66,7 +66,7 @@ module Libvirt
 
         # Lookup all the IDs and make them proper Domain objects
         ids.collect do |id|
-          pointer = FFI::Libvirt.virDomainLookupByID(connection, id)
+          pointer = FFI::Libvirt.virDomainLookupByID(interface, id)
           pointer.null? ? nil : Domain.new(pointer)
         end
       end
@@ -82,7 +82,7 @@ module Libvirt
 
         # Lookup all the names and make them proper Domain objects
         ids.collect do |id|
-          pointer = FFI::Libvirt.virDomainLookupByName(connection, id)
+          pointer = FFI::Libvirt.virDomainLookupByName(interface, id)
           pointer.null? ? nil : Domain.new(pointer)
         end
       end

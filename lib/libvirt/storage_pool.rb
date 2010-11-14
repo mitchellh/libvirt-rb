@@ -99,6 +99,13 @@ module Libvirt
       info[:available]
     end
 
+    # Returns the volumes associated with this storage pool.
+    #
+    # @return [Collection::StorageVolumeCollection]
+    def volumes
+      Collection::StorageVolumeCollection.new(self)
+    end
+
     # Provide a meaningful equality check for two storage pools by comparing
     # UUID.
     #

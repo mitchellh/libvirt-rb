@@ -94,6 +94,12 @@ XML
     assert !@conn.storage_pools.include?(@instance)
   end
 
+  should "provide a collection of volumes" do
+    result = nil
+    assert_nothing_raised { result = @instance.volumes }
+    assert result.is_a?(Libvirt::Collection::StorageVolumeCollection)
+  end
+
   should "provide a `to_ptr` method to get the pointer" do
     result = nil
     assert_nothing_raised { result = @instance.to_ptr }
