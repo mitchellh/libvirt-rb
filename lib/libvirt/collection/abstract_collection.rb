@@ -11,7 +11,7 @@ module Libvirt
     class AbstractCollection
       include Enumerable
       extend Forwardable
-      def_delegators :all, :first, :each, :length, :[], :inspect, :to_s
+      def_delegators :all, :first, :last, :each, :length, :[], :inspect, :to_s
 
       attr_reader :connection
 
