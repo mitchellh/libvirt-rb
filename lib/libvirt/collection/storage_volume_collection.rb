@@ -3,6 +3,14 @@ module Libvirt
     # Represents a collection of storage volumes, which belongs to a
     # storage pool.
     class StorageVolumeCollection < AbstractCollection
+      # Creates a new storage volume from an XML specification.
+      #
+      # @return [StorageVolume]
+      def create(spec)
+        result = FFI::Libvirt.virStorageVolCreateXML(interface, spec, 0)
+        result ? StorageVolume.new(result) : nil
+      end
+
       # Returns all storage volumes. Its unnecessary to call this directly
       # since the {#all} array is delegated for the various `Array`-like
       # methods.
