@@ -3,6 +3,16 @@ module Libvirt
     # Represents a collection of devices on a given node. Retrieve
     # this collection using {Node#devices}.
     class NodeDeviceCollection < AbstractCollection
+      # Create a node device on the host system.
+      #
+      # @return [NodeDevice]
+      def create(spec)
+        nil_or_object(FFI::Libvirt.virNodeDeviceCreateXML(interface, spec, 0), NodeDevice)
+      end
+
+      # Returns all of the node devices for the given connection.
+      #
+      # @return [Array<NodeDevice>]
       def all
         # We can't use the `read_array` helper here due to the methods being
         # a bit different.
