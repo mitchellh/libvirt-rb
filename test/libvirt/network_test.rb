@@ -29,6 +29,16 @@ XML
     assert_equal @data[:uuid], result
   end
 
+  should "provide the bridge of the network" do
+    assert_raise(Libvirt::Exception::LibvirtError) { @instance.bridge }
+  end
+
+  should "control autostart" do
+    assert !@instance.autostart?
+    @instance.autostart = true
+    assert @instance.autostart?
+  end
+
   should "provide an active check" do
     assert !@instance.active?
     @instance.start

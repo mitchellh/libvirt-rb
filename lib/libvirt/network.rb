@@ -33,7 +33,31 @@ module Libvirt
       output_ptr.read_string
     end
 
-    # Deterine if the network is active or not.
+    # Returns the bridge that this network is attached to.
+    #
+    # @return [String]
+    def bridge
+      FFI::Libvirt.virNetworkGetBridgeName(self)
+    end
+
+    # Determine if the network is set to autostart on boot or not.
+    #
+    # @return [Boolean]
+    def autostart?
+      output_ptr = FFI::MemoryPointer.new(:int)
+      return nil if FFI::Libvirt.virNetworkGetAutostart(self, output_ptr) < 0
+      output_ptr.read_int == 1
+    end
+
+    # Set the autostart value on the network.
+    #
+    # @return [Boolean]
+    def autostart=(value)
+      FFI::Libvirt.virNetworkSetAutostart(self, value ? 1 : 0)
+      value
+    end
+
+    # Determine if the network is active or not.
     #
     # @return [Boolean]
     def active?
