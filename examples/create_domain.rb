@@ -2,9 +2,9 @@ require "rubygems"
 require "bundler/setup"
 require "libvirt"
 
-# NOTE: The domain creation interface is currently under heavy
-# construction and will likely change. This example file showcases
-# how it works currently.
+# Warning: In the current version of the libvirt-rb library, the
+# spec classes are not completely thought out and for now it is
+# recommended that full XML strings are used.
 
 spec = Libvirt::Spec::Domain.new
 
