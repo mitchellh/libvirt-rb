@@ -1,0 +1,1451 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Class: Libvirt::Connection</title>
+<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (C)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../Libvirt.html" title="Libvirt (module)">Libvirt</a></span></span>
+     &raquo; 
+    <span class="title">Connection</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: Libvirt::Connection
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Libvirt::Connection</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/libvirt/connection.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>Describes a connection to an instance of libvirt. This instance may be local
+or remote.</p>
+
+<h1>Initiating a Connection</h1>
+
+<h2>Basic</h2>
+
+<p>A basic example of initiating a connection is to just allow the libvirt client
+library to choose the best (first available) hypervisor for you. If you're only
+running one hypervisor or you're not sure what is available on your machine,
+then this is the easiest option to get started:</p>
+
+<pre class="code"><span class='id conn'>conn</span> <span class='op'>=</span> <span class='const'>Libvirt</span><span class='op'>::</span><span class='const'>Connection</span><span class='period'>.</span><span class='id new'>new</span>
+</pre>
+
+<p>A shortcut is also provided for your convenience:</p>
+
+<pre class="code"><span class='id conn'>conn</span> <span class='op'>=</span> <span class='const'>Libvirt</span><span class='period'>.</span><span class='id connect'>connect</span>
+</pre>
+
+<h2>Specifying a URI</h2>
+
+<p>Libvirt connections are made by giving a URI to libvirt, which can describe
+a local or remote libvirt instance (remote being that <code>libvirtd</code> is running).
+The following is an example of a local VirtualBox connection:</p>
+
+<pre class="code"><span class='id conn'>conn</span> <span class='op'>=</span> <span class='const'>Libvirt</span><span class='op'>::</span><span class='const'>Connection</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>vbox:///session</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+</pre>
+
+<p>And perhaps a remote qemu connection:</p>
+
+<pre class="code"><span class='id conn'>conn</span> <span class='op'>=</span> <span class='const'>Libvirt</span><span class='op'>::</span><span class='const'>Connection</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>qemu+tcp://10.0.0.1/system</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+</pre>
+
+<h1>Readonly Connections</h1>
+
+<p>A readonly connection can be made by specifying the <code>readonly</code> option to be
+truthy. A couple examples follow:</p>
+
+<pre class="code"><span class='id conn'>conn</span> <span class='op'>=</span> <span class='const'>Libvirt</span><span class='op'>::</span><span class='const'>Connection</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>vbox:///session</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbol'>:readonly</span> <span class='op'>=&gt;</span> <span class='kw'>true</span><span class='rparen'>)</span>
+<span class='id conn'>conn</span> <span class='op'>=</span> <span class='const'>Libvirt</span><span class='op'>::</span><span class='const'>Connection</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='symbol'>:readonly</span> <span class='op'>=&gt;</span> <span class='kw'>true</span><span class='rparen'>)</span>
+</pre>
+
+<h1>Basic Information of a Connection</h1>
+
+<p>Once you have a connection object, you can gather basic information about it
+by using methods such as Connection#name, <span class='object_link'><a href="#capabilities-instance_method" title="Libvirt::Connection#capabilities (method)">Connection#capabilities</a></span>, etc.:</p>
+
+<pre class="code"><span class='id puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Hypervisor type: </span><span class='embexpr_beg'>#{</span><span class='id conn'>conn</span><span class='period'>.</span><span class='id hypervisor'>hypervisor</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='id puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Hypervisor version: </span><span class='embexpr_beg'>#{</span><span class='id conn'>conn</span><span class='period'>.</span><span class='id hypervisor_verison'>hypervisor_verison</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='id puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Library version: </span><span class='embexpr_beg'>#{</span><span class='id conn'>conn</span><span class='period'>.</span><span class='id lib_version'>lib_version</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+</pre>
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#capabilities-instance_method" title="#capabilities (instance method)">- (String) <strong>capabilities</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the capabilities of the connected hypervisor/driver.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#domains-instance_method" title="#domains (instance method)">- (Collection::DomainCollection) <strong>domains</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the domains (both active and inactive) related to this
+connection.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#encrypted%3F-instance_method" title="#encrypted? (instance method)">- (Boolean) <strong>encrypted?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns a boolean of whether the connection is encrypted or not.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#hostname-instance_method" title="#hostname (instance method)">- (String) <strong>hostname</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the system hostname on which the hypervisor is running.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#hypervisor_version-instance_method" title="#hypervisor_version (instance method)">- (Array) <strong>hypervisor_version</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the version of the hypervisor.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Connection) <strong>initialize</strong>(*args) </a>
+    
+
+    
+  </span>
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Opens a new connection to libvirt.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#interfaces-instance_method" title="#interfaces (instance method)">- (Collection::InterfaceCollection) <strong>interfaces</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the interfaces (both active and inactive) related to this
+connection.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#lib_version-instance_method" title="#lib_version (instance method)">- (Array) <strong>lib_version</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the version of <code>libvirt</code> which the daemon on the other side is
+running.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#max_virtual_cpus-instance_method" title="#max_virtual_cpus (instance method)">- (Integer) <strong>max_virtual_cpus</strong>(type) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the maximum number of virtual CPUs for a given domain type.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#networks-instance_method" title="#networks (instance method)">- (Collection::NetworkCollection) <strong>networks</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the networks related to this connection.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#node-instance_method" title="#node (instance method)">- (Node) <strong>node</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns a node object to retrieve information about the node which
+this connection is established to.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#nwfilters-instance_method" title="#nwfilters (instance method)">- (Collection::NWFilterCollection) <strong>nwfilters</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the network filters related to this connection.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#secure%3F-instance_method" title="#secure? (instance method)">- (Boolean) <strong>secure?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns a boolean of whether the connection is secure or not.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#storage_pools-instance_method" title="#storage_pools (instance method)">- (Collection::StoragePoolCollection) <strong>storage_pools</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the storage pools related to this connection.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_ptr-instance_method" title="#to_ptr (instance method)">- (FFI::Pointer) <strong>to_ptr</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Provides the pointer of the connection.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#type-instance_method" title="#type (instance method)">- (String) <strong>type</strong> </a>
+    
+
+    
+      (also: #hypervisor)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the name of the hypervisor.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#uri-instance_method" title="#uri (instance method)">- (String) <strong>uri</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the URI of the connection.</p></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <p class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Libvirt::Connection (class)">Connection</a></span></tt>) <strong>initialize</strong>(*args) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Opens a new connection to libvirt. This connection may be local or remote.
+If a <code>uri</code> is given, an attempt to connect to the given URI is made. The URI
+can be used to specify the location of libvirt along with the hypervisor
+to connect to.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <span class='name'>uri</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/connection.rb', line 56</span>
+
+<span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='op'>*</span><span class='id args'>args</span><span class='rparen'>)</span>
+  <span class='id opts'>opts</span> <span class='op'>=</span> <span class='id args'>args</span><span class='period'>.</span><span class='id last'>last</span><span class='period'>.</span><span class='id is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Hash</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id args'>args</span><span class='period'>.</span><span class='id pop'>pop</span> <span class='op'>:</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+  <span class='id uri'>uri</span> <span class='op'>=</span> <span class='id args'>args</span><span class='period'>.</span><span class='id first'>first</span>
+
+  <span class='kw'>if</span> <span class='id args'>args</span><span class='period'>.</span><span class='id first'>first</span><span class='period'>.</span><span class='id is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>FFI</span><span class='op'>::</span><span class='const'>Pointer</span><span class='rparen'>)</span>
+    <span class='comment'># Store away the pointer and increase the reference count, since
+</span>    <span class='comment'># we're taking ownership of this pointer directly.
+</span>    <span class='ivar'>@pointer</span> <span class='op'>=</span> <span class='id args'>args</span><span class='period'>.</span><span class='id first'>first</span>
+    <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id virConnectRef'>virConnectRef</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># If the pointer is not yet set, attempt to open a connection with
+</span>  <span class='comment'># the specified URI.
+</span>  <span class='ivar'>@pointer</span> <span class='op'>||=</span> <span class='kw'>if</span> <span class='id opts'>opts</span><span class='lbracket'>[</span><span class='symbol'>:readonly</span><span class='rbracket'>]</span>
+    <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id virConnectOpenReadOnly'>virConnectOpenReadOnly</span><span class='lparen'>(</span><span class='id uri'>uri</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id virConnectOpen'>virConnectOpen</span><span class='lparen'>(</span><span class='id uri'>uri</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='const'>ObjectSpace</span><span class='period'>.</span><span class='id define_finalizer'>define_finalizer</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id method'>method</span><span class='lparen'>(</span><span class='symbol'>:finalize</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="capabilities-instance_method">
+  
+    - (<tt>String</tt>) <strong>capabilities</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the capabilities of the connected hypervisor/driver. Returns them
+as an XML string. This method calls <code>virConnectGetCapabilities</code>. This will
+probably be parsed into a more useful format in the future.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+129
+130
+131</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/connection.rb', line 129</span>
+
+<span class='kw'>def</span> <span class='id capabilities'>capabilities</span>
+  <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id virConnectGetCapabilities'>virConnectGetCapabilities</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="domains-instance_method">
+  
+    - (<tt><span class='object_link'><a href="Collection/DomainCollection.html" title="Libvirt::Collection::DomainCollection (class)">Collection::DomainCollection</a></span></tt>) <strong>domains</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the domains (both active and inactive) related to this
+connection. The various states of the domains returned can be
+queried using <span class='object_link'><a href="Domain.html#state-instance_method" title="Libvirt::Domain#state (method)">Domain#state</a></span>.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Collection/DomainCollection.html" title="Libvirt::Collection::DomainCollection (class)">Collection::DomainCollection</a></span></tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+83
+84
+85</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/connection.rb', line 83</span>
+
+<span class='kw'>def</span> <span class='id domains'>domains</span>
+  <span class='const'>Collection</span><span class='op'>::</span><span class='const'>DomainCollection</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="encrypted?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>encrypted?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns a boolean of whether the connection is encrypted or not.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+169
+170
+171
+172
+173</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/connection.rb', line 169</span>
+
+<span class='kw'>def</span> <span class='id encrypted?'>encrypted?</span>
+  <span class='id result'>result</span> <span class='op'>=</span> <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id virConnectIsEncrypted'>virConnectIsEncrypted</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>nil</span> <span class='kw'>if</span> <span class='id result'>result</span> <span class='op'>==</span> <span class='op'>-</span><span class='int'>1</span>
+  <span class='id result'>result</span> <span class='op'>==</span> <span class='int'>1</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="hostname-instance_method">
+  
+    - (<tt>String</tt>) <strong>hostname</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the system hostname on which the hypervisor is running. Therefore,
+if connected to a remote <code>libvirtd</code> daemon, then it will return the hostname
+of that machine.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+138
+139
+140</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/connection.rb', line 138</span>
+
+<span class='kw'>def</span> <span class='id hostname'>hostname</span>
+  <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id virConnectGetHostname'>virConnectGetHostname</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="hypervisor_version-instance_method">
+  
+    - (<tt>Array</tt>) <strong>hypervisor_version</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the version of the hypervisor. This version is returned as an array
+representation as <code>[major, minor, patch]</code>.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+188
+189
+190
+191
+192</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/connection.rb', line 188</span>
+
+<span class='kw'>def</span> <span class='id hypervisor_version'>hypervisor_version</span>
+  <span class='id output_ptr'>output_ptr</span> <span class='op'>=</span> <span class='const'>FFI</span><span class='op'>::</span><span class='const'>MemoryPointer</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='symbol'>:ulong</span><span class='rparen'>)</span>
+  <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id virConnectGetVersion'>virConnectGetVersion</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id output_ptr'>output_ptr</span><span class='rparen'>)</span>
+  <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='op'>::</span><span class='const'>Util</span><span class='period'>.</span><span class='id parse_version_number'>parse_version_number</span><span class='lparen'>(</span><span class='id output_ptr'>output_ptr</span><span class='period'>.</span><span class='id get_ulong'>get_ulong</span><span class='lparen'>(</span><span class='int'>0</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="interfaces-instance_method">
+  
+    - (<tt><span class='object_link'><a href="Collection/InterfaceCollection.html" title="Libvirt::Collection::InterfaceCollection (class)">Collection::InterfaceCollection</a></span></tt>) <strong>interfaces</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the interfaces (both active and inactive) related to this
+connection.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Collection/InterfaceCollection.html" title="Libvirt::Collection::InterfaceCollection (class)">Collection::InterfaceCollection</a></span></tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+91
+92
+93</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/connection.rb', line 91</span>
+
+<span class='kw'>def</span> <span class='id interfaces'>interfaces</span>
+  <span class='const'>Collection</span><span class='op'>::</span><span class='const'>InterfaceCollection</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="lib_version-instance_method">
+  
+    - (<tt>Array</tt>) <strong>lib_version</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the version of <code>libvirt</code> which the daemon on the other side is
+running. If not connected to a remote daemon, it will return the version
+of libvirt on this machine. The result is an array representatin of the
+version, as <code>[major, minor, patch]</code>.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+200
+201
+202
+203
+204</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/connection.rb', line 200</span>
+
+<span class='kw'>def</span> <span class='id lib_version'>lib_version</span>
+  <span class='id output_ptr'>output_ptr</span> <span class='op'>=</span> <span class='const'>FFI</span><span class='op'>::</span><span class='const'>MemoryPointer</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='symbol'>:ulong</span><span class='rparen'>)</span>
+  <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id virConnectGetLibVersion'>virConnectGetLibVersion</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id output_ptr'>output_ptr</span><span class='rparen'>)</span>
+  <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='op'>::</span><span class='const'>Util</span><span class='period'>.</span><span class='id parse_version_number'>parse_version_number</span><span class='lparen'>(</span><span class='id output_ptr'>output_ptr</span><span class='period'>.</span><span class='id get_ulong'>get_ulong</span><span class='lparen'>(</span><span class='int'>0</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="max_virtual_cpus-instance_method">
+  
+    - (<tt>Integer</tt>) <strong>max_virtual_cpus</strong>(type) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the maximum number of virtual CPUs for a given domain type.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+162
+163
+164</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/connection.rb', line 162</span>
+
+<span class='kw'>def</span> <span class='id max_virtual_cpus'>max_virtual_cpus</span><span class='lparen'>(</span><span class='id type'>type</span><span class='rparen'>)</span>
+  <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id virConnectGetMaxVcpus'>virConnectGetMaxVcpus</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id type'>type</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="networks-instance_method">
+  
+    - (<tt><span class='object_link'><a href="Collection/NetworkCollection.html" title="Libvirt::Collection::NetworkCollection (class)">Collection::NetworkCollection</a></span></tt>) <strong>networks</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the networks related to this connection.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Collection/NetworkCollection.html" title="Libvirt::Collection::NetworkCollection (class)">Collection::NetworkCollection</a></span></tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+98
+99
+100</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/connection.rb', line 98</span>
+
+<span class='kw'>def</span> <span class='id networks'>networks</span>
+  <span class='const'>Collection</span><span class='op'>::</span><span class='const'>NetworkCollection</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="node-instance_method">
+  
+    - (<tt><span class='object_link'><a href="Node.html" title="Libvirt::Node (class)">Node</a></span></tt>) <strong>node</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns a node object to retrieve information about the node which
+this connection is established to.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Node.html" title="Libvirt::Node (class)">Node</a></span></tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+120
+121
+122</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/connection.rb', line 120</span>
+
+<span class='kw'>def</span> <span class='id node'>node</span>
+  <span class='const'>Node</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="nwfilters-instance_method">
+  
+    - (<tt><span class='object_link'><a href="Collection/NWFilterCollection.html" title="Libvirt::Collection::NWFilterCollection (class)">Collection::NWFilterCollection</a></span></tt>) <strong>nwfilters</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the network filters related to this connection.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Collection/NWFilterCollection.html" title="Libvirt::Collection::NWFilterCollection (class)">Collection::NWFilterCollection</a></span></tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+105
+106
+107</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/connection.rb', line 105</span>
+
+<span class='kw'>def</span> <span class='id nwfilters'>nwfilters</span>
+  <span class='const'>Collection</span><span class='op'>::</span><span class='const'>NWFilterCollection</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="secure?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>secure?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns a boolean of whether the connection is secure or not.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+178
+179
+180
+181
+182</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/connection.rb', line 178</span>
+
+<span class='kw'>def</span> <span class='id secure?'>secure?</span>
+  <span class='id result'>result</span> <span class='op'>=</span> <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id virConnectIsSecure'>virConnectIsSecure</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>nil</span> <span class='kw'>if</span> <span class='id result'>result</span> <span class='op'>==</span> <span class='op'>-</span><span class='int'>1</span>
+  <span class='id result'>result</span> <span class='op'>==</span> <span class='int'>1</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="storage_pools-instance_method">
+  
+    - (<tt><span class='object_link'><a href="Collection/StoragePoolCollection.html" title="Libvirt::Collection::StoragePoolCollection (class)">Collection::StoragePoolCollection</a></span></tt>) <strong>storage_pools</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the storage pools related to this connection</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Collection/StoragePoolCollection.html" title="Libvirt::Collection::StoragePoolCollection (class)">Collection::StoragePoolCollection</a></span></tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+112
+113
+114</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/connection.rb', line 112</span>
+
+<span class='kw'>def</span> <span class='id storage_pools'>storage_pools</span>
+  <span class='const'>Collection</span><span class='op'>::</span><span class='const'>StoragePoolCollection</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="to_ptr-instance_method">
+  
+    - (<tt>FFI::Pointer</tt>) <strong>to_ptr</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Provides the pointer of the connection. This allows this object to be
+used directly with the FFI layer, as if this object were actually
+a <code>virConnectPtr</code>.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>FFI::Pointer</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+211
+212
+213</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/connection.rb', line 211</span>
+
+<span class='kw'>def</span> <span class='id to_ptr'>to_ptr</span>
+  <span class='ivar'>@pointer</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="type-instance_method">
+  
+    - (<tt>String</tt>) <strong>type</strong> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='hypervisor-instance_method'>hypervisor</span></span>
+    </span>
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the name of the hypervisor. This is named "type" since that is the
+terminology which libvirt itself uses. This is also aliased as <code>hypervisor</code>
+since that is more friendly.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+154
+155
+156</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/connection.rb', line 154</span>
+
+<span class='kw'>def</span> <span class='id type'>type</span>
+  <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id virConnectGetType'>virConnectGetType</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="uri-instance_method">
+  
+    - (<tt>String</tt>) <strong>uri</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the URI of the connection.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+145
+146
+147</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/connection.rb', line 145</span>
+
+<span class='kw'>def</span> <span class='id uri'>uri</span>
+  <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id virConnectGetURI'>virConnectGetURI</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Tue Nov 16 08:13:29 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.1 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,1473 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Class: Libvirt::StoragePool</title>
+<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (S)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../Libvirt.html" title="Libvirt (module)">Libvirt</a></span></span>
+     &raquo; 
+    <span class="title">StoragePool</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: Libvirt::StoragePool
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Libvirt::StoragePool</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/libvirt/storage_pool.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>Represents a single storage pool.</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#%3D%3D-instance_method" title="#== (instance method)">- (Boolean) <strong>==</strong>(other) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Provide a meaningful equality check for two storage pools by comparing
+UUID.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#active%3F-instance_method" title="#active? (instance method)">- (Boolean) <strong>active?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Deterine if the storage pool is active or not.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#allocation-instance_method" title="#allocation (instance method)">- (Fixnum) <strong>allocation</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the current allocation in bytes.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#available-instance_method" title="#available (instance method)">- (Fixnum) <strong>available</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the available free space in bytes.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#build-instance_method" title="#build (instance method)">- (Boolean) <strong>build</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Build the underlying storage pool.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#capacity-instance_method" title="#capacity (instance method)">- (Fixnum) <strong>capacity</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the capacity in bytes.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#connection-instance_method" title="#connection (instance method)">- (Connection) <strong>connection</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the connection of this storage pool.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#create-instance_method" title="#create (instance method)">- (Boolean) <strong>create</strong> </a>
+    
+
+    
+      (also: #start)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Starts an inactive storage pool.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#delete-instance_method" title="#delete (instance method)">- (Boolean) <strong>delete</strong>(type = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Delete the underlying pool resources.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#destroy-instance_method" title="#destroy (instance method)">- (Boolean) <strong>destroy</strong> </a>
+    
+
+    
+      (also: #stop)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Stops an active storage pool.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (StoragePool) <strong>initialize</strong>(pointer) </a>
+    
+
+    
+  </span>
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Initializes a new <span class='object_link'><a href="" title="Libvirt::StoragePool (class)">StoragePool</a></span> object given a <code>virStoragePoolPtr</code>.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#name-instance_method" title="#name (instance method)">- (String) <strong>name</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the name of the network as a string.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#persistent%3F-instance_method" title="#persistent? (instance method)">- (Boolean) <strong>persistent?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Determine if the storage pool is persistent or not.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#state-instance_method" title="#state (instance method)">- (Symbol) <strong>state</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the state of the storage pool as a symbol.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_ptr-instance_method" title="#to_ptr (instance method)">- (FFI::Pointer) <strong>to_ptr</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the actual <code>virStoragePoolPtr</code> underlying this structure.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#undefine-instance_method" title="#undefine (instance method)">- (Boolean) <strong>undefine</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Undefines the storage pool.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#uuid-instance_method" title="#uuid (instance method)">- (String) <strong>uuid</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the UUID of the storage pool as a string.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#volumes-instance_method" title="#volumes (instance method)">- (Collection::StorageVolumeCollection) <strong>volumes</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the volumes associated with this storage pool.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#xml-instance_method" title="#xml (instance method)">- (String) <strong>xml</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the XML description of this storage pool.</p></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <p class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Libvirt::StoragePool (class)">StoragePool</a></span></tt>) <strong>initialize</strong>(pointer) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Initializes a new <span class='object_link'><a href="" title="Libvirt::StoragePool (class)">Libvirt::StoragePool</a></span> object given a <code>virStoragePoolPtr</code>.
+Do not call this directly. Instead, use the <span class='object_link'><a href="Connection.html#storage_pools-instance_method" title="Libvirt::Connection#storage_pools (method)">Connection#storage_pools</a></span>
+object to retrieve a specific <span class='object_link'><a href="" title="Libvirt::StoragePool (class)">Libvirt::StoragePool</a></span>.</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+7
+8
+9
+10</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/storage_pool.rb', line 7</span>
+
+<span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id pointer'>pointer</span><span class='rparen'>)</span>
+  <span class='ivar'>@pointer</span> <span class='op'>=</span> <span class='id pointer'>pointer</span>
+  <span class='const'>ObjectSpace</span><span class='period'>.</span><span class='id define_finalizer'>define_finalizer</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id method'>method</span><span class='lparen'>(</span><span class='symbol'>:finalize</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="==-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>==</strong>(other) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Provide a meaningful equality check for two storage pools by comparing
+UUID.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+137
+138
+139</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/storage_pool.rb', line 137</span>
+
+<span class='kw'>def</span> <span class='op'>==</span><span class='lparen'>(</span><span class='id other'>other</span><span class='rparen'>)</span>
+  <span class='id other'>other</span><span class='period'>.</span><span class='id is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>StoragePool</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id other'>other</span><span class='period'>.</span><span class='id uuid'>uuid</span> <span class='op'>==</span> <span class='id uuid'>uuid</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="active?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>active?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Deterine if the storage pool is active or not.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+45
+46
+47</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/storage_pool.rb', line 45</span>
+
+<span class='kw'>def</span> <span class='id active?'>active?</span>
+  <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id virStoragePoolIsActive'>virStoragePoolIsActive</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='int'>1</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="allocation-instance_method">
+  
+    - (<tt>Fixnum</tt>) <strong>allocation</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the current allocation in bytes.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Fixnum</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+115
+116
+117</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/storage_pool.rb', line 115</span>
+
+<span class='kw'>def</span> <span class='id allocation'>allocation</span>
+  <span class='id info'>info</span><span class='lbracket'>[</span><span class='symbol'>:allocation</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="available-instance_method">
+  
+    - (<tt>Fixnum</tt>) <strong>available</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the available free space in bytes.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Fixnum</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+122
+123
+124</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/storage_pool.rb', line 122</span>
+
+<span class='kw'>def</span> <span class='id available'>available</span>
+  <span class='id info'>info</span><span class='lbracket'>[</span><span class='symbol'>:available</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="build-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>build</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Build the underlying storage pool.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+59
+60
+61</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/storage_pool.rb', line 59</span>
+
+<span class='kw'>def</span> <span class='id build'>build</span>
+  <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id virStoragePoolBuild'>virStoragePoolBuild</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='int'>0</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='int'>0</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="capacity-instance_method">
+  
+    - (<tt>Fixnum</tt>) <strong>capacity</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the capacity in bytes.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Fixnum</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+108
+109
+110</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/storage_pool.rb', line 108</span>
+
+<span class='kw'>def</span> <span class='id capacity'>capacity</span>
+  <span class='id info'>info</span><span class='lbracket'>[</span><span class='symbol'>:capacity</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="connection-instance_method">
+  
+    - (<tt><span class='object_link'><a href="Connection.html" title="Libvirt::Connection (class)">Connection</a></span></tt>) <strong>connection</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the connection of this storage pool.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Connection.html" title="Libvirt::Connection (class)">Connection</a></span></tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+15
+16
+17</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/storage_pool.rb', line 15</span>
+
+<span class='kw'>def</span> <span class='id connection'>connection</span>
+  <span class='const'>Connection</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id virStoragePoolGetConnect'>virStoragePoolGetConnect</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="create-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>create</strong> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='start-instance_method'>start</span></span>
+    </span>
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Starts an inactive storage pool.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+66
+67
+68
+69</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/storage_pool.rb', line 66</span>
+
+<span class='kw'>def</span> <span class='id create'>create</span>
+  <span class='kw'>return</span> <span class='kw'>true</span> <span class='kw'>if</span> <span class='id active?'>active?</span>
+  <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id virStoragePoolCreate'>virStoragePoolCreate</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='int'>0</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='int'>0</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="delete-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>delete</strong>(type = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Delete the underlying pool resources. This is a non-recoverable
+operation. This won't undefine the pool.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+76
+77
+78
+79</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/storage_pool.rb', line 76</span>
+
+<span class='kw'>def</span> <span class='id delete'>delete</span><span class='lparen'>(</span><span class='id type'>type</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id type'>type</span> <span class='op'>||=</span> <span class='symbol'>:normal</span>
+  <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id virStoragePoolDelete'>virStoragePoolDelete</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id type'>type</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='int'>0</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="destroy-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>destroy</strong> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='stop-instance_method'>stop</span></span>
+    </span>
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Stops an active storage pool.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+84
+85
+86</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/storage_pool.rb', line 84</span>
+
+<span class='kw'>def</span> <span class='id destroy'>destroy</span>
+  <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id virStoragePoolDestroy'>virStoragePoolDestroy</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='int'>0</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="name-instance_method">
+  
+    - (<tt>String</tt>) <strong>name</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the name of the network as a string.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+22
+23
+24</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/storage_pool.rb', line 22</span>
+
+<span class='kw'>def</span> <span class='id name'>name</span>
+  <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id virStoragePoolGetName'>virStoragePoolGetName</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="persistent?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>persistent?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Determine if the storage pool is persistent or not.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+52
+53
+54</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/storage_pool.rb', line 52</span>
+
+<span class='kw'>def</span> <span class='id persistent?'>persistent?</span>
+  <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id virStoragePoolIsPersistent'>virStoragePoolIsPersistent</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='int'>1</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="state-instance_method">
+  
+    - (<tt>Symbol</tt>) <strong>state</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the state of the storage pool as a symbol.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Symbol</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+101
+102
+103</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/storage_pool.rb', line 101</span>
+
+<span class='kw'>def</span> <span class='id state'>state</span>
+  <span class='id info'>info</span><span class='lbracket'>[</span><span class='symbol'>:state</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="to_ptr-instance_method">
+  
+    - (<tt>FFI::Pointer</tt>) <strong>to_ptr</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the actual <code>virStoragePoolPtr</code> underlying this structure.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>FFI::Pointer</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+144
+145
+146</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/storage_pool.rb', line 144</span>
+
+<span class='kw'>def</span> <span class='id to_ptr'>to_ptr</span>
+  <span class='ivar'>@pointer</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="undefine-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>undefine</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Undefines the storage pool. This requires that the storage pool be
+inactive. This won't delete the underlying resources of the storage pool,
+however. Run <span class='object_link'><a href="#delete-instance_method" title="Libvirt::StoragePool#delete (method)">#delete</a></span> for that.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+94
+95
+96</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/storage_pool.rb', line 94</span>
+
+<span class='kw'>def</span> <span class='id undefine'>undefine</span>
+  <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id virStoragePoolUndefine'>virStoragePoolUndefine</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='int'>0</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="uuid-instance_method">
+  
+    - (<tt>String</tt>) <strong>uuid</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the UUID of the storage pool as a string.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+29
+30
+31
+32
+33</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/storage_pool.rb', line 29</span>
+
+<span class='kw'>def</span> <span class='id uuid'>uuid</span>
+  <span class='id output_ptr'>output_ptr</span> <span class='op'>=</span> <span class='const'>FFI</span><span class='op'>::</span><span class='const'>MemoryPointer</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='symbol'>:char</span><span class='comma'>,</span> <span class='int'>36</span><span class='rparen'>)</span>
+  <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id virStoragePoolGetUUIDString'>virStoragePoolGetUUIDString</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id output_ptr'>output_ptr</span><span class='rparen'>)</span>
+  <span class='id output_ptr'>output_ptr</span><span class='period'>.</span><span class='id read_string'>read_string</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="volumes-instance_method">
+  
+    - (<tt><span class='object_link'><a href="Collection/StorageVolumeCollection.html" title="Libvirt::Collection::StorageVolumeCollection (class)">Collection::StorageVolumeCollection</a></span></tt>) <strong>volumes</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the volumes associated with this storage pool.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Collection/StorageVolumeCollection.html" title="Libvirt::Collection::StorageVolumeCollection (class)">Collection::StorageVolumeCollection</a></span></tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+129
+130
+131</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/storage_pool.rb', line 129</span>
+
+<span class='kw'>def</span> <span class='id volumes'>volumes</span>
+  <span class='const'>Collection</span><span class='op'>::</span><span class='const'>StorageVolumeCollection</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="xml-instance_method">
+  
+    - (<tt>String</tt>) <strong>xml</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the XML description of this storage pool.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+38
+39
+40</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/storage_pool.rb', line 38</span>
+
+<span class='kw'>def</span> <span class='id xml'>xml</span>
+  <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id virStoragePoolGetXMLDesc'>virStoragePoolGetXMLDesc</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='int'>0</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Tue Nov 16 08:13:30 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.1 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>

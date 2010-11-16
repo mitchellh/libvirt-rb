@@ -1,0 +1,2157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Class: Libvirt::Domain</title>
+<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (D)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../Libvirt.html" title="Libvirt (module)">Libvirt</a></span></span>
+     &raquo; 
+    <span class="title">Domain</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: Libvirt::Domain
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Libvirt::Domain</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/libvirt/domain.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>Represents a domain within libvirt, which is a single virtual
+machine or environment, typically.</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#%3D%3D-instance_method" title="#== (instance method)">- (Boolean) <strong>==</strong>(other) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Provide a meaningful equality check so that two domains can easily
+be checked for equality.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#active%3F-instance_method" title="#active? (instance method)">- (Boolean) <strong>active?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns boolean of whether the domain is active (running) or not.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#autostart%3D-instance_method" title="#autostart= (instance method)">- (Boolean) <strong>autostart=</strong>(value) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Sets the autostart status.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#autostart%3F-instance_method" title="#autostart? (instance method)">- (Boolean) <strong>autostart?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns boolean of whether the domain autostarts on boot.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#cpu_time_used-instance_method" title="#cpu_time_used (instance method)">- (Integer) <strong>cpu_time_used</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the CPU time used in nanoseconds.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#create-instance_method" title="#create (instance method)">- (Boolean) <strong>create</strong> </a>
+    
+
+    
+      (also: #start)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Starts the domain (moves it from the inactive to running state), and
+returns a boolean of whether the call succeeded or not.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#destroy-instance_method" title="#destroy (instance method)">- (Boolean) <strong>destroy</strong> </a>
+    
+
+    
+      (also: #stop)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Stops a running domain and returns a boolean of whether the call succeeded
+or not.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#id-instance_method" title="#id (instance method)">- (Integer) <strong>id</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the hypervisor ID number for this domain.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Domain) <strong>initialize</strong>(pointer = nil) </a>
+    
+
+    
+  </span>
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Initializes a new <span class='object_link'><a href="" title="Libvirt::Domain (class)">Domain</a></span> object.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#max_memory-instance_method" title="#max_memory (instance method)">- (Integer) <strong>max_memory</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the maximum memory (in KB) allowed on this domain.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#max_memory%3D-instance_method" title="#max_memory= (instance method)">- (Boolean) <strong>max_memory=</strong>(value) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Sets the maximum memory (in KB) allowed on this domain.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#max_virtual_cpus-instance_method" title="#max_virtual_cpus (instance method)">- (Integer) <strong>max_virtual_cpus</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the maximum number of virtual CPUs supported for this guest
+VM.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#memory-instance_method" title="#memory (instance method)">- (Integer) <strong>memory</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the memory (in KB) currently allocated to this domain.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#memory%3D-instance_method" title="#memory= (instance method)">- (Boolean) <strong>memory=</strong>(value) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Sets the memory (in KB) on an active domain.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#name-instance_method" title="#name (instance method)">- (String) <strong>name</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the name of the domain as a string.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#os_type-instance_method" title="#os_type (instance method)">- (String) <strong>os_type</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the OS type of the domain.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#persistent%3F-instance_method" title="#persistent? (instance method)">- (Boolean) <strong>persistent?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns boolean of whether the domain is persistent, or whether it
+will still exist after it is shut down.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#reboot-instance_method" title="#reboot (instance method)">- (Boolean) <strong>reboot</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Reboots the domain.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#resume-instance_method" title="#resume (instance method)">- (Boolean) <strong>resume</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Resumes a suspended domain, returns a boolean of whether the call
+succeeded or not.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#shutdown-instance_method" title="#shutdown (instance method)">- (Boolean) <strong>shutdown</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Shutdown a domain, stopping the domain OS.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#state-instance_method" title="#state (instance method)">- (Symbol) <strong>state</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the current state this domain is in.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#suspend-instance_method" title="#suspend (instance method)">- (Boolean) <strong>suspend</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Suspends an active domain, the process is frozen but the memory is still
+allocated.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_ptr-instance_method" title="#to_ptr (instance method)">- (FFI::Pointer) <strong>to_ptr</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Provides the pointer to the domain.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#undefine-instance_method" title="#undefine (instance method)">- (Boolean) <strong>undefine</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Undefine a domain.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#uuid-instance_method" title="#uuid (instance method)">- (String) <strong>uuid</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the UUID of the domain as a string.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#virtual_cpus-instance_method" title="#virtual_cpus (instance method)">- (Integer) <strong>virtual_cpus</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the number of virtual CPUs for this domain.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#virtual_cpus%3D-instance_method" title="#virtual_cpus= (instance method)">- (Boolean) <strong>virtual_cpus=</strong>(value) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Sets the number of virtual CPUs for this domain.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#xml-instance_method" title="#xml (instance method)">- (String) <strong>xml</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the XML description of this domain.</p></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <p class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Libvirt::Domain (class)">Domain</a></span></tt>) <strong>initialize</strong>(pointer = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Initializes a new <span class='object_link'><a href="" title="Libvirt::Domain (class)">Libvirt::Domain</a></span> object. If you're calling this directly,
+omit the <code>pointer</code> argument, since that is meant for internal use.</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+7
+8
+9
+10</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/domain.rb', line 7</span>
+
+<span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id pointer'>pointer</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='ivar'>@pointer</span> <span class='op'>=</span> <span class='id pointer'>pointer</span> <span class='kw'>if</span> <span class='id pointer'>pointer</span><span class='period'>.</span><span class='id is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>FFI</span><span class='op'>::</span><span class='const'>Pointer</span><span class='rparen'>)</span>
+  <span class='const'>ObjectSpace</span><span class='period'>.</span><span class='id define_finalizer'>define_finalizer</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id method'>method</span><span class='lparen'>(</span><span class='symbol'>:finalize</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="==-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>==</strong>(other) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Provide a meaningful equality check so that two domains can easily
+be checked for equality. This works by comparing UUIDs.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+221
+222
+223</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/domain.rb', line 221</span>
+
+<span class='kw'>def</span> <span class='op'>==</span><span class='lparen'>(</span><span class='id other'>other</span><span class='rparen'>)</span>
+  <span class='id other'>other</span><span class='period'>.</span><span class='id is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Domain</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id other'>other</span><span class='period'>.</span><span class='id uuid'>uuid</span> <span class='op'>==</span> <span class='id uuid'>uuid</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="active?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>active?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns boolean of whether the domain is active (running) or not.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+117
+118
+119
+120
+121</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/domain.rb', line 117</span>
+
+<span class='kw'>def</span> <span class='id active?'>active?</span>
+  <span class='id result'>result</span> <span class='op'>=</span> <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id virDomainIsActive'>virDomainIsActive</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>nil</span> <span class='kw'>if</span> <span class='id result'>result</span> <span class='op'>==</span> <span class='op'>-</span><span class='int'>1</span>
+  <span class='id result'>result</span> <span class='op'>==</span> <span class='int'>1</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="autostart=-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>autostart=</strong>(value) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Sets the autostart status. This assignment sets the value immediately
+on the domain.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+        <span class='name'>value</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The set value</p></div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+147
+148
+149
+150</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/domain.rb', line 147</span>
+
+<span class='kw'>def</span> <span class='id autostart='>autostart=</span><span class='lparen'>(</span><span class='id value'>value</span><span class='rparen'>)</span>
+  <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id virDomainSetAutostart'>virDomainSetAutostart</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id value'>value</span> <span class='op'>?</span> <span class='int'>1</span> <span class='op'>:</span> <span class='int'>0</span><span class='rparen'>)</span>
+  <span class='id value'>value</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="autostart?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>autostart?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns boolean of whether the domain autostarts on boot.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+136
+137
+138
+139
+140</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/domain.rb', line 136</span>
+
+<span class='kw'>def</span> <span class='id autostart?'>autostart?</span>
+  <span class='id output_ptr'>output_ptr</span> <span class='op'>=</span> <span class='const'>FFI</span><span class='op'>::</span><span class='const'>MemoryPointer</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='symbol'>:int</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>nil</span> <span class='kw'>if</span> <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id virDomainGetAutostart'>virDomainGetAutostart</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id output_ptr'>output_ptr</span><span class='rparen'>)</span> <span class='op'>&lt;</span> <span class='int'>0</span>
+  <span class='id output_ptr'>output_ptr</span><span class='period'>.</span><span class='id read_int'>read_int</span> <span class='op'>==</span> <span class='int'>1</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="cpu_time_used-instance_method">
+  
+    - (<tt>Integer</tt>) <strong>cpu_time_used</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the CPU time used in nanoseconds.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+102
+103
+104</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/domain.rb', line 102</span>
+
+<span class='kw'>def</span> <span class='id cpu_time_used'>cpu_time_used</span>
+  <span class='id domain_info'>domain_info</span><span class='lbracket'>[</span><span class='symbol'>:cpuTime</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="create-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>create</strong> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='start-instance_method'>start</span></span>
+    </span>
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Starts the domain (moves it from the inactive to running state), and
+returns a boolean of whether the call succeeded or not.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+156
+157
+158
+159</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/domain.rb', line 156</span>
+
+<span class='kw'>def</span> <span class='id create'>create</span>
+  <span class='kw'>return</span> <span class='kw'>true</span> <span class='kw'>if</span> <span class='id active?'>active?</span>
+  <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id virDomainCreate'>virDomainCreate</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='int'>0</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="destroy-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>destroy</strong> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='stop-instance_method'>stop</span></span>
+    </span>
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Stops a running domain and returns a boolean of whether the call succeeded
+or not.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+166
+167
+168</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/domain.rb', line 166</span>
+
+<span class='kw'>def</span> <span class='id destroy'>destroy</span>
+  <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id virDomainDestroy'>virDomainDestroy</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='int'>0</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="id-instance_method">
+  
+    - (<tt>Integer</tt>) <strong>id</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the hypervisor ID number for this domain.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+31
+32
+33</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/domain.rb', line 31</span>
+
+<span class='kw'>def</span> <span class='id id'>id</span>
+  <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id virDomainGetID'>virDomainGetID</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="max_memory-instance_method">
+  
+    - (<tt>Integer</tt>) <strong>max_memory</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the maximum memory (in KB) allowed on this domain.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+52
+53
+54</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/domain.rb', line 52</span>
+
+<span class='kw'>def</span> <span class='id max_memory'>max_memory</span>
+  <span class='id domain_info'>domain_info</span><span class='lbracket'>[</span><span class='symbol'>:maxMem</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="max_memory=-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>max_memory=</strong>(value) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Sets the maximum memory (in KB) allowed on this domain.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Success of the command.</p></div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+59
+60
+61</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/domain.rb', line 59</span>
+
+<span class='kw'>def</span> <span class='id max_memory='>max_memory=</span><span class='lparen'>(</span><span class='id value'>value</span><span class='rparen'>)</span>
+  <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id virDomainSetMaxMemory'>virDomainSetMaxMemory</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id value'>value</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='int'>0</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="max_virtual_cpus-instance_method">
+  
+    - (<tt>Integer</tt>) <strong>max_virtual_cpus</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the maximum number of virtual CPUs supported for this guest
+VM.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+95
+96
+97</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/domain.rb', line 95</span>
+
+<span class='kw'>def</span> <span class='id max_virtual_cpus'>max_virtual_cpus</span>
+  <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id virDomainGetMaxVcpus'>virDomainGetMaxVcpus</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="memory-instance_method">
+  
+    - (<tt>Integer</tt>) <strong>memory</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the memory (in KB) currently allocated to this domain.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+66
+67
+68</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/domain.rb', line 66</span>
+
+<span class='kw'>def</span> <span class='id memory'>memory</span>
+  <span class='id domain_info'>domain_info</span><span class='lbracket'>[</span><span class='symbol'>:memory</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="memory=-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>memory=</strong>(value) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Sets the memory (in KB) on an active domain.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Success of the command.</p></div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+73
+74
+75</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/domain.rb', line 73</span>
+
+<span class='kw'>def</span> <span class='id memory='>memory=</span><span class='lparen'>(</span><span class='id value'>value</span><span class='rparen'>)</span>
+  <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id virDomainSetMemory'>virDomainSetMemory</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id value'>value</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='int'>0</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="name-instance_method">
+  
+    - (<tt>String</tt>) <strong>name</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the name of the domain as a string.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+15
+16
+17</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/domain.rb', line 15</span>
+
+<span class='kw'>def</span> <span class='id name'>name</span>
+  <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id virDomainGetName'>virDomainGetName</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="os_type-instance_method">
+  
+    - (<tt>String</tt>) <strong>os_type</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the OS type of the domain.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+38
+39
+40</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/domain.rb', line 38</span>
+
+<span class='kw'>def</span> <span class='id os_type'>os_type</span>
+  <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id virDomainGetOSType'>virDomainGetOSType</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="persistent?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>persistent?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns boolean of whether the domain is persistent, or whether it
+will still exist after it is shut down.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+127
+128
+129
+130
+131</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/domain.rb', line 127</span>
+
+<span class='kw'>def</span> <span class='id persistent?'>persistent?</span>
+  <span class='id result'>result</span> <span class='op'>=</span> <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id virDomainIsPersistent'>virDomainIsPersistent</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>nil</span> <span class='kw'>if</span> <span class='id result'>result</span> <span class='op'>==</span> <span class='op'>-</span><span class='int'>1</span>
+  <span class='id result'>result</span> <span class='op'>==</span> <span class='int'>1</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="reboot-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>reboot</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Reboots the domain.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+191
+192
+193</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/domain.rb', line 191</span>
+
+<span class='kw'>def</span> <span class='id reboot'>reboot</span>
+  <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id virDomainReboot'>virDomainReboot</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='int'>0</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='int'>0</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="resume-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>resume</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Resumes a suspended domain, returns a boolean of whether the call
+succeeded or not.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+183
+184
+185
+186</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/domain.rb', line 183</span>
+
+<span class='kw'>def</span> <span class='id resume'>resume</span>
+  <span class='kw'>return</span> <span class='kw'>true</span> <span class='kw'>if</span> <span class='id active?'>active?</span>
+  <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id virDomainResume'>virDomainResume</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='int'>0</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="shutdown-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>shutdown</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Shutdown a domain, stopping the domain OS.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+198
+199
+200</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/domain.rb', line 198</span>
+
+<span class='kw'>def</span> <span class='id shutdown'>shutdown</span>
+  <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id virDomainShutdown'>virDomainShutdown</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='int'>0</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="state-instance_method">
+  
+    - (<tt>Symbol</tt>) <strong>state</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the current state this domain is in.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Symbol</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+45
+46
+47</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/domain.rb', line 45</span>
+
+<span class='kw'>def</span> <span class='id state'>state</span>
+  <span class='id domain_info'>domain_info</span><span class='lbracket'>[</span><span class='symbol'>:state</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="suspend-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>suspend</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Suspends an active domain, the process is frozen but the memory is still
+allocated. Returns a boolean of whether the call succeeded or not.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+175
+176
+177</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/domain.rb', line 175</span>
+
+<span class='kw'>def</span> <span class='id suspend'>suspend</span>
+  <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id virDomainSuspend'>virDomainSuspend</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='int'>0</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="to_ptr-instance_method">
+  
+    - (<tt>FFI::Pointer</tt>) <strong>to_ptr</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Provides the pointer to the domain. This allows this object to be used
+directly with the FFI layer which expects a <code>virDomainPtr</code>.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>FFI::Pointer</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+213
+214
+215</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/domain.rb', line 213</span>
+
+<span class='kw'>def</span> <span class='id to_ptr'>to_ptr</span>
+  <span class='ivar'>@pointer</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="undefine-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>undefine</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Undefine a domain. This will not stop it if it is running.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+205
+206
+207</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/domain.rb', line 205</span>
+
+<span class='kw'>def</span> <span class='id undefine'>undefine</span>
+  <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id virDomainUndefine'>virDomainUndefine</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='int'>0</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="uuid-instance_method">
+  
+    - (<tt>String</tt>) <strong>uuid</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the UUID of the domain as a string.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+22
+23
+24
+25
+26</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/domain.rb', line 22</span>
+
+<span class='kw'>def</span> <span class='id uuid'>uuid</span>
+  <span class='id output_ptr'>output_ptr</span> <span class='op'>=</span> <span class='const'>FFI</span><span class='op'>::</span><span class='const'>MemoryPointer</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='symbol'>:char</span><span class='comma'>,</span> <span class='int'>36</span><span class='rparen'>)</span>
+  <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id virDomainGetUUIDString'>virDomainGetUUIDString</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id output_ptr'>output_ptr</span><span class='rparen'>)</span>
+  <span class='id output_ptr'>output_ptr</span><span class='period'>.</span><span class='id read_string'>read_string</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="virtual_cpus-instance_method">
+  
+    - (<tt>Integer</tt>) <strong>virtual_cpus</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the number of virtual CPUs for this domain.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+80
+81
+82</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/domain.rb', line 80</span>
+
+<span class='kw'>def</span> <span class='id virtual_cpus'>virtual_cpus</span>
+  <span class='id domain_info'>domain_info</span><span class='lbracket'>[</span><span class='symbol'>:nrVirtCpu</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="virtual_cpus=-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>virtual_cpus=</strong>(value) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Sets the number of virtual CPUs for this domain.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Success of the command.</p></div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+87
+88
+89</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/domain.rb', line 87</span>
+
+<span class='kw'>def</span> <span class='id virtual_cpus='>virtual_cpus=</span><span class='lparen'>(</span><span class='id value'>value</span><span class='rparen'>)</span>
+  <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id virDomainSetVcpus'>virDomainSetVcpus</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id value'>value</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='int'>0</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="xml-instance_method">
+  
+    - (<tt>String</tt>) <strong>xml</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the XML description of this domain.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+109
+110
+111
+112</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/domain.rb', line 109</span>
+
+<span class='kw'>def</span> <span class='id xml'>xml</span>
+  <span class='comment'># TODO: The flags in the 2nd parameter
+</span>  <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id virDomainGetXMLDesc'>virDomainGetXMLDesc</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='int'>0</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Tue Nov 16 08:13:29 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.1 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>File: user_guide</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html" title="Index">Index</a> &raquo; 
+    <span class="title">File: user_guide</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><div id='filecontents'><h1>libvirt-rb User's Guide</h1>
+
+<h2>Overview</h2>
+
+<p><code>libvirt-rb</code> is a Ruby library for <a href="http://libvirt.org">libvirt</a>, a library sponsored
+by RedHat for talking to various hypervisors with a single API. <code>libvirt-rb</code> is backwards
+compatible to libvirt 0.6.0 and consists of two namespaces for users to interact
+with depending on their level of comfort with the libvirt API:</p>
+
+<ul>
+<li><code>Libvirt</code> - All objects under this namespace provide a very Ruby-like
+object oriented interface above the raw libvirt API. This is the recommended
+way of using libvirt with Ruby. These objects are mostly compatible with
+the FFI layer as well (you may pass in a <code>Connection</code> object in place of
+a <code>virConnectPtr</code> for example).</li>
+<li><code>FFI::Libvirt</code> - A direct interface to the libvirt API using FFI. This is
+for the power players out there who need extremely customized functionality,
+with the tradeoff being that it is more complicated to use and you must manage
+your own pointers.</li>
+</ul>
+
+
+<h2>Installation</h2>
+
+<h3>Prerequisites</h3>
+
+<p>Before the library itself is installed, <a href="http://libvirt.org">libvirt</a> must be
+installed on the system. How to do this for various operating systems is shown
+below.</p>
+
+<h4>Mac OS X</h4>
+
+<p>On Mac OS X, <a href="http://github.com/mxcl/homebrew">homebrew</a> is the recommended
+way of installing Mac OS X. There is currently not a MacPort for it.</p>
+
+<pre class="code"><span class='id brew'>brew</span> <span class='id install'>install</span> <span class='id libvirt'>libvirt</span>
+</pre>
+
+<h4>Linux</h4>
+
+<p>Most linux flavors have a libvirt installation in their respective package
+managers. The libvirt library might be slightly out of date but if you
+find you need the most up-to-date libvirt, its very easy to compile by
+hand as well.</p>
+
+<pre class="code">apt-get install libvirt
+</pre>
+
+<h4>Windows</h4>
+
+<p>While libvirt supposedly compiles on Windows, this is still a work in
+progress on my part to verify the install and test the library. Hang
+in there!</p>
+
+<h3>Install libvirt-rb</h3>
+
+<p><code>libvirt-rb</code> is packaged as a RubyGem, making the installation a one-step
+process:</p>
+
+<pre class="code"><span class='id gem'>gem</span> <span class='id install'>install</span> <span class='id libvirt'>libvirt</span>
+</pre>
+
+<h2>Basic Concepts and Usage</h2>
+
+<p>This section will cover the basic concepts of the higher level portion of
+the libvirt ruby library (that is, it won't talk directly about the <code>FFI</code>
+portion, which is mentioned in a later section). This is the portion of the
+library that most people will use and is the recommended way of interacting
+with libvirt from ruby.</p>
+
+<p>This section <em>will not</em> try cover how libvirt works or the various uses of
+libvirt. Libvirt itself has many pages of documentation on this which you
+should read to learn more about it.</p>
+
+<h3>Establishing a Connection to Libvirt</h3>
+
+<p>The first step before anything can be done with libvirt is to establish
+a connection to either a local or remote instance of libvirt (if remote,
+you would be connecting to a <code>libvirtd</code> instance). Libvirt establishes
+connections using a URI. Each line below is another example on how to
+establish a connection:</p>
+
+<pre class="code"><span class='id conn'>conn</span> <span class='op'>=</span> <span class='const'>Libvirt</span><span class='period'>.</span><span class='id connect'>connect</span>
+<span class='id conn'>conn</span> <span class='op'>=</span> <span class='const'>Libvirt</span><span class='period'>.</span><span class='id connect'>connect</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>test:///default</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='id conn'>conn</span> <span class='op'>=</span> <span class='const'>Libvirt</span><span class='period'>.</span><span class='id connect'>connect</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>qemu+ssh://10.0.0.1/system</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='id conn'>conn</span> <span class='op'>=</span> <span class='const'>Libvirt</span><span class='period'>.</span><span class='id connect'>connect</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>vbox:///system</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbol'>:readonly</span> <span class='op'>=&gt;</span> <span class='kw'>true</span><span class='rparen'>)</span>
+</pre>
+
+<p>This connection is the base object used to do most other things. Libvirt
+has been made so that when you're done with the connection and it is
+garbage collected, the underlying connection data is properly freed as
+well. In fact, this is true for all objects in the libvirt library. If
+you find a memory leak with the libvirt objects, it is a bug.</p>
+
+<h3>Accessing Collections</h3>
+
+<p>Libvirt objects, especially the connection, exposes a variety of
+<em>collection</em> objects, such as domains, interfaces, networks, etc.
+These collections are all exposed in a similar way, and this section
+is meant to give a rough overview on how they work. Exact details
+for each collection can be seen by reading their respective
+documentation (such as <span class='object_link'><a href="Libvirt/Collection/DomainCollection.html" title="Libvirt::Collection::DomainCollection (class)">Libvirt::Collection::DomainCollection</a></span>).</p>
+
+<h3>Using and Accessing Objects in Collections</h3>
+
+<p>All collections can be treated as <code>Array</code>-like objects. They are
+<code>Enumerable</code> and provide additional methods as well. All collections
+implement the <code>all</code> method to retrieve all of their collection.
+Some collections can be drilled down further, such as domains, with
+<code>inactive</code> and just <code>active</code>.</p>
+
+<p>Examples of using a collection are shown below:</p>
+
+<pre class="code"><span class='comment'># You can use a collection like an array:
+</span><span class='id conn'>conn</span><span class='period'>.</span><span class='id domains'>domains</span><span class='period'>.</span><span class='id include?'>include?</span><span class='lparen'>(</span><span class='id other'>other</span><span class='rparen'>)</span>
+
+<span class='comment'># You can iterate over a collection:
+</span><span class='id conn'>conn</span><span class='period'>.</span><span class='id domains'>domains</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id domain'>domain</span><span class='op'>|</span>
+  <span class='id puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Domain: </span><span class='embexpr_beg'>#{</span><span class='id domain'>domain</span><span class='period'>.</span><span class='id name'>name</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span>
+
+<span class='comment'># You can drill down further on some collections:
+</span><span class='id puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Inactive domains: </span><span class='embexpr_beg'>#{</span><span class='id conn'>conn</span><span class='period'>.</span><span class='id domains'>domains</span><span class='period'>.</span><span class='id inactive'>inactive</span><span class='period'>.</span><span class='id length'>length</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='comment'># You can explicitly access all domains, though this is
+</span><span class='comment'># the same as treating the whole collection as an array:
+</span><span class='id puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>All domains: </span><span class='embexpr_beg'>#{</span><span class='id conn'>conn</span><span class='period'>.</span><span class='id domains'>domains</span><span class='period'>.</span><span class='id all'>all</span><span class='period'>.</span><span class='id length'>length</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+</pre>
+
+<p>Understanding these collections are fundamental to using the library,
+so play around with them and get comfortable.</p>
+
+<h3>Creating and Defining Objects in Collections</h3>
+
+<p>Most collection objects support creation and definition. The difference
+in libvirt is that defining will create a persistent object that survives
+node reboots, but it will not start immediately. Creating, on the other
+hand, creates and starts the object but it won't persist after reboots,
+typically. Refer to the actual libvirt documentation for verification
+on this.</p>
+
+<p>Everything in libvirt is defined using XML. In the future, the libvirt-rb
+library will probably provide Ruby object wrappers around these XML
+structures but in the current version, you are expected to pass in the
+XML as a string. An example is shown below:</p>
+
+<pre class="code"><span class='id volume_xml'>volume_xml</span> <span class='op'>=</span> <span class='heredoc_beg'>&lt;&lt;-XML</span><span class='tstring_content'>&lt;volume&gt;
+  &lt;name&gt;test&lt;/name&gt;
+  &lt;key&gt;g9eba311-ea76-4e4a-ad7b-401fa81e38c8&lt;/key&gt;
+  &lt;source&gt;
+  &lt;/source&gt;
+  &lt;capacity&gt;8589934592&lt;/capacity&gt;
+  &lt;allocation&gt;33280&lt;/allocation&gt;
+  &lt;target&gt;
+    &lt;format type='raw'/&gt;
+    &lt;permissions&gt;
+      &lt;mode&gt;00&lt;/mode&gt;
+      &lt;owner&gt;0&lt;/owner&gt;
+      &lt;group&gt;0&lt;/group&gt;
+    &lt;/permissions&gt;
+  &lt;/target&gt;
+&lt;/volume&gt;
+</span><span class='heredoc_end'>XML
+</span>
+
+<span class='id volume'>volume</span> <span class='op'>=</span> <span class='id conn'>conn</span><span class='period'>.</span><span class='id storage_pools'>storage_pools</span><span class='period'>.</span><span class='id first'>first</span><span class='period'>.</span><span class='id volumes'>volumes</span><span class='period'>.</span><span class='id create'>create</span><span class='lparen'>(</span><span class='id volume_xml'>volume_xml</span><span class='rparen'>)</span>
+</pre>
+
+<p><strong>Note:</strong> You can also retrieve the XML for an object using the <code>xml</code>
+method which is available on most objects, such as <span class='object_link'><a href="Libvirt/Domain.html#xml-instance_method" title="Libvirt::Domain#xml (method)">Libvirt::Domain#xml</a></span>.</p>
+
+<h3>Using Libvirt Objects</h3>
+
+<p>Once you have retrieved a single libvirt object, such as <span class='object_link'><a href="Libvirt/Connection.html" title="Libvirt::Connection (class)">Connection</a></span>
+or <span class='object_link'><a href="Libvirt/Domain.html" title="Libvirt::Domain (class)">Domain</a></span>, there are common ways to access information
+and manipulate the object.</p>
+
+<p>All objects have attributes which are accessed using simple method
+calls, an example using a domain object below:</p>
+
+<pre class="code"><span class='id puts'>puts</span> <span class='id domain'>domain</span><span class='period'>.</span><span class='id name'>name</span>
+<span class='id puts'>puts</span> <span class='id domain'>domain</span><span class='period'>.</span><span class='id uuid'>uuid</span>
+<span class='id puts'>puts</span> <span class='id domain'>domain</span><span class='period'>.</span><span class='id xml'>xml</span>
+<span class='id puts'>puts</span> <span class='id domain'>domain</span><span class='period'>.</span><span class='id state'>state</span>
+</pre>
+
+<p>Additionally, there are usually methods to control the state of an
+object, and transition it to new states, such as starting or stopping
+a domain:</p>
+
+<pre class="code"><span class='id domain'>domain</span><span class='period'>.</span><span class='id start'>start</span>
+<span class='id domain'>domain</span><span class='period'>.</span><span class='id stop'>stop</span>
+<span class='id domain'>domain</span><span class='period'>.</span><span class='id undefine'>undefine</span>
+</pre>
+
+<p>These methods return a boolean <code>true</code> or <code>false</code> depending on whether
+they succeed or not.</p>
+
+<h3>Error Handling</h3>
+
+<p>Libvirt itself provides a great error handling mechanism through
+callbacks. By default, libvirt-rb will raise an <span class='object_link'><a href="Libvirt/Exception/LibvirtError.html" title="Libvirt::Exception::LibvirtError (class)">Libvirt::Exception::LibvirtError</a></span>
+whenever an error occurs. That error contains a human readable
+message and an error code, as well as a backtrace as to where the error
+could have occurred. The exception simply wraps a <span class='object_link'><a href="Libvirt/Error.html" title="Libvirt::Error (class)">Libvirt::Error</a></span>
+object.</p>
+
+<p>If, instead of raising an exception for every error, you'd like
+custom behavior, you can set a new callback which will be called
+every time:</p>
+
+<pre class="code"><span class='const'>Libvirt</span><span class='op'>::</span><span class='const'>Error</span><span class='period'>.</span><span class='id on_error'>on_error</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id error'>error</span><span class='op'>|</span>
+  <span class='comment'># Do anything you want with `error`...
+</span><span class='kw'>end</span>
+</pre>
+
+<p>You can also disable error callbacks alltogether by specifying no
+block:</p>
+
+<pre class="code"><span class='const'>Libvirt</span><span class='op'>::</span><span class='const'>Error</span><span class='period'>.</span><span class='id on_error'>on_error</span>
+</pre>
+
+<p>Most methods return <code>nil</code> on error. Some methods have no reasonable
+way of representing an error (for example <code>nil</code> might just mean a
+find failed), so doing nothing is not recommended.</p>
+
+<h2>Advanced: Direct FFI Access</h2>
+
+<p>For advanced users out there, there is nearly 100% FFI coverage over
+the libvirt API from the <code>FFI::Libvirt</code> namespace. This is a mostly
+flat namespace for all the API methods, with classes for the various
+structs. An example of using this API directly:</p>
+
+<pre class="code"><span class='id c'>c</span> <span class='op'>=</span> <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id virConnectOpen'>virConnectOpen</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>test:///default</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='id puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Connected URI: </span><span class='embexpr_beg'>#{</span><span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id virConnectGetURI'>virConnectGetURI</span><span class='lparen'>(</span><span class='id c'>c</span><span class='rparen'>)</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+</pre>
+
+<h3>Creating libvirt-rb Objects with FFI Pointers</h3>
+
+<p>Many of the pointers returned by the FFI layer can be used to initialize
+higher level objects, allowing a smooth transition between FFI and
+libvirt-rb. An example of this is shown below:</p>
+
+<pre class="code"><span class='id c'>c</span> <span class='op'>=</span> <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id virConnectOpen'>virConnectOpen</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>test:///default</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+
+<span class='comment'># Use the pointer to create a Connection object, this is the
+</span><span class='comment'># same as doing `Libvirt.connect(&quot;test:///default&quot;)`
+</span><span class='id conn'>conn</span> <span class='op'>=</span> <span class='const'>Libvirt</span><span class='op'>::</span><span class='const'>Connection</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id c'>c</span><span class='rparen'>)</span>
+
+<span class='comment'># We are responsible for cleaning up the pointer. Since the Connection
+</span><span class='comment'># object took ownership, this free simply decreases a reference count
+</span><span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id virConnectFree'>virConnectFree</span><span class='lparen'>(</span><span class='id c'>c</span><span class='rparen'>)</span>
+</pre>
+
+<p><strong>Warning:</strong> As you can see through the example above, you must remember
+to <em>ALWAYS</em> free your pointers after initializing a higher level object.
+This is to ensure that memory is properly freed. Using the FFI API makes
+it very easy to leak memory, so you have been warned.</p>
+
+<h3>Using libvirt-rb Objects as Pointer Arguments</h3>
+
+<p>In addition to creating libvirt-rb objects, the libvirt-rb objects can
+also be used as pointer arguments for the FFI API. This is because all
+of the objects implement the <code>to_ptr</code> method. An example is shown below:</p>
+
+<pre class="code"><span class='id c'>c</span> <span class='op'>=</span> <span class='const'>Libvirt</span><span class='period'>.</span><span class='id connect'>connect</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>test:///default</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='id puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>URI: </span><span class='embexpr_beg'>#{</span><span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id virConnectGetURI'>virConnectGetURI</span><span class='lparen'>(</span><span class='id c'>c</span><span class='rparen'>)</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+</pre>
+
+<p><strong>Warning:</strong> If you store the pointer directly somewhere (assigning
+the <code>to_ptr</code> value to a variable), do not forget to increase the
+reference count by calling the respective API, since when the libvirt-rb
+objects are garbage collected, they automatically free the pointer.</p></div></div>
+    
+    <div id="footer">
+  Generated on Tue Nov 16 08:13:28 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.1 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>

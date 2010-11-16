@@ -1,0 +1,875 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Class: Libvirt::Spec::Device::Disk</title>
+<link rel="stylesheet" href="../../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '../../..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../../_index.html">Index (D)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../../../Libvirt.html" title="Libvirt (module)">Libvirt</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Spec.html" title="Libvirt::Spec (module)">Spec</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Device.html" title="Libvirt::Spec::Device (module)">Device</a></span></span>
+     &raquo; 
+    <span class="title">Disk</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: Libvirt::Spec::Device::Disk
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Libvirt::Spec::Device::Disk</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/libvirt/spec/device/disk.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>Any device that looks like a disk, be it a floppy, harddisk,
+cdrom, or paravirtualized driver is specified via the disk
+element.</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#driver-instance_method" title="#driver (instance method)">- (Object) <strong>driver</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the value of attribute driver.</p></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#driver_cache-instance_method" title="#driver_cache (instance method)">- (Object) <strong>driver_cache</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the value of attribute driver_cache.</p></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#driver_type-instance_method" title="#driver_type (instance method)">- (Object) <strong>driver_type</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the value of attribute driver_type.</p></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#serial-instance_method" title="#serial (instance method)">- (Object) <strong>serial</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the value of attribute serial.</p></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#shareable-instance_method" title="#shareable (instance method)">- (Object) <strong>shareable</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the value of attribute shareable.</p></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#source-instance_method" title="#source (instance method)">- (Object) <strong>source</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the value of attribute source.</p></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#target_bus-instance_method" title="#target_bus (instance method)">- (Object) <strong>target_bus</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the value of attribute target_bus.</p></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#target_dev-instance_method" title="#target_dev (instance method)">- (Object) <strong>target_dev</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the value of attribute target_dev.</p></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#type-instance_method" title="#type (instance method)">- (Object) <strong>type</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the value of attribute type.</p></div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Disk) <strong>initialize</strong>(type) </a>
+    
+
+    
+  </span>
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Initialize a new disk element with the given type.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_xml-instance_method" title="#to_xml (instance method)">- (Object) <strong>to_xml</strong>(xml = Nokogiri::XML::Builder.new) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the XML representation of this device.</p></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <p class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Libvirt::Spec::Device::Disk (class)">Disk</a></span></tt>) <strong>initialize</strong>(type) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Initialize a new disk element with the given type. Examples
+of valid <code>type</code>s are "disk," "floppy," and "cdrom."</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+20
+21
+22
+23</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/spec/device/disk.rb', line 20</span>
+
+<span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id type'>type</span><span class='rparen'>)</span>
+  <span class='ivar'>@type</span> <span class='op'>=</span> <span class='id type'>type</span>
+  <span class='ivar'>@shareable</span> <span class='op'>=</span> <span class='kw'>false</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id="driver=-instance_method"></span>
+      <span id="driver-instance_method"></span>
+      <div class="method_details first">
+  <p class="signature first" id="driver-instance_method">
+  
+    - (<tt>Object</tt>) <strong>driver</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the value of attribute driver</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+12
+13
+14</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/spec/device/disk.rb', line 12</span>
+
+<span class='kw'>def</span> <span class='id driver'>driver</span>
+  <span class='ivar'>@driver</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="driver_cache=-instance_method"></span>
+      <span id="driver_cache-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="driver_cache-instance_method">
+  
+    - (<tt>Object</tt>) <strong>driver_cache</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the value of attribute driver_cache</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+14
+15
+16</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/spec/device/disk.rb', line 14</span>
+
+<span class='kw'>def</span> <span class='id driver_cache'>driver_cache</span>
+  <span class='ivar'>@driver_cache</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="driver_type=-instance_method"></span>
+      <span id="driver_type-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="driver_type-instance_method">
+  
+    - (<tt>Object</tt>) <strong>driver_type</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the value of attribute driver_type</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+13
+14
+15</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/spec/device/disk.rb', line 13</span>
+
+<span class='kw'>def</span> <span class='id driver_type'>driver_type</span>
+  <span class='ivar'>@driver_type</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="serial=-instance_method"></span>
+      <span id="serial-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="serial-instance_method">
+  
+    - (<tt>Object</tt>) <strong>serial</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the value of attribute serial</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+16
+17
+18</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/spec/device/disk.rb', line 16</span>
+
+<span class='kw'>def</span> <span class='id serial'>serial</span>
+  <span class='ivar'>@serial</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="shareable=-instance_method"></span>
+      <span id="shareable-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="shareable-instance_method">
+  
+    - (<tt>Object</tt>) <strong>shareable</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the value of attribute shareable</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+15
+16
+17</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/spec/device/disk.rb', line 15</span>
+
+<span class='kw'>def</span> <span class='id shareable'>shareable</span>
+  <span class='ivar'>@shareable</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="source=-instance_method"></span>
+      <span id="source-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="source-instance_method">
+  
+    - (<tt>Object</tt>) <strong>source</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the value of attribute source</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+9
+10
+11</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/spec/device/disk.rb', line 9</span>
+
+<span class='kw'>def</span> <span class='id source'>source</span>
+  <span class='ivar'>@source</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="target_bus=-instance_method"></span>
+      <span id="target_bus-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="target_bus-instance_method">
+  
+    - (<tt>Object</tt>) <strong>target_bus</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the value of attribute target_bus</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+11
+12
+13</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/spec/device/disk.rb', line 11</span>
+
+<span class='kw'>def</span> <span class='id target_bus'>target_bus</span>
+  <span class='ivar'>@target_bus</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="target_dev=-instance_method"></span>
+      <span id="target_dev-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="target_dev-instance_method">
+  
+    - (<tt>Object</tt>) <strong>target_dev</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the value of attribute target_dev</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+10
+11
+12</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/spec/device/disk.rb', line 10</span>
+
+<span class='kw'>def</span> <span class='id target_dev'>target_dev</span>
+  <span class='ivar'>@target_dev</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="type=-instance_method"></span>
+      <span id="type-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="type-instance_method">
+  
+    - (<tt>Object</tt>) <strong>type</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the value of attribute type</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+8
+9
+10</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/spec/device/disk.rb', line 8</span>
+
+<span class='kw'>def</span> <span class='id type'>type</span>
+  <span class='ivar'>@type</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="to_xml-instance_method">
+  
+    - (<tt>Object</tt>) <strong>to_xml</strong>(xml = Nokogiri::XML::Builder.new) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the XML representation of this device.</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/spec/device/disk.rb', line 26</span>
+
+<span class='kw'>def</span> <span class='id to_xml'>to_xml</span><span class='lparen'>(</span><span class='id xml'>xml</span><span class='op'>=</span><span class='const'>Nokogiri</span><span class='op'>::</span><span class='const'>XML</span><span class='op'>::</span><span class='const'>Builder</span><span class='period'>.</span><span class='id new'>new</span><span class='rparen'>)</span>
+  <span class='id xml'>xml</span><span class='period'>.</span><span class='id disk'>disk</span><span class='lparen'>(</span><span class='symbol'>:type</span> <span class='op'>=&gt;</span> <span class='id type'>type</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id d'>d</span><span class='op'>|</span>
+    <span class='kw'>if</span> <span class='id source'>source</span>
+      <span class='comment'># Source tag, the attribute depends on the type.
+</span>      <span class='id attribute'>attribute</span> <span class='op'>=</span> <span class='id type'>type</span> <span class='op'>==</span> <span class='symbol'>:block</span> <span class='op'>?</span> <span class='symbol'>:dev</span> <span class='op'>:</span> <span class='symbol'>:file</span>
+      <span class='id d'>d</span><span class='period'>.</span><span class='id source'>source</span><span class='lparen'>(</span><span class='id attribute'>attribute</span> <span class='op'>=&gt;</span> <span class='id source'>source</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+
+    <span class='kw'>if</span> <span class='id target_dev'>target_dev</span>
+      <span class='comment'># Target tag has optional &quot;bus&quot; parameter
+</span>      <span class='id options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='symbol'>:dev</span> <span class='op'>=&gt;</span> <span class='id target_dev'>target_dev</span> <span class='rbrace'>}</span>
+      <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:bus</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id target_bus'>target_bus</span> <span class='kw'>if</span> <span class='id target_bus'>target_bus</span>
+      <span class='id d'>d</span><span class='period'>.</span><span class='id target'>target</span><span class='lparen'>(</span><span class='id options'>options</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+
+    <span class='kw'>if</span> <span class='id driver'>driver</span>
+      <span class='comment'># Driver tag has a couple optional parameters
+</span>      <span class='id options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='id driver'>driver</span> <span class='rbrace'>}</span>
+      <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:type</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id driver_type'>driver_type</span> <span class='kw'>if</span> <span class='id driver_type'>driver_type</span>
+      <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:cache</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id driver_cache'>driver_cache</span> <span class='kw'>if</span> <span class='id driver_cache'>driver_cache</span>
+      <span class='id d'>d</span><span class='period'>.</span><span class='id driver'>driver</span><span class='lparen'>(</span><span class='id options'>options</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+
+    <span class='id d'>d</span><span class='period'>.</span><span class='id shareable'>shareable</span> <span class='kw'>if</span> <span class='id shareable'>shareable</span>
+    <span class='id d'>d</span><span class='period'>.</span><span class='id serial'>serial</span> <span class='id serial'>serial</span> <span class='kw'>if</span> <span class='id serial'>serial</span>
+  <span class='kw'>end</span>
+
+  <span class='id xml'>xml</span><span class='period'>.</span><span class='id to_xml'>to_xml</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Tue Nov 16 08:13:30 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.1 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>

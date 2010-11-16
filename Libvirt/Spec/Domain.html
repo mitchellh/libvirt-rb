@@ -1,0 +1,1097 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Class: Libvirt::Spec::Domain</title>
+<link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '../..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (D)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../../Libvirt.html" title="Libvirt (module)">Libvirt</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Spec.html" title="Libvirt::Spec (module)">Spec</a></span></span>
+     &raquo; 
+    <span class="title">Domain</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: Libvirt::Spec::Domain
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Libvirt::Spec::Domain</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/libvirt/spec/domain.rb<span class="defines">,<br />
+  lib/libvirt/spec/domain/os_booting.rb</span>
+</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>A specification of a domain. This translates directly down to XML
+which can be used to define and launch domains on a node by libvirt.</p>
+
+<p><strong>Note:</strong> This class may only be temporary, and the functionality
+may be merged back into <span class='object_link'><a href="" title="Libvirt::Spec::Domain (class)">Domain</a></span>. Also, the interface will likely
+change.</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><h2>Defined Under Namespace</h2>
+<p class="children">
+   
+    
+   
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Domain/OSBooting.html" title="Libvirt::Spec::Domain::OSBooting (class)">OSBooting</a></span>
+    
+  
+</p>
+
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#current_memory-instance_method" title="#current_memory (instance method)">- (Object) <strong>current_memory</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the value of attribute current_memory.</p></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#description-instance_method" title="#description (instance method)">- (Object) <strong>description</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the value of attribute description.</p></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#devices-instance_method" title="#devices (instance method)">- (Object) <strong>devices</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the value of attribute devices.</p></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#hypervisor-instance_method" title="#hypervisor (instance method)">- (Object) <strong>hypervisor</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the value of attribute hypervisor.</p></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#memory-instance_method" title="#memory (instance method)">- (Object) <strong>memory</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the value of attribute memory.</p></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#name-instance_method" title="#name (instance method)">- (Object) <strong>name</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the value of attribute name.</p></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#on_crash-instance_method" title="#on_crash (instance method)">- (Object) <strong>on_crash</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the value of attribute on_crash.</p></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#on_poweroff-instance_method" title="#on_poweroff (instance method)">- (Object) <strong>on_poweroff</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the value of attribute on_poweroff.</p></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#on_reboot-instance_method" title="#on_reboot (instance method)">- (Object) <strong>on_reboot</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the value of attribute on_reboot.</p></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#os-instance_method" title="#os (instance method)">- (Object) <strong>os</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the value of attribute os.</p></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#uuid-instance_method" title="#uuid (instance method)">- (Object) <strong>uuid</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the value of attribute uuid.</p></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#vcpu-instance_method" title="#vcpu (instance method)">- (Object) <strong>vcpu</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the value of attribute vcpu.</p></div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Domain) <strong>initialize</strong> </a>
+    
+
+    
+  </span>
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>A new instance of Domain.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_xml-instance_method" title="#to_xml (instance method)">- (String) <strong>to_xml</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the XML for this specification.</p></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <p class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Libvirt::Spec::Domain (class)">Domain</a></span></tt>) <strong>initialize</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>A new instance of Domain</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+27
+28
+29
+30</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/spec/domain.rb', line 27</span>
+
+<span class='kw'>def</span> <span class='id initialize'>initialize</span>
+  <span class='ivar'>@os</span> <span class='op'>=</span> <span class='const'>OSBooting</span><span class='period'>.</span><span class='id new'>new</span>
+  <span class='ivar'>@devices</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id="current_memory=-instance_method"></span>
+      <span id="current_memory-instance_method"></span>
+      <div class="method_details first">
+  <p class="signature first" id="current_memory-instance_method">
+  
+    - (<tt>Object</tt>) <strong>current_memory</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the value of attribute current_memory</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+18
+19
+20</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/spec/domain.rb', line 18</span>
+
+<span class='kw'>def</span> <span class='id current_memory'>current_memory</span>
+  <span class='ivar'>@current_memory</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="description=-instance_method"></span>
+      <span id="description-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="description-instance_method">
+  
+    - (<tt>Object</tt>) <strong>description</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the value of attribute description</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+15
+16
+17</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/spec/domain.rb', line 15</span>
+
+<span class='kw'>def</span> <span class='id description'>description</span>
+  <span class='ivar'>@description</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="devices=-instance_method"></span>
+      <span id="devices-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="devices-instance_method">
+  
+    - (<tt>Object</tt>) <strong>devices</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the value of attribute devices</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+25
+26
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/spec/domain.rb', line 25</span>
+
+<span class='kw'>def</span> <span class='id devices'>devices</span>
+  <span class='ivar'>@devices</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="hypervisor=-instance_method"></span>
+      <span id="hypervisor-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="hypervisor-instance_method">
+  
+    - (<tt>Object</tt>) <strong>hypervisor</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the value of attribute hypervisor</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+12
+13
+14</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/spec/domain.rb', line 12</span>
+
+<span class='kw'>def</span> <span class='id hypervisor'>hypervisor</span>
+  <span class='ivar'>@hypervisor</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="memory=-instance_method"></span>
+      <span id="memory-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="memory-instance_method">
+  
+    - (<tt>Object</tt>) <strong>memory</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the value of attribute memory</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+17
+18
+19</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/spec/domain.rb', line 17</span>
+
+<span class='kw'>def</span> <span class='id memory'>memory</span>
+  <span class='ivar'>@memory</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="name=-instance_method"></span>
+      <span id="name-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="name-instance_method">
+  
+    - (<tt>Object</tt>) <strong>name</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the value of attribute name</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+13
+14
+15</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/spec/domain.rb', line 13</span>
+
+<span class='kw'>def</span> <span class='id name'>name</span>
+  <span class='ivar'>@name</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="on_crash=-instance_method"></span>
+      <span id="on_crash-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="on_crash-instance_method">
+  
+    - (<tt>Object</tt>) <strong>on_crash</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the value of attribute on_crash</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+23
+24
+25</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/spec/domain.rb', line 23</span>
+
+<span class='kw'>def</span> <span class='id on_crash'>on_crash</span>
+  <span class='ivar'>@on_crash</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="on_poweroff=-instance_method"></span>
+      <span id="on_poweroff-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="on_poweroff-instance_method">
+  
+    - (<tt>Object</tt>) <strong>on_poweroff</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the value of attribute on_poweroff</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+21
+22
+23</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/spec/domain.rb', line 21</span>
+
+<span class='kw'>def</span> <span class='id on_poweroff'>on_poweroff</span>
+  <span class='ivar'>@on_poweroff</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="on_reboot=-instance_method"></span>
+      <span id="on_reboot-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="on_reboot-instance_method">
+  
+    - (<tt>Object</tt>) <strong>on_reboot</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the value of attribute on_reboot</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+22
+23
+24</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/spec/domain.rb', line 22</span>
+
+<span class='kw'>def</span> <span class='id on_reboot'>on_reboot</span>
+  <span class='ivar'>@on_reboot</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="os=-instance_method"></span>
+      <span id="os-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="os-instance_method">
+  
+    - (<tt>Object</tt>) <strong>os</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the value of attribute os</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+16
+17
+18</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/spec/domain.rb', line 16</span>
+
+<span class='kw'>def</span> <span class='id os'>os</span>
+  <span class='ivar'>@os</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="uuid=-instance_method"></span>
+      <span id="uuid-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="uuid-instance_method">
+  
+    - (<tt>Object</tt>) <strong>uuid</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the value of attribute uuid</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+14
+15
+16</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/spec/domain.rb', line 14</span>
+
+<span class='kw'>def</span> <span class='id uuid'>uuid</span>
+  <span class='ivar'>@uuid</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="vcpu=-instance_method"></span>
+      <span id="vcpu-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="vcpu-instance_method">
+  
+    - (<tt>Object</tt>) <strong>vcpu</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the value of attribute vcpu</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+19
+20
+21</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/spec/domain.rb', line 19</span>
+
+<span class='kw'>def</span> <span class='id vcpu'>vcpu</span>
+  <span class='ivar'>@vcpu</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="to_xml-instance_method">
+  
+    - (<tt>String</tt>) <strong>to_xml</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the XML for this specification. This XML may be passed
+into libvirt to create a domain. This is actually the method which
+should be used for validation of this XML, since libvirt has
+great validation built in. If you define a domain and an error occurs,
+then it will notify you what is missing or wrong with the specification.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/spec/domain.rb', line 39</span>
+
+<span class='kw'>def</span> <span class='id to_xml'>to_xml</span>
+  <span class='const'>Nokogiri</span><span class='op'>::</span><span class='const'>XML</span><span class='op'>::</span><span class='const'>Builder</span><span class='period'>.</span><span class='id new'>new</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id xml'>xml</span><span class='op'>|</span>
+    <span class='id xml'>xml</span><span class='period'>.</span><span class='id domain'>domain</span><span class='lparen'>(</span><span class='symbol'>:type</span> <span class='op'>=&gt;</span> <span class='id hypervisor'>hypervisor</span><span class='rparen'>)</span> <span class='kw'>do</span>
+      <span class='comment'># Name and description
+</span>      <span class='id xml'>xml</span><span class='period'>.</span><span class='id name'>name</span> <span class='id name'>name</span> <span class='kw'>if</span> <span class='id name'>name</span>
+      <span class='id xml'>xml</span><span class='period'>.</span><span class='id uuid'>uuid</span> <span class='id uuid'>uuid</span> <span class='kw'>if</span> <span class='id uuid'>uuid</span>
+      <span class='id xml'>xml</span><span class='period'>.</span><span class='id description'>description</span> <span class='id description'>description</span> <span class='kw'>if</span> <span class='id description'>description</span>
+
+      <span class='comment'># Operating system boot information
+</span>      <span class='id os'>os</span><span class='period'>.</span><span class='id to_xml'>to_xml</span><span class='lparen'>(</span><span class='id xml'>xml</span><span class='rparen'>)</span>
+
+      <span class='comment'># Basic resources
+</span>      <span class='id xml'>xml</span><span class='period'>.</span><span class='id memory'>memory</span> <span class='id memory'>memory</span> <span class='kw'>if</span> <span class='id memory'>memory</span>
+      <span class='id xml'>xml</span><span class='period'>.</span><span class='id currentMemory'>currentMemory</span> <span class='id current_memory'>current_memory</span> <span class='kw'>if</span> <span class='id current_memory'>current_memory</span>
+      <span class='id xml'>xml</span><span class='period'>.</span><span class='id vcpu'>vcpu</span> <span class='id vcpu'>vcpu</span> <span class='kw'>if</span> <span class='id vcpu'>vcpu</span>
+
+      <span class='comment'># Lifecycle control
+</span>      <span class='id xml'>xml</span><span class='period'>.</span><span class='id on_poweroff'>on_poweroff</span> <span class='id on_poweroff'>on_poweroff</span> <span class='kw'>if</span> <span class='id on_poweroff'>on_poweroff</span>
+      <span class='id xml'>xml</span><span class='period'>.</span><span class='id on_reboot'>on_reboot</span> <span class='id on_reboot'>on_reboot</span> <span class='kw'>if</span> <span class='id on_reboot'>on_reboot</span>
+      <span class='id xml'>xml</span><span class='period'>.</span><span class='id on_crash'>on_crash</span> <span class='id on_crash'>on_crash</span> <span class='kw'>if</span> <span class='id on_crash'>on_crash</span>
+
+      <span class='comment'># Devices
+</span>      <span class='kw'>if</span> <span class='op'>!</span><span class='id devices'>devices</span><span class='period'>.</span><span class='id empty?'>empty?</span>
+        <span class='id xml'>xml</span><span class='period'>.</span><span class='id devices'>devices</span> <span class='kw'>do</span>
+          <span class='id devices'>devices</span><span class='period'>.</span><span class='id map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id d'>d</span><span class='op'>|</span> <span class='id d'>d</span><span class='period'>.</span><span class='id to_xml'>to_xml</span><span class='lparen'>(</span><span class='id xml'>xml</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+        <span class='kw'>end</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span><span class='period'>.</span><span class='id to_xml'>to_xml</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Tue Nov 16 08:13:29 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.1 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>

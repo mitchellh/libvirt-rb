@@ -1,0 +1,332 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Module: Libvirt</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (L)</a> &raquo; 
+    
+    
+    <span class="title">Libvirt</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: Libvirt
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/libvirt.rb<span class="defines">,<br />
+  lib/libvirt/spec.rb,<br /> lib/libvirt/node.rb,<br /> lib/libvirt/error.rb,<br /> lib/libvirt/domain.rb,<br /> lib/libvirt/version.rb,<br /> lib/libvirt/network.rb,<br /> lib/libvirt/exception.rb,<br /> lib/libvirt/collection.rb,<br /> lib/libvirt/connection.rb,<br /> lib/libvirt/spec/domain.rb,<br /> lib/libvirt/node_device.rb,<br /> lib/libvirt/spec/device.rb,<br /> lib/libvirt/storage_pool.rb,<br /> lib/libvirt/storage_volume.rb,<br /> lib/libvirt/spec/device/disk.rb,<br /> lib/libvirt/spec/device/emulator.rb,<br /> lib/libvirt/spec/domain/os_booting.rb,<br /> lib/libvirt/collection/domain_collection.rb,<br /> lib/libvirt/collection/network_collection.rb,<br /> lib/libvirt/collection/nwfilter_collection.rb,<br /> lib/libvirt/collection/abstract_collection.rb,<br /> lib/libvirt/collection/interface_collection.rb,<br /> lib/libvirt/collection/node_device_collection.rb,<br /> lib/libvirt/collection/storage_pool_collection.rb,<br /> lib/libvirt/collection/storage_volume_collection.rb</span>
+</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>This module is the namespace for the higher level library on top of
+libvirt, in typicaly Ruby library style. In contrast with <span class='object_link'><a href="FFI/Libvirt.html" title="FFI::Libvirt (module)">FFI::Libvirt</a></span>
+which is a direct layer on top of FFI, this namespace abstracts much of
+the manual work away (especially pointer handling) and exposes aspects
+of the API through nice Ruby objects.</p>
+
+<p>Due to the nature of this side of the project, there may be certain features
+not readily available which are supported by the API. If this is the case,
+you can use the <span class='object_link'><a href="FFI/Libvirt.html" title="FFI::Libvirt (module)">FFI::Libvirt</a></span> library alongside this side.</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><h2>Defined Under Namespace</h2>
+<p class="children">
+   
+    
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="Libvirt/Collection.html" title="Libvirt::Collection (module)">Collection</a></span>, <span class='object_link'><a href="Libvirt/Exception.html" title="Libvirt::Exception (module)">Exception</a></span>, <span class='object_link'><a href="Libvirt/Spec.html" title="Libvirt::Spec (module)">Spec</a></span>
+    
+   
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Libvirt/Connection.html" title="Libvirt::Connection (class)">Connection</a></span>, <span class='object_link'><a href="Libvirt/Domain.html" title="Libvirt::Domain (class)">Domain</a></span>, <span class='object_link'><a href="Libvirt/Error.html" title="Libvirt::Error (class)">Error</a></span>, <span class='object_link'><a href="Libvirt/Network.html" title="Libvirt::Network (class)">Network</a></span>, <span class='object_link'><a href="Libvirt/Node.html" title="Libvirt::Node (class)">Node</a></span>, <span class='object_link'><a href="Libvirt/NodeDevice.html" title="Libvirt::NodeDevice (class)">NodeDevice</a></span>, <span class='object_link'><a href="Libvirt/StoragePool.html" title="Libvirt::StoragePool (class)">StoragePool</a></span>, <span class='object_link'><a href="Libvirt/StorageVolume.html" title="Libvirt::StorageVolume (class)">StorageVolume</a></span>
+    
+  
+</p>
+
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="VERSION-constant" class="">VERSION =
+          
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>0.0.1.dev</span><span class='tstring_end'>&quot;</span></span></pre></dd>
+      
+    </dl>
+  
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#connect-class_method" title="connect (class method)">+ (Object) <strong>connect</strong>(*args) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Connect to a hypervisor using libvirt.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize%21-class_method" title="initialize! (class method)">+ (Object) <strong>initialize!</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Initializes the library by calling <code>virInitialize</code>.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#version-class_method" title="version (class method)">+ (Array) <strong>version</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the version of <code>libvirt</code> on the client machine.</p></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="connect-class_method">
+  
+    + (<tt>Object</tt>) <strong>connect</strong>(*args) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Connect to a hypervisor using libvirt. This is a shortcut to
+instantiating a <span class='object_link'><a href="Libvirt/Connection.html" title="Libvirt::Connection (class)">Connection</a></span> object, therefore for documentation on
+the arguments and return value for this method, please consult
+<span class='object_link'><a href="Libvirt/Connection.html#initialize-instance_method" title="Libvirt::Connection#initialize (method)">Connection#initialize</a></span>.</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+47
+48
+49</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt.rb', line 47</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id connect'>connect</span><span class='lparen'>(</span><span class='op'>*</span><span class='id args'>args</span><span class='rparen'>)</span>
+  <span class='const'>Connection</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='op'>*</span><span class='id args'>args</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="initialize!-class_method">
+  
+    + (<tt>Object</tt>) <strong>initialize!</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Initializes the library by calling <code>virInitialize</code>. Most methods
+in libvirt actually call this themselves, so its not strictly
+necessary. However, it is good practice and is <strong>highly</strong> recommended
+that this is called at a same place in a multi-threaded environment.</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+30
+31
+32</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt.rb', line 30</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id initialize!'>initialize!</span>
+  <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id virInitialize'>virInitialize</span> <span class='op'>==</span> <span class='int'>0</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="version-class_method">
+  
+    + (<tt>Array</tt>) <strong>version</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the version of <code>libvirt</code> on the client machine. <strong>This is
+not the version of the <code>libvirt</code> ruby library.</strong> The result is
+return as an array of <code>[major, minor, patch]</code>.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+39
+40
+41</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt.rb', line 39</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id version'>version</span>
+  <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Libvirt</span><span class='period'>.</span><span class='id version'>version</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Tue Nov 16 08:13:29 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.1 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Documentation by YARD 0.6.1</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html" title="Index">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><div id='filecontents'><h1>Libvirt Ruby Library</h1>
+
+<ul>
+<li>Source: <a href="http://github.com/mitchellh/libvirt-rb">http://github.com/mitchellh/libvirt-rb</a></li>
+<li>IRC: <code>#vagrant</code> on Freenode</li>
+<li>Issues: <a href="http://github.com/mitchellh/libvirt-rb/issues">http://github.com/mitchellh/libvirt-rb/issues</a></li>
+</ul>
+
+
+<p>A ruby client library providing the raw interface to libvirt via
+FFI. The library is backwards compatible to libvirt 0.6.0. The
+library consists of two namespaces:</p>
+
+<ul>
+<li><code>Libvirt</code> - All objects under this namespace provide a very Ruby-like
+object oriented interface above the raw libvirt API. This is the recommended
+way of using libvirt with Ruby. These objects are mostly compatible with
+the FFI layer as well (you may pass in a <code>Connection</code> object in place of
+a <code>virConnectPtr</code> for example).</li>
+<li><code>FFI::Libvirt</code> - A direct interface to the libvirt API using FFI. This is
+for the power players out there who need extremely customized functionality,
+with the tradeoff being that it is more complicated to use and you must manage
+your own pointers.</li>
+</ul>
+
+
+<h2>Project Status</h2>
+
+<p><strong>Functional beta.</strong> The project has been initially released with complete
+FFI coverage and extensive coverage with the nicer Ruby objects. More
+functionality will constantly be developed. If you'd like to see a specific
+feature come first, please open an <a href="http://github.com/mitchellh/libvirt-rb/issues">issue</a>.</p>
+
+<h2>Installation</h2>
+
+<p>This library will be a gem. First, you need to install libvirt, using
+your OS's respective package manager. On OS X the recommended way is
+using <a href="http://github.com/mxcl/homebrew">homebrew</a>:</p>
+
+<pre class="code"><span class='id brew'>brew</span> <span class='id install'>install</span> <span class='id libvirt'>libvirt</span>
+</pre>
+
+<p>After installing libvirt, install the gem:</p>
+
+<pre class="code"><span class='id gem'>gem</span> <span class='id install'>install</span> <span class='id libvirt'>libvirt</span>
+</pre>
+
+<p>If you'd like to try the bleeding edge version of libvirt-rb, we try
+to keep master pretty stable and you're welcome to give it a shot. To
+do this just clone out the repository and run this from the working
+directory:</p>
+
+<pre class="code"><span class='id rake'>rake</span> <span class='id install'>install</span>
+</pre>
+
+<h2>Usage</h2>
+
+<p>For detailed usage and examples, please view the documentation. But
+a small example is shown below so you can get a feel for how the library
+is meant to be used:</p>
+
+<pre class="code"><span class='id require'>require</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>libvirt</span><span class='tstring_end'>'</span></span>
+
+<span class='id conn'>conn</span> <span class='op'>=</span> <span class='const'>Libvirt</span><span class='period'>.</span><span class='id connect'>connect</span>
+
+<span class='comment'># Output some basic information
+</span><span class='id puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>You are connected to: </span><span class='embexpr_beg'>#{</span><span class='id cxn'>cxn</span><span class='period'>.</span><span class='id hypervisor'>hypervisor</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='id puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Hypervisor version: </span><span class='embexpr_beg'>#{</span><span class='id cxn'>cxn</span><span class='period'>.</span><span class='id hypervisor_version'>hypervisor_version</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='id puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Libvirt version: </span><span class='embexpr_beg'>#{</span><span class='id cxn'>cxn</span><span class='period'>.</span><span class='id lib_version'>lib_version</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='comment'># Output the names of all the domains
+</span><span class='id conn'>conn</span><span class='period'>.</span><span class='id domains'>domains</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id domain'>domain</span><span class='op'>|</span>
+  <span class='id puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Domain: </span><span class='embexpr_beg'>#{</span><span class='id domain'>domain</span><span class='period'>.</span><span class='id name'>name</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span>
+
+<span class='comment'># Start a domain and stop another
+</span><span class='id conn'>conn</span><span class='period'>.</span><span class='id domains'>domains</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id start'>start</span>
+<span class='id conn'>conn</span><span class='period'>.</span><span class='id domains'>domains</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id stop'>stop</span>
+
+<span class='comment'># Create a new domain (assuming `xml` is defined somewhere)
+</span><span class='comment'># to an XML string
+</span><span class='id new_domain'>new_domain</span> <span class='op'>=</span> <span class='id conn'>conn</span><span class='period'>.</span><span class='id domains'>domains</span><span class='period'>.</span><span class='id create'>create</span><span class='lparen'>(</span><span class='id xml'>xml</span><span class='rparen'>)</span>
+<span class='id puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>New domain created: </span><span class='embexpr_beg'>#{</span><span class='id new_domain'>new_domain</span><span class='period'>.</span><span class='id name'>name</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+</pre>
+
+<p>As I said earlier, please read the full usage page in the documentation
+and also check out the examples in the <code>examples/</code> directory.</p>
+
+<h2>Contributing</h2>
+
+<p>To contribute to the project, fork it and send me pull requests of any
+changes made. For more information, see the <a href="http://github.com/mitchellh/libvirt-rb/wiki/Hacker's-Guide">Hacker's Guide</a>
+and the <a href="http://github.com/mitchellh/libvirt-rb/wiki/Contributor's-Guide">Contributor's Guide</a>.</p></div></div>
+    
+    <div id="footer">
+  Generated on Tue Nov 16 08:13:28 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.1 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,938 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Class: Libvirt::Spec::Domain::OSBooting</title>
+<link rel="stylesheet" href="../../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '../../..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../../_index.html">Index (O)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../../../Libvirt.html" title="Libvirt (module)">Libvirt</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Spec.html" title="Libvirt::Spec (module)">Spec</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Domain.html" title="Libvirt::Spec::Domain (class)">Domain</a></span></span>
+     &raquo; 
+    <span class="title">OSBooting</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: Libvirt::Spec::Domain::OSBooting
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Libvirt::Spec::Domain::OSBooting</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/libvirt/spec/domain/os_booting.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>The OS booting section of a domain specification indicates to libvirt
+how to configure the virtual machine to boot. There are three main ways
+to configure booting. Each hypervisor supports one or more of the following:</p>
+
+<ol>
+<li>BIOS bootloader</li>
+<li>Host bootloader</li>
+<li>Direct kernel boot</li>
+</ol>
+
+
+<p>TODO: Host bootloader and direct kernel bootloader options.</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#arch-instance_method" title="#arch (instance method)">- (Object) <strong>arch</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the value of attribute arch.</p></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#boot-instance_method" title="#boot (instance method)">- (Object) <strong>boot</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the value of attribute boot.</p></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#bootloader-instance_method" title="#bootloader (instance method)">- (Object) <strong>bootloader</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Host bootloader configuration options.</p></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#bootloader_args-instance_method" title="#bootloader_args (instance method)">- (Object) <strong>bootloader_args</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the value of attribute bootloader_args.</p></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#bootmenu_enabled-instance_method" title="#bootmenu_enabled (instance method)">- (Object) <strong>bootmenu_enabled</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the value of attribute bootmenu_enabled.</p></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#cmdline-instance_method" title="#cmdline (instance method)">- (Object) <strong>cmdline</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the value of attribute cmdline.</p></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initrd-instance_method" title="#initrd (instance method)">- (Object) <strong>initrd</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the value of attribute initrd.</p></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#kernel-instance_method" title="#kernel (instance method)">- (Object) <strong>kernel</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Direct kernel boot.</p></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#loader-instance_method" title="#loader (instance method)">- (Object) <strong>loader</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Part of the BIOS bootloader.</p></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#type-instance_method" title="#type (instance method)">- (Object) <strong>type</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the value of attribute type.</p></div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (OSBooting) <strong>initialize</strong> </a>
+    
+
+    
+  </span>
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>A new instance of OSBooting.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_xml-instance_method" title="#to_xml (instance method)">- (Object) <strong>to_xml</strong>(parent = Nokogiri::XML::Builder.new) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Convert just the OS booting section to its XML representation.</p></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <p class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Libvirt::Spec::Domain::OSBooting (class)">OSBooting</a></span></tt>) <strong>initialize</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>A new instance of OSBooting</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+29
+30
+31</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/spec/domain/os_booting.rb', line 29</span>
+
+<span class='kw'>def</span> <span class='id initialize'>initialize</span>
+  <span class='ivar'>@boot</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id="arch=-instance_method"></span>
+      <span id="arch-instance_method"></span>
+      <div class="method_details first">
+  <p class="signature first" id="arch-instance_method">
+  
+    - (<tt>Object</tt>) <strong>arch</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the value of attribute arch</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+15
+16
+17</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/spec/domain/os_booting.rb', line 15</span>
+
+<span class='kw'>def</span> <span class='id arch'>arch</span>
+  <span class='ivar'>@arch</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="boot=-instance_method"></span>
+      <span id="boot-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="boot-instance_method">
+  
+    - (<tt>Object</tt>) <strong>boot</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the value of attribute boot</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+17
+18
+19</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/spec/domain/os_booting.rb', line 17</span>
+
+<span class='kw'>def</span> <span class='id boot'>boot</span>
+  <span class='ivar'>@boot</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="bootloader=-instance_method"></span>
+      <span id="bootloader-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="bootloader-instance_method">
+  
+    - (<tt>Object</tt>) <strong>bootloader</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Host bootloader configuration options</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+21
+22
+23</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/spec/domain/os_booting.rb', line 21</span>
+
+<span class='kw'>def</span> <span class='id bootloader'>bootloader</span>
+  <span class='ivar'>@bootloader</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="bootloader_args=-instance_method"></span>
+      <span id="bootloader_args-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="bootloader_args-instance_method">
+  
+    - (<tt>Object</tt>) <strong>bootloader_args</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the value of attribute bootloader_args</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+22
+23
+24</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/spec/domain/os_booting.rb', line 22</span>
+
+<span class='kw'>def</span> <span class='id bootloader_args'>bootloader_args</span>
+  <span class='ivar'>@bootloader_args</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="bootmenu_enabled=-instance_method"></span>
+      <span id="bootmenu_enabled-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="bootmenu_enabled-instance_method">
+  
+    - (<tt>Object</tt>) <strong>bootmenu_enabled</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the value of attribute bootmenu_enabled</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+18
+19
+20</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/spec/domain/os_booting.rb', line 18</span>
+
+<span class='kw'>def</span> <span class='id bootmenu_enabled'>bootmenu_enabled</span>
+  <span class='ivar'>@bootmenu_enabled</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="cmdline=-instance_method"></span>
+      <span id="cmdline-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="cmdline-instance_method">
+  
+    - (<tt>Object</tt>) <strong>cmdline</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the value of attribute cmdline</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+27
+28
+29</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/spec/domain/os_booting.rb', line 27</span>
+
+<span class='kw'>def</span> <span class='id cmdline'>cmdline</span>
+  <span class='ivar'>@cmdline</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="initrd=-instance_method"></span>
+      <span id="initrd-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="initrd-instance_method">
+  
+    - (<tt>Object</tt>) <strong>initrd</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the value of attribute initrd</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+26
+27
+28</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/spec/domain/os_booting.rb', line 26</span>
+
+<span class='kw'>def</span> <span class='id initrd'>initrd</span>
+  <span class='ivar'>@initrd</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="kernel=-instance_method"></span>
+      <span id="kernel-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="kernel-instance_method">
+  
+    - (<tt>Object</tt>) <strong>kernel</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Direct kernel boot</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+25
+26
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/spec/domain/os_booting.rb', line 25</span>
+
+<span class='kw'>def</span> <span class='id kernel'>kernel</span>
+  <span class='ivar'>@kernel</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="loader=-instance_method"></span>
+      <span id="loader-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="loader-instance_method">
+  
+    - (<tt>Object</tt>) <strong>loader</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Part of the BIOS bootloader</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+16
+17
+18</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/spec/domain/os_booting.rb', line 16</span>
+
+<span class='kw'>def</span> <span class='id loader'>loader</span>
+  <span class='ivar'>@loader</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="type=-instance_method"></span>
+      <span id="type-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="type-instance_method">
+  
+    - (<tt>Object</tt>) <strong>type</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the value of attribute type</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+14
+15
+16</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/spec/domain/os_booting.rb', line 14</span>
+
+<span class='kw'>def</span> <span class='id type'>type</span>
+  <span class='ivar'>@type</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="to_xml-instance_method">
+  
+    - (<tt>Object</tt>) <strong>to_xml</strong>(parent = Nokogiri::XML::Builder.new) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Convert just the OS booting section to its XML representation.</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/libvirt/spec/domain/os_booting.rb', line 40</span>
+
+<span class='kw'>def</span> <span class='id to_xml'>to_xml</span><span class='lparen'>(</span><span class='id parent'>parent</span><span class='op'>=</span><span class='const'>Nokogiri</span><span class='op'>::</span><span class='const'>XML</span><span class='op'>::</span><span class='const'>Builder</span><span class='period'>.</span><span class='id new'>new</span><span class='rparen'>)</span>
+  <span class='id parent'>parent</span><span class='period'>.</span><span class='id os'>os</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id os'>os</span><span class='op'>|</span>
+    <span class='comment'># Build the arguments for the OS booting type
+</span>    <span class='id type_args'>type_args</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='id type'>type</span><span class='rbracket'>]</span>
+    <span class='id type_args'>type_args</span> <span class='op'>&lt;&lt;</span> <span class='lbrace'>{</span> <span class='symbol'>:arch</span> <span class='op'>=&gt;</span> <span class='id arch'>arch</span> <span class='rbrace'>}</span> <span class='kw'>if</span> <span class='id arch'>arch</span>
+
+    <span class='comment'># Setup the specification
+</span>    <span class='id os'>os</span><span class='period'>.</span><span class='id type_'>type_</span> <span class='op'>*</span><span class='id type_args'>type_args</span>
+    <span class='id os'>os</span><span class='period'>.</span><span class='id loader'>loader</span> <span class='id loader'>loader</span> <span class='kw'>if</span> <span class='id loader'>loader</span>
+    <span class='id os'>os</span><span class='period'>.</span><span class='id bootmenu'>bootmenu</span><span class='lparen'>(</span><span class='symbol'>:enable</span> <span class='op'>=&gt;</span> <span class='id bootmenu_enabled'>bootmenu_enabled</span> <span class='op'>?</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>yes</span><span class='tstring_end'>'</span></span> <span class='op'>:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>no</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='op'>!</span><span class='id bootmenu_enabled'>bootmenu_enabled</span><span class='period'>.</span><span class='id nil?'>nil?</span>
+
+    <span class='comment'># Boot order for BIOS booting
+</span>    <span class='id boot'>boot</span><span class='period'>.</span><span class='id each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id dev'>dev</span><span class='op'>|</span> <span class='id os'>os</span><span class='period'>.</span><span class='id boot'>boot</span> <span class='symbol'>:dev</span> <span class='op'>=&gt;</span> <span class='id dev'>dev</span> <span class='rbrace'>}</span> <span class='kw'>if</span> <span class='id boot'>boot</span><span class='period'>.</span><span class='id is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Array</span><span class='rparen'>)</span>
+
+    <span class='comment'># Host bootloader configuration options
+</span>    <span class='id os'>os</span><span class='period'>.</span><span class='id bootloader'>bootloader</span> <span class='id bootloader'>bootloader</span> <span class='kw'>if</span> <span class='id bootloader'>bootloader</span>
+    <span class='id os'>os</span><span class='period'>.</span><span class='id bootloader_args'>bootloader_args</span> <span class='id bootloader_args'>bootloader_args</span> <span class='kw'>if</span> <span class='id bootloader_args'>bootloader_args</span>
+
+    <span class='comment'># Direct kernel boot options
+</span>    <span class='id os'>os</span><span class='period'>.</span><span class='id kernel'>kernel</span> <span class='id kernel'>kernel</span> <span class='kw'>if</span> <span class='id kernel'>kernel</span>
+    <span class='id os'>os</span><span class='period'>.</span><span class='id initrd'>initrd</span> <span class='id initrd'>initrd</span> <span class='kw'>if</span> <span class='id initrd'>initrd</span>
+    <span class='id os'>os</span><span class='period'>.</span><span class='id cmdline'>cmdline</span> <span class='id cmdline'>cmdline</span> <span class='kw'>if</span> <span class='id cmdline'>cmdline</span>
+  <span class='kw'>end</span>
+
+  <span class='id parent'>parent</span><span class='period'>.</span><span class='id to_xml'>to_xml</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Tue Nov 16 08:13:30 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.1 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>
