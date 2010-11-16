@@ -103,10 +103,6 @@ XML
     should "be able to specify type of delete" do
       assert @instance.delete(:zeroed)
     end
-
-    should "error if invalid type is given" do
-      assert_raises(TypeError) { @instance.delete(:hmm) }
-    end
   end
 
   should "be able to be stopped" do
