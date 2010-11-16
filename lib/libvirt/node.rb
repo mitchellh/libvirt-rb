@@ -111,8 +111,8 @@ module Libvirt
 
     # Releases the reference to the underlying connection structure.
     # This is automatically called when the object is garbage collected.
-    def finalize
-      FFI::Libvirt.virConnectFree(connection)
+    def finalize(*args)
+      FFI::Libvirt.virConnectClose(connection)
     end
   end
 end

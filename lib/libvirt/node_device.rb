@@ -68,7 +68,7 @@ module Libvirt
 
     # Frees the underlying resources of the node device. This is called
     # automatically when this object is garbage collected.
-    def finalize
+    def finalize(*args)
       FFI::Libvirt.virNodeDeviceFree(self)
     end
   end
