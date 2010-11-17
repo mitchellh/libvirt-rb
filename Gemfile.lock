@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    libvirt (0.0.1.dev)
+    libvirt (0.1.0)
       ffi (~> 0.6.3)
       nokogiri (~> 1.4.3)
 
