@@ -12,8 +12,9 @@ task :test do
   files.each { |f| load f }
 end
 
-# Testing against specific rubies or all of them.
-rubies = ["1.9.2", "1.8.7", "jruby"]
+# Testing against specific rubies or all of them. This uses RVM
+# and expects these rubies to be installed already.
+rubies = ["1.9.2", "1.8.7", "jruby", "rbx"]
 rubies.each do |ruby|
   desc "Run the test suite against: #{ruby}"
   task "test_#{ruby.gsub('.', '_')}" do
@@ -22,7 +23,7 @@ rubies.each do |ruby|
   end
 end
 
-desc "Test against all rubies: #{rubies.join(", ")}"
+desc "Run the test suite against all rubies: #{rubies.join(", ")}"
 task :test_all do
   rubies.each do |ruby|
     puts "Running test suite against: #{ruby}"
