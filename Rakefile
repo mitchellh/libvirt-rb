@@ -12,6 +12,26 @@ task :test do
   files.each { |f| load f }
 end
 
+# Testing against specific rubies or all of them.
+rubies = ["1.9.2", "1.8.7", "jruby"]
+rubies.each do |ruby|
+  desc "Run the test suite against: #{ruby}"
+  task "test_#{ruby.gsub('.', '_')}" do
+    puts "Running test suite against: #{ruby}"
+    exec("rvm #{ruby} rake")
+  end
+end
+
+desc "Test against all rubies: #{rubies.join(", ")}"
+task :test_all do
+  rubies.each do |ruby|
+    puts "Running test suite against: #{ruby}"
+    pid = fork
+    exec "rvm #{ruby} rake" if !pid
+    Process.wait(pid) if pid
+  end
+end
+
 begin
   # Documentation task
   require 'yard'
