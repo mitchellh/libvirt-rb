@@ -1,3 +1,4 @@
+require 'libvirt/spec/domain/memtune'
 require 'libvirt/spec/domain/os_booting'
 
 module Libvirt
@@ -16,6 +17,8 @@ module Libvirt
       attr_accessor :os
       attr_accessor :memory
       attr_accessor :current_memory
+      attr_accessor :memory_backing
+      attr_accessor :memtune
       attr_accessor :vcpu
 
       attr_accessor :on_poweroff
@@ -25,8 +28,9 @@ module Libvirt
       attr_accessor :devices
 
       def initialize
-        @os = OSBooting.new
         @devices = []
+        @os = OSBooting.new
+        @memtune = Memtune.new
       end
 
       # Returns the XML for this specification. This XML may be passed
@@ -50,6 +54,15 @@ module Libvirt
             # Basic resources
             xml.memory memory if memory
             xml.currentMemory current_memory if current_memory
+
+            if memory_backing == :huge_pages
+              xml.memoryBacking do
+                xml.hugepages
+              end
+            end
+
+            memtune.to_xml(xml)
+
             xml.vcpu vcpu if vcpu
 
             # Lifecycle control
