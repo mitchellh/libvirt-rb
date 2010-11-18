@@ -20,6 +20,7 @@ module Libvirt
       attr_accessor :memory_backing
       attr_accessor :memtune
       attr_accessor :vcpu
+      attr_accessor :features
 
       attr_accessor :on_poweroff
       attr_accessor :on_reboot
@@ -31,6 +32,7 @@ module Libvirt
         @devices = []
         @os = OSBooting.new
         @memtune = Memtune.new
+        @features = []
       end
 
       # Returns the XML for this specification. This XML may be passed
@@ -54,6 +56,7 @@ module Libvirt
             # Basic resources
             xml.memory memory if memory
             xml.currentMemory current_memory if current_memory
+            xml.vcpu vcpu if vcpu
 
             if memory_backing == :huge_pages
               xml.memoryBacking do
@@ -61,9 +64,16 @@ module Libvirt
               end
             end
 
+            # Memtune handles whether or not to render itself
             memtune.to_xml(xml)
 
-            xml.vcpu vcpu if vcpu
+            if !features.empty?
+              xml.features do
+                features.each do |feature|
+                  xml.send(feature)
+                end
+              end
+            end
 
             # Lifecycle control
             xml.on_poweroff on_poweroff if on_poweroff
