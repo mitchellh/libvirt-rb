@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Mitchell Hashimoto"]
   s.email       = ["mitchell.hashimoto@gmail.com"]
   s.homepage    = "http://rubygems.org/gems/libvirt"
-  s.summary     = "A ruby client library providing the raw interface to libvirt via FFI."
-  s.description = "A ruby client library providing the raw interface to libvirt via FFI."
+  s.summary     = "A ruby client library providing an interface to libvirt via FFI."
+  s.description = "A ruby client library providing an interface to libvirt via FFI."
 
   s.rubyforge_project = "libvirt"
 
