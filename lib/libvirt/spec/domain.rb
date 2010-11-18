@@ -6,10 +6,6 @@ module Libvirt
   module Spec
     # A specification of a domain. This translates directly down to XML
     # which can be used to define and launch domains on a node by libvirt.
-    #
-    # **Note:** This class may only be temporary, and the functionality
-    # may be merged back into {Domain}. Also, the interface will likely
-    # change.
     class Domain
       attr_accessor :hypervisor
       attr_accessor :name
