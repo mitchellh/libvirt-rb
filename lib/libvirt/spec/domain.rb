@@ -1,3 +1,4 @@
+require 'libvirt/spec/domain/clock'
 require 'libvirt/spec/domain/memtune'
 require 'libvirt/spec/domain/os_booting'
 
@@ -26,13 +27,15 @@ module Libvirt
       attr_accessor :on_reboot
       attr_accessor :on_crash
 
+      attr_accessor :clock
       attr_accessor :devices
 
       def initialize
-        @devices = []
         @os = OSBooting.new
         @memtune = Memtune.new
         @features = []
+        @clock = Clock.new
+        @devices = []
       end
 
       # Returns the XML for this specification. This XML may be passed
@@ -79,6 +82,9 @@ module Libvirt
             xml.on_poweroff on_poweroff if on_poweroff
             xml.on_reboot on_reboot if on_reboot
             xml.on_crash on_crash if on_crash
+
+            # Clock
+            clock.to_xml(xml)
 
             # Devices
             if !devices.empty?

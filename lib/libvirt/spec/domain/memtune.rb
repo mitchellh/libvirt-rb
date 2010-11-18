@@ -11,8 +11,8 @@ module Libvirt
 
         def to_xml(parent=Nokogiri::XML::Builder.new)
           # If nothing has been modified, then don't do anything
-          return nil if !hard_limit && !soft_limit &&
-                        !swap_hard_limit && !min_guarantee
+          return if !hard_limit && !soft_limit &&
+                    !swap_hard_limit && !min_guarantee
 
           parent.memtune do |m|
             m.hard_limit hard_limit if hard_limit
