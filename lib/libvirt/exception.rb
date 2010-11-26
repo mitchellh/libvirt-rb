@@ -15,5 +15,9 @@ module Libvirt
         super(error.message)
       end
     end
+
+    # Represents an exception in parsing an XML spec into a Ruby
+    # {Libvirt::Spec} object.
+    class UnparseableSpec < StandardError; end
   end
 end

@@ -26,12 +26,41 @@ module Libvirt
       attr_accessor :clock
       attr_accessor :devices
 
-      def initialize
+      # Initializes a domain specification. If a valid XML string for a domain
+      # is given, the it will attempt to be parsed into the structure. This
+      # is still very experimental. As such, if there is something which is
+      # found which is not parseable, an {Exception::UnparseableSpec} exception
+      # will be raised. Catch this and inspect the message for more information.
+      #
+      # @param [String] xml XML spec to attempt to parse into the structure.
+      def initialize(xml=nil)
         @os = OSBooting.new
         @memtune = Memtune.new
         @features = []
         @clock = Clock.new
         @devices = []
+
+        load!(xml) if xml
+      end
+
+      # Attempts to load the attributes from an XML specification. **Warning:
+      # this will overwrite any already set attributes which exist in the XML.**
+      #
+      # @param [String] xml XML spec to attempt to parse into the structure.
+      def load!(xml)
+        root = Nokogiri::XML(xml).root
+        try(root.xpath("//domain[@type]")) { |result| self.hypervisor = result["type"].to_sym }
+        try(root.xpath("//domain/name")) { |result| self.name = result.text }
+        try(root.xpath("//domain/uuid")) { |result| self.uuid = result.text }
+        try(root.xpath("//domain/memory")) { |result| self.memory = result.text }
+        try(root.xpath("//domain/currentMemory")) { |result| self.current_memory = result.text }
+      end
+
+      # TODO: move this out to a helper module/superclass/something, since
+      # most specs will use it.
+      def try(search_result)
+        return if search_result.empty?
+        yield search_result.first
       end
 
       # Returns the XML for this specification. This XML may be passed
