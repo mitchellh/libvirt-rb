@@ -7,6 +7,8 @@ module Libvirt
     # A specification of a domain. This translates directly down to XML
     # which can be used to define and launch domains on a node by libvirt.
     class Domain
+      include Util
+
       attr_accessor :hypervisor
       attr_accessor :name
       attr_accessor :uuid
@@ -54,13 +56,6 @@ module Libvirt
         try(root.xpath("//domain/uuid")) { |result| self.uuid = result.text }
         try(root.xpath("//domain/memory")) { |result| self.memory = result.text }
         try(root.xpath("//domain/currentMemory")) { |result| self.current_memory = result.text }
-      end
-
-      # TODO: move this out to a helper module/superclass/something, since
-      # most specs will use it.
-      def try(search_result)
-        return if search_result.empty?
-        yield search_result.first
       end
 
       # Returns the XML for this specification. This XML may be passed
