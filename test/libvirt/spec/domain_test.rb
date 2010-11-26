@@ -114,5 +114,10 @@ XML
 
       assert_equal :foo, @instance.on_crash
     end
+
+    should "parse the clock" do
+      @instance = @klass.new("<domain><clock offset='foo'/></domain>")
+      assert_equal :foo, @instance.clock.offset
+    end
   end
 end
