@@ -18,7 +18,8 @@ module Libvirt
         # be called directly, since the domain spec automatically calls
         # this.
         def load!(root)
-          try(root.xpath("//clock[@offset]")) { |result| self.offset = result["offset"].to_sym }
+          root = Nokogiri::XML(root).root if !root.is_a?(Nokogiri::XML::Element)
+          try(root.xpath("//clock[@offset]"), :preserve => true) { |result| self.offset = result["offset"].to_sym }
           raise_if_unparseables(root.xpath("//clock/*"))
         end
 
