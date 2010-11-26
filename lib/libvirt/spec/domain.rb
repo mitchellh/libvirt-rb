@@ -51,11 +51,22 @@ module Libvirt
       # @param [String] xml XML spec to attempt to parse into the structure.
       def load!(xml)
         root = Nokogiri::XML(xml).root
-        try(root.xpath("//domain[@type]")) { |result| self.hypervisor = result["type"].to_sym }
+        try(root.xpath("//domain[@type]"), :preserve => true) { |result| self.hypervisor = result["type"].to_sym }
         try(root.xpath("//domain/name")) { |result| self.name = result.text }
         try(root.xpath("//domain/uuid")) { |result| self.uuid = result.text }
         try(root.xpath("//domain/memory")) { |result| self.memory = result.text }
         try(root.xpath("//domain/currentMemory")) { |result| self.current_memory = result.text }
+        try(root.xpath("//domain/vcpu")) { |result| self.vcpu = result.text }
+
+        try(root.xpath("//domain/on_poweroff")) { |result| self.on_poweroff = result.text.to_sym }
+        try(root.xpath("//domain/on_reboot")) { |result| self.on_reboot = result.text.to_sym }
+        try(root.xpath("//domain/on_crash")) { |result| self.on_crash = result.text.to_sym }
+
+        try(root.xpath("//domain/*"), :multi => true) do |results|
+          # There are tags leftover, meaning that there are tags we don't
+          # support yet.
+          raise Exception::UnparseableSpec, results
+        end
       end
 
       # Returns the XML for this specification. This XML may be passed

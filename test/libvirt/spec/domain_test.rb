@@ -24,6 +24,14 @@ Protest.describe("Domain spec") do
   end
 
   context "initialization with spec parsing" do
+    should "raise an exception if an invalid tag is found" do
+      assert_raises(Libvirt::Exception::UnparseableSpec) {
+        @klass.new(<<-XML)
+<domain><foo></foo></domain>
+XML
+      }
+    end
+
     should "parse the hypervisor" do
       @instance = @klass.new(<<-XML)
 <domain type='vbox'></domain>
@@ -70,6 +78,46 @@ XML
 XML
 
       assert_equal "1234", @instance.current_memory
+    end
+
+    should "parse the VCPU count" do
+      @instance = @klass.new(<<-XML)
+<domain>
+  <vcpu>4</vcpu>
+</domain>
+XML
+
+      assert_equal "4", @instance.vcpu
+    end
+
+    should "parse on_poweroff" do
+      @instance = @klass.new(<<-XML)
+<domain>
+  <on_poweroff>foo</on_poweroff>
+</domain>
+XML
+
+      assert_equal :foo, @instance.on_poweroff
+    end
+
+    should "parse on_reboot" do
+      @instance = @klass.new(<<-XML)
+<domain>
+  <on_reboot>foo</on_reboot>
+</domain>
+XML
+
+      assert_equal :foo, @instance.on_reboot
+    end
+
+    should "parse on_crash" do
+      @instance = @klass.new(<<-XML)
+<domain>
+  <on_crash>foo</on_crash>
+</domain>
+XML
+
+      assert_equal :foo, @instance.on_crash
     end
   end
 end

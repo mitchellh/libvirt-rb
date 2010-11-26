@@ -18,6 +18,11 @@ module Libvirt
 
     # Represents an exception in parsing an XML spec into a Ruby
     # {Libvirt::Spec} object.
-    class UnparseableSpec < StandardError; end
+    class UnparseableSpec < StandardError
+      def initialize(tags)
+        tags = tags.map { |tag| tag.name }
+        super("Unsupported tags found. Please report this as a bug. Tags: #{tags}")
+      end
+    end
   end
 end
