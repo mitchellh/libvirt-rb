@@ -21,7 +21,7 @@ module Libvirt
     class UnparseableSpec < StandardError
       def initialize(tags)
         tags = tags.map { |tag| tag.name }
-        super("Unsupported tags found. Please report this as a bug. Tags: #{tags}")
+        super("Unsupported tags found. This is either a bug or the XML string given is invalid. Tags: #{tags}")
       end
     end
   end
