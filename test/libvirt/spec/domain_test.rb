@@ -26,17 +26,12 @@ Protest.describe("Domain spec") do
   context "initialization with spec parsing" do
     should "raise an exception if an invalid tag is found" do
       assert_raises(Libvirt::Exception::UnparseableSpec) {
-        @klass.new(<<-XML)
-<domain><foo></foo></domain>
-XML
+        @klass.new("<domain><foo></foo></domain>")
       }
     end
 
     should "parse the hypervisor" do
-      @instance = @klass.new(<<-XML)
-<domain type='vbox'></domain>
-XML
-
+      @instance = @klass.new("<domain type='vbox'></domain>")
       assert_equal :vbox, @instance.hypervisor
     end
 

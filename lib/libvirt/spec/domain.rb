@@ -62,11 +62,7 @@ module Libvirt
         try(root.xpath("//domain/on_reboot")) { |result| self.on_reboot = result.text.to_sym }
         try(root.xpath("//domain/on_crash")) { |result| self.on_crash = result.text.to_sym }
 
-        try(root.xpath("//domain/*"), :multi => true) do |results|
-          # There are tags leftover, meaning that there are tags we don't
-          # support yet.
-          raise Exception::UnparseableSpec, results
-        end
+        raise_if_unparseables(root.xpath("//domain/*"))
       end
 
       # Returns the XML for this specification. This XML may be passed

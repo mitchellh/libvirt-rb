@@ -29,6 +29,15 @@ module Libvirt
         yield search_result
         search_result.remove if !options[:preserve]
       end
+
+      # This will raise an {Exception::UnparseableSpec} exception if there
+      # are any search results given. This is meant as a helper to reduce
+      # the duplicity of this feature across specs.
+      #
+      # @param [Array] search_result
+      def raise_if_unparseables(search_result)
+        raise Exception::UnparseableSpec, search_result if !search_result.empty?
+      end
     end
   end
 end
