@@ -8,6 +8,7 @@ module Libvirt
         include Util
 
         attr_accessor :type
+        attr_accessor :device
         attr_accessor :source
         attr_accessor :target_dev
         attr_accessor :target_bus
@@ -30,12 +31,20 @@ module Libvirt
         def load!(xml)
           xml = Nokogiri::XML(xml).root if !xml.is_a?(Nokogiri::XML::Element)
           try(xml.xpath("//disk[@type]"), :preserve => true) { |result| self.type = result["type"].to_sym }
+          try(xml.xpath("//disk[@device]"), :preserve => true) { |result| self.device = result["device"].to_sym }
+          try(xml.xpath("//disk/source")) { |result| self.source = result["dev"] || result["file"] }
+
+          try(xml.xpath("//disk/target")) do |result|
+            self.target_dev = result["dev"]
+            self.target_bus = result["bus"]
+          end
+
           raise_if_unparseables(xml.xpath("//disk/*"))
         end
 
         # Returns the XML representation of this device.
         def to_xml(xml=Nokogiri::XML::Builder.new)
-          xml.disk(:type => type) do |d|
+          xml.disk(:type => type, :device => device) do |d|
             if source
               # Source tag, the attribute depends on the type.
               attribute = type == :block ? :dev : :file
