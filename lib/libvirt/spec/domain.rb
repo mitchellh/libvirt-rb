@@ -68,8 +68,7 @@ module Libvirt
         try(root.xpath("//domain/devices")) do |result|
           self.devices = []
 
-          result.children.each do |device|
-            next if device.text?
+          result.element_children.each do |device|
             self.devices << Device.load!(device)
           end
         end
