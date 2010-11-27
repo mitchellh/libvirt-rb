@@ -90,6 +90,12 @@ Protest.describe("domain") do
     assert !result.empty?
   end
 
+  should "provide the spec object for the domain" do
+    result = nil
+    assert_nothing_raised { result = @instance.spec }
+    assert result.is_a?(Libvirt::Spec::Domain)
+  end
+
   should "return result of active status" do
     @instance.start
     assert @instance.active?

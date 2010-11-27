@@ -111,6 +111,14 @@ module Libvirt
       FFI::Libvirt.virDomainGetXMLDesc(self, 0)
     end
 
+    # Returns the {Libvirt::Spec::Domain} object representing this
+    # domain.
+    #
+    # @return [Libvirt::Spec::Domain]
+    def spec
+      Spec::Domain.new(xml)
+    end
+
     # Returns boolean of whether the domain is active (running) or not.
     #
     # @return [Boolean]
