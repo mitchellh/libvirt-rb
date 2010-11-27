@@ -28,6 +28,17 @@ module Libvirt
 
           raise_if_unparseables(xml.xpath("//video/*"))
         end
+
+        # Returns the XML representation of this device.
+        def to_xml(xml=Nokogiri::XML::Builder.new)
+          xml.video do |v|
+            models.each do |model|
+              model.to_xml(xml)
+            end
+          end
+
+          xml.to_xml
+        end
       end
     end
   end

@@ -31,6 +31,22 @@ module Libvirt
 
           raise_if_unparseables(xml.xpath("//model/*"))
         end
+
+        # Returns the XML representation of this device.
+        def to_xml(xml=Nokogiri::XML::Builder.new)
+          options = { :type => type }
+          options[:vram] = vram if vram
+          options[:heads] = heads if heads
+
+          xml.model(options) do |m|
+            a3d = accel3d ? "yes" : "no"
+            a2d = accel2d ? "yes" : "no"
+
+            m.acceleration(:accel3d => a3d, :accel2d => a2d)
+          end
+
+          xml.to_xml
+        end
       end
     end
   end
