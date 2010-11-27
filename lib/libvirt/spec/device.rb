@@ -7,6 +7,8 @@ module Libvirt
       autoload :Input, 'libvirt/spec/device/input'
       autoload :Interface, 'libvirt/spec/device/interface'
       autoload :Sound, 'libvirt/spec/device/sound'
+      autoload :Video, 'libvirt/spec/device/video'
+      autoload :VideoModel, 'libvirt/spec/device/video_model'
 
       # Loads a device from an XML string. This will automatically find
       # the proper class to load and return that.
