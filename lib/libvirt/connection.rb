@@ -40,7 +40,7 @@ module Libvirt
   # # Basic Information of a Connection
   #
   # Once you have a connection object, you can gather basic information about it
-  # by using methods such as {#name}, {#capabilities}, etc.:
+  # by using methods such as {#hypervisor}, {#capabilities}, etc.:
   #
   #     puts "Hypervisor type: #{conn.hypervisor}"
   #     puts "Hypervisor version: #{conn.hypervisor_verison}"
