@@ -50,6 +50,15 @@ module Libvirt
           root = Nokogiri::XML(root).root if !root.is_a?(Nokogiri::XML::Element)
           try(root.xpath("//os/type[@arch]"), :preserve => true) { |result| self.arch = result["arch"].to_sym }
           try(root.xpath("//os/type")) { |result| self.type = result.text.to_sym }
+
+          try(root.xpath("//os/boot"), :multi => true) do |results|
+            self.boot = []
+
+            results.each do |result|
+              self.boot << result["dev"].to_sym
+            end
+          end
+
           raise_if_unparseables(root.xpath("//os/*"))
         end
 

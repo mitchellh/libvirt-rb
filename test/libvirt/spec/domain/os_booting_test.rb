@@ -15,5 +15,17 @@ Protest.describe("Domain OS booting spec") do
       @instance = @klass.new("<os><type arch='i386'>hvm</type></os>")
       assert_equal :i386, @instance.arch
     end
+
+    should "parse the boot device order" do
+      @instance = @klass.new(<<-XML)
+<os>
+    <boot dev='fd'/>
+    <boot dev='cdrom'/>
+    <boot dev='hd'/>
+</os>
+XML
+
+      assert_equal [:fd, :cdrom, :hd], @instance.boot
+    end
   end
 end
