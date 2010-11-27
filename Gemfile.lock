@@ -12,7 +12,7 @@ GEM
     ffi (0.6.3)
       rake (>= 0.8.7)
     ffi (0.6.3-java)
-    mocha (0.9.9)
+    mocha (0.9.10)
       rake
     nokogiri (1.4.4)
     nokogiri (1.4.4-java)
@@ -20,7 +20,7 @@ GEM
     protest (0.4.2)
     rake (0.8.7)
     weakling (0.0.4-java)
-    yard (0.6.2)
+    yard (0.6.3)
 
 PLATFORMS
   java
