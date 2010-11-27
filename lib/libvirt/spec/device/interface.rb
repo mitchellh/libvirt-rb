@@ -25,6 +25,16 @@ module Libvirt
 
           raise_if_unparseables(xml.xpath("//interface/*"))
         end
+
+        # Returns the XML representation of this device
+        def to_xml(xml=Nokogiri::XML::Builder.new)
+          xml.interface(:type => type) do |i|
+            i.mac(:address => mac_address) if mac_address
+            i.model(:type => model_type) if model_type
+          end
+
+          xml.to_xml
+        end
       end
     end
   end
