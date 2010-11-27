@@ -3,6 +3,7 @@ module Libvirt
     module Device
       autoload :Disk, 'libvirt/spec/device/disk'
       autoload :Emulator, 'libvirt/spec/device/emulator'
+      autoload :Interface, 'libvirt/spec/device/interface'
 
       # Loads a device from an XML string. This will automatically find
       # the proper class to load and return that.
