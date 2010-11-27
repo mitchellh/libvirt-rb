@@ -26,5 +26,11 @@ Protest.describe("Interface device spec") do
         @klass.new("<interface><foo/></interface>")
       }
     end
+
+    should "be able to parse multiple without issue" do
+      assert_nothing_raised {
+        @klass.new("<interface></interface><interface><foo /></interface>")
+      }
+    end
   end
 end

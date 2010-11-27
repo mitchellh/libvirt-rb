@@ -19,11 +19,13 @@ module Libvirt
         # Attempts to initialize object attributes based on XML attributes.
         def load!(xml)
           xml = Nokogiri::XML(xml).root if !xml.is_a?(Nokogiri::XML::Element)
-          try(xml.xpath("//interface[@type]"), :preserve => true) { |result| self.type = result["type"].to_sym }
-          try(xml.xpath("//interface/mac")) { |result| self.mac_address = result["address"] }
-          try(xml.xpath("//interface/model")) { |result| self.model_type = result["type"] }
+          try(xml.xpath("//interface")) do |interface|
+            self.type = interface["type"].to_sym if interface["type"]
+            try(interface.xpath("mac")) { |result| self.mac_address = result["address"] }
+            try(interface.xpath("model")) { |result| self.model_type = result["type"] }
 
-          raise_if_unparseables(xml.xpath("//interface/*"))
+            raise_if_unparseables(interface.xpath("*"))
+          end
         end
 
         # Returns the XML representation of this device
