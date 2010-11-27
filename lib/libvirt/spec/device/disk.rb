@@ -21,7 +21,7 @@ module Libvirt
         # Initializes a new disk element. If an XML string is passed
         # then that will be used to initialize the attributes of the
         # device.
-        def initialize(xml)
+        def initialize(xml=nil)
           @shareable = false
 
           load!(xml) if xml
