@@ -65,6 +65,15 @@ module Libvirt
         try(root.xpath("//domain/clock")) { |result| self.clock = Clock.new(result) }
         try(root.xpath("//domain/os")) { |result| self.os = OSBooting.new(result) }
 
+        try(root.xpath("//domain/devices")) do |result|
+          self.devices = []
+
+          result.children.each do |device|
+            next if device.text?
+            self.devices << Device.load!(device)
+          end
+        end
+
         raise_if_unparseables(root.xpath("//domain/*"))
       end
 

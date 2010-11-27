@@ -124,5 +124,11 @@ XML
       @instance = @klass.new("<domain><os><type>hvm</type></domain>")
       assert_equal :hvm, @instance.os.type
     end
+
+    should "parse the devices" do
+      @instance = @klass.new("<domain><devices><disk type='file'></disk></devices></domain>")
+      assert_equal 1, @instance.devices.length
+      assert_equal :file, @instance.devices.first.type
+    end
   end
 end

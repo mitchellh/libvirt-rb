@@ -13,7 +13,7 @@ Protest.describe("Domain clock spec") do
 
     should "raise an exception if unsupported tags exist" do
       assert_raises(Libvirt::Exception::UnparseableSpec) {
-        @instance = @klass.new("<clock offset='foo'><foo/></clock>")
+        @klass.new("<clock offset='foo'><foo/></clock>")
       }
     end
   end

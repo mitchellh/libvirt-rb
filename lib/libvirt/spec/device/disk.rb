@@ -5,6 +5,8 @@ module Libvirt
       # cdrom, or paravirtualized driver is specified via the disk
       # element.
       class Disk
+        include Util
+
         attr_accessor :type
         attr_accessor :source
         attr_accessor :target_dev
@@ -15,11 +17,20 @@ module Libvirt
         attr_accessor :shareable
         attr_accessor :serial
 
-        # Initialize a new disk element with the given type. Examples
-        # of valid `type`s are "disk," "floppy," and "cdrom."
-        def initialize(type)
-          @type = type
+        # Initializes a new disk element. If an XML string is passed
+        # then that will be used to initialize the attributes of the
+        # device.
+        def initialize(xml)
           @shareable = false
+
+          load!(xml) if xml
+        end
+
+        # Loads data from XML.
+        def load!(xml)
+          xml = Nokogiri::XML(xml).root if !xml.is_a?(Nokogiri::XML::Element)
+          try(xml.xpath("//disk[@type]"), :preserve => true) { |result| self.type = result["type"].to_sym }
+          raise_if_unparseables(xml.xpath("//disk/*"))
         end
 
         # Returns the XML representation of this device.
