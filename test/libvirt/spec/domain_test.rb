@@ -130,5 +130,10 @@ XML
       assert_equal 1, @instance.devices.length
       assert_equal :file, @instance.devices.first.type
     end
+
+    should "parse the features" do
+      @instance = @klass.new("<domain><features><pae/><acpi/></features></domain>")
+      assert_equal [:pae, :acpi], @instance.features
+    end
   end
 end

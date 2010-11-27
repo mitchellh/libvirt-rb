@@ -74,6 +74,14 @@ module Libvirt
           end
         end
 
+        try(root.xpath("//domain/features")) do |result|
+          self.features = []
+
+          result.element_children.each do |feature|
+            self.features << feature.name.to_sym
+          end
+        end
+
         raise_if_unparseables(root.xpath("//domain/*"))
       end
 
