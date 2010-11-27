@@ -63,6 +63,7 @@ module Libvirt
         try(root.xpath("//domain/on_crash")) { |result| self.on_crash = result.text.to_sym }
 
         try(root.xpath("//domain/clock")) { |result| self.clock = Clock.new(result) }
+        try(root.xpath("//domain/os")) { |result| self.os = OSBooting.new(result) }
 
         raise_if_unparseables(root.xpath("//domain/*"))
       end

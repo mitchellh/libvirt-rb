@@ -11,6 +11,8 @@ module Libvirt
       #
       # TODO: Host bootloader and direct kernel bootloader options.
       class OSBooting
+        include Util
+
         attr_accessor :type
         attr_accessor :arch
         attr_accessor :loader # Part of the BIOS bootloader
@@ -26,14 +28,29 @@ module Libvirt
         attr_accessor :initrd
         attr_accessor :cmdline
 
-        def initialize
+        # Initializes an OS booting specification. This shouldn't be
+        # called directly since the domain spec automatically loads
+        # this.
+        def initialize(xml=nil)
           @boot = []
+
+          load!(xml) if xml
         end
 
         # Enables or disables the interactive boot menu prompt on guest startup.
         def bootmenu_enabled=(value)
           # Force a boolean value
           @bootmenu_enabled = !!value
+        end
+
+        # Loads the OS booting information from the given XML string. This
+        # shouldn't be called directly, since the domain spec automatically
+        # calls this.
+        def load!(root)
+          root = Nokogiri::XML(root).root if !root.is_a?(Nokogiri::XML::Element)
+          try(root.xpath("//os/type[@arch]"), :preserve => true) { |result| self.arch = result["arch"].to_sym }
+          try(root.xpath("//os/type")) { |result| self.type = result.text.to_sym }
+          raise_if_unparseables(root.xpath("//os/*"))
         end
 
         # Convert just the OS booting section to its XML representation.

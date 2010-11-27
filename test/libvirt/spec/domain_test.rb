@@ -119,5 +119,10 @@ XML
       @instance = @klass.new("<domain><clock offset='foo'/></domain>")
       assert_equal :foo, @instance.clock.offset
     end
+
+    should "parse the OS booting information" do
+      @instance = @klass.new("<domain><os><type>hvm</type></domain>")
+      assert_equal :hvm, @instance.os.type
+    end
   end
 end
