@@ -10,6 +10,8 @@ module Libvirt
         # Initializes a new video device. If an XML string is given,
         # it will be used to attempt to initialize the attributes.
         def initialize(xml=nil)
+          @models = []
+
           load!(xml) if xml
         end
 
