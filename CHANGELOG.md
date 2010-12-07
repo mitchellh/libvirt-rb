@@ -1,3 +1,7 @@
+## 0.2.1 (unreleased)
+
+
+
 ## 0.2.0 (December 7, 2010)
 
   - Domain XML is now parsed into a `Libvirt::Spec::Domain` object,
