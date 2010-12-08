@@ -7,10 +7,19 @@ module FFI
   # that it is up to you to manage all the pointers and so on that come
   # with this power.
   module Libvirt
-    extend FFI::Library
-    ffi_lib "libvirt"
-
+    autoload :MissingLibError, 'ffi/libvirt/exception'
     autoload :Util, 'ffi/libvirt/util'
+
+    extend FFI::Library
+
+    # Attempt to load the libvirt lib and raise a more specific exception
+    # if it doesn't exist. (Normally a LoadError, which is ambiguous, is
+    # raised)
+    begin
+      ffi_lib "libvirt"
+    rescue LoadError
+      raise MissingLibError
+    end
   end
 end
 

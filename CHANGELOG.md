@@ -1,6 +1,7 @@
 ## 0.2.1 (unreleased)
 
-
+  - `FFI::Libvirt::MissingLibError` is raised if libvirt C library
+    is not available.
 
 ## 0.2.0 (December 7, 2010)
 
