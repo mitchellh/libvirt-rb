@@ -8,6 +8,7 @@ module Libvirt
   module Spec
     autoload :Device, 'libvirt/spec/device'
     autoload :Domain, 'libvirt/spec/domain'
+    autoload :Network, 'libvirt/spec/network'
     autoload :Util, 'libvirt/spec/util'
   end
 end

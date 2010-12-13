@@ -24,6 +24,14 @@ module Libvirt
       FFI::Libvirt.virNetworkGetXMLDesc(self, 0)
     end
 
+    # Returns the {Libvirt::Spec::Network} object representing this
+    # network.
+    #
+    # @return [Libvirt::Spec::Network]
+    def spec
+      Spec::Network.new(xml)
+    end
+
     # Returns the UUID of the network as a string.
     #
     # @return [String]

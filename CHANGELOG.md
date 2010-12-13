@@ -2,6 +2,7 @@
 
   - `FFI::Libvirt::MissingLibError` is raised if libvirt C library
     is not available.
+  - `Libvirt::Spec::Network` added to parse network interfaces.
 
 ## 0.2.0 (December 7, 2010)
 
