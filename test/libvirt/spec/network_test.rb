@@ -15,5 +15,10 @@ Protest.describe("Network spec") do
       @instance = @klass.new("<network><uuid>foo</uuid></network>")
       assert_equal "foo", @instance.uuid
     end
+
+    should "parse the bridge connection" do
+      @instance = @klass.new("<network><bridge delay='7' /></network>")
+      assert_equal 7, @instance.bridge.delay
+    end
   end
 end
