@@ -9,9 +9,7 @@ module Libvirt
         attr_accessor :name
         attr_accessor :ip
 
-        # Initializes the Host specification. This should never be called
-        # directly. Instead, use the {Libvirt::Spec::DHCP} spec which has
-        # helper methods to add a host.
+        # Initializes the Host specification.
         def initialize(xml=nil)
           load!(xml) if xml
         end
