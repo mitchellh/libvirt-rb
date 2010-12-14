@@ -1,3 +1,5 @@
+require 'libvirt/spec/network/host'
+
 module Libvirt
   module Spec
     class Network
@@ -6,12 +8,14 @@ module Libvirt
         include Util
 
         attr_accessor :ranges
+        attr_accessor :hosts
 
         # Initializes the DHCP specification. This should never be called
         # directly. Instead, use the {Libvirt::Spec::Network} spec which
         # contains an `ip` attribute which itself contains a `dhcp` attribute.
         def initialize(xml=nil)
           @ranges = []
+          @hosts = []
 
           load!(xml) if xml
         end
@@ -23,13 +27,13 @@ module Libvirt
           try(root.xpath("//dhcp")) do |dhcp|
             try(dhcp.xpath("range"), :multi => true) do |results|
               self.ranges = []
-
-              results.each do |result|
-                self.ranges << { :start => result["start"], :end => result["end"] }
-              end
+              results.each { |result| self.ranges << { :start => result["start"], :end => result["end"] } }
             end
 
-            try(dhcp.xpath("host"), :multi => true) {}
+            try(dhcp.xpath("host"), :multi => true) do |results|
+              self.hosts = []
+              results.each { |result| self.hosts << Host.new(result) }
+            end
 
             raise_if_unparseables(dhcp.xpath("*"))
           end
@@ -42,6 +46,10 @@ module Libvirt
           parent.dhcp do |dhcp|
             ranges.each do |range|
               dhcp.range(range)
+            end
+
+            hosts.each do |host|
+              host.to_xml(dhcp)
             end
           end
 
