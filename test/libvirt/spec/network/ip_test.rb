@@ -15,5 +15,10 @@ Protest.describe("Network IP spec") do
       @instance = @klass.new("<ip netmask='bar'/>")
       assert_equal "bar", @instance.netmask
     end
+
+    should "parse the DHCP section" do
+      @instance = @klass.new("<ip><dhcp><range start='foo'/></dhcp></ip>")
+      assert_equal 'foo', @instance.dhcp.ranges.first[:start]
+    end
   end
 end

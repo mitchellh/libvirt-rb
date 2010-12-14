@@ -45,6 +45,7 @@ module Libvirt
             xml.uuid uuid if uuid
 
             bridge.to_xml(xml)
+            ip.to_xml(xml)
           end
         end.to_xml
       end

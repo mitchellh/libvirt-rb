@@ -1,3 +1,5 @@
+require 'libvirt/spec/network/dhcp'
+
 module Libvirt
   module Spec
     class Network
@@ -7,11 +9,14 @@ module Libvirt
 
         attr_accessor :address
         attr_accessor :netmask
+        attr_accessor :dhcp
 
         # Initializes the IP specification. This should never be called
         # directly. Instead, use the {Libvirt::Spec::Network} spec, which
         # contains an `ip` attribute.
         def initialize(xml=nil)
+          @dhcp = DHCP.new
+
           load!(xml) if xml
         end
 
@@ -22,6 +27,8 @@ module Libvirt
           try(root.xpath("//ip")) do |ip|
             self.address = ip["address"]
             self.netmask = ip["netmask"]
+
+            try(ip.xpath("dhcp")) { |result| self.dhcp = DHCP.new(result) }
 
             raise_if_unparseables(ip.xpath("*"))
           end
@@ -36,7 +43,7 @@ module Libvirt
           options[:netmask] = netmask if netmask
 
           parent.ip(options) do |ip|
-
+            dhcp.to_xml(ip)
           end
 
           parent.to_xml
