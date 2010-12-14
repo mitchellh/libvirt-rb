@@ -20,5 +20,10 @@ Protest.describe("Network spec") do
       @instance = @klass.new("<network><bridge delay='7' /></network>")
       assert_equal 7, @instance.bridge.delay
     end
+
+    should "parse the IP information" do
+      @instance = @klass.new("<network><ip address='foo'/></network>")
+      assert_equal "foo", @instance.ip.address
+    end
   end
 end

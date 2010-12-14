@@ -1,4 +1,5 @@
 require 'libvirt/spec/network/bridge'
+require 'libvirt/spec/network/ip'
 
 module Libvirt
   module Spec
@@ -10,11 +11,13 @@ module Libvirt
       attr_accessor :name
       attr_accessor :uuid
       attr_accessor :bridge
+      attr_accessor :ip
 
       # Initializes a network specification. If a valid XML string is
       # given, it will attempt to be parsed into the structure.
       def initialize(xml=nil)
         @bridge = Bridge.new
+        @ip = IP.new
 
         load!(xml) if xml
       end
@@ -28,6 +31,7 @@ module Libvirt
           try(network.xpath("name")) { |result| self.name = result.text }
           try(network.xpath("uuid")) { |result| self.uuid = result.text }
           try(network.xpath("bridge")) { |result| self.bridge = Bridge.new(result) }
+          try(network.xpath("ip")) { |result| self.ip = IP.new(result) }
         end
       end
 
