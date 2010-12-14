@@ -1,4 +1,5 @@
 require 'libvirt/spec/network/host'
+require 'libvirt/spec/network/range'
 
 module Libvirt
   module Spec
@@ -27,7 +28,7 @@ module Libvirt
           try(root.xpath("//dhcp")) do |dhcp|
             try(dhcp.xpath("range"), :multi => true) do |results|
               self.ranges = []
-              results.each { |result| self.ranges << { :start => result["start"], :end => result["end"] } }
+              results.each { |result| self.ranges << Range.new(result) }
             end
 
             try(dhcp.xpath("host"), :multi => true) do |results|
@@ -44,13 +45,8 @@ module Libvirt
         # @return [String]
         def to_xml(parent=Nokogiri::XML::Builder.new)
           parent.dhcp do |dhcp|
-            ranges.each do |range|
-              dhcp.range(range)
-            end
-
-            hosts.each do |host|
-              host.to_xml(dhcp)
-            end
+            ranges.each { |r| r.to_xml(dhcp) }
+            hosts.each { |h| h.to_xml(dhcp) }
           end
 
           parent.to_xml
