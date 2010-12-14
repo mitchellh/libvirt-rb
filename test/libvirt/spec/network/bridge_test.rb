@@ -24,4 +24,17 @@ Protest.describe("Network bridge spec") do
       assert_equal 12, @instance.delay
     end
   end
+
+  context "with an instance" do
+    setup do
+      @instance = @klass.new("<bridge name='foo' stp='on' delay='7'/>")
+    end
+
+    should "set everything to nil on clear" do
+      @instance.clear
+      assert_nil @instance.name
+      assert_nil @instance.stp
+      assert_nil @instance.delay
+    end
+  end
 end
