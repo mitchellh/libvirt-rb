@@ -37,6 +37,7 @@ module Libvirt
           xml.interface(:type => type) do |i|
             i.mac(:address => mac_address) if mac_address
             i.model(:type => model_type) if model_type
+            i.source(:network => source_network) if source_network
           end
 
           xml.to_xml

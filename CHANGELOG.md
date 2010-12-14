@@ -3,6 +3,8 @@
   - `FFI::Libvirt::MissingLibError` is raised if libvirt C library
     is not available.
   - `Libvirt::Spec::Network` added to parse network interfaces.
+  - Interface device XML properly outputs `<source>` tag if `source_network`
+    is specified.
 
 ## 0.2.0 (December 7, 2010)
 
