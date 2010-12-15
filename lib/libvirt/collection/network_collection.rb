@@ -26,6 +26,24 @@ module Libvirt
         nil_or_object(FFI::Libvirt.virNetworkLookupByUUIDString(interface, uuid), Network)
       end
 
+      # Defines a new network with the given valid specification.
+      #
+      # @param [Object] spec
+      # @return [Domain]
+      def define(spec)
+        spec = spec.is_a?(String) ? spec : spec.to_xml
+        nil_or_object(FFI::Libvirt.virNetworkDefineXML(interface, spec), Network)
+      end
+
+      # Creates a new network with the given valid specification.
+      #
+      # @param [Object] spec
+      # @return [Domain]
+      def create(spec)
+        spec = spec.is_a?(String) ? spec : spec.to_xml
+        nil_or_object(FFI::Libvirt.virNetworkCreateXML(interface, spec), Network)
+      end
+
       # Returns all the active networks for the connection which this
       # collection belongs to.
       #

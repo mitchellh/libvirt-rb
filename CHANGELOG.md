@@ -5,6 +5,7 @@
   - `Libvirt::Spec::Network` added to parse network interfaces.
   - Interface device XML properly outputs `<source>` tag if `source_network`
     is specified.
+  - Networks can be defined/created via the network collection.
 
 ## 0.2.0 (December 7, 2010)
 
