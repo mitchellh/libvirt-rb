@@ -1,3 +1,5 @@
+**WARNING: This gem is abandoned. It will not be worked on anymore. Please use the official libvirt libraries.**
+
 # Libvirt Ruby Library
 
 * Source: [http://github.com/mitchellh/libvirt-rb](http://github.com/mitchellh/libvirt-rb)
